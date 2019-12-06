@@ -6,9 +6,12 @@
   - [Substrate 是什么](#substrate-%e6%98%af%e4%bb%80%e4%b9%88)
   - [导航类资源](#%e5%af%bc%e8%88%aa%e7%b1%bb%e8%b5%84%e6%ba%90)
     - [awesome-substrate](#awesome-substrate)
-    - [Substrate.dev](#substratedev)
+    - [substrate.dev](#substratedev)
   - [主页类](#%e4%b8%bb%e9%a1%b5%e7%b1%bb)
-    - [Plo](#plo)
+    - [Polkadot Wiki](#polkadot-wiki)
+      - [Polkadot 综合性资源](#polkadot-%e7%bb%bc%e5%90%88%e6%80%a7%e8%b5%84%e6%ba%90)
+      - [基于 Polkadot 开发](#%e5%9f%ba%e4%ba%8e-polkadot-%e5%bc%80%e5%8f%91)
+      - [Polkadot 全面介绍](#polkadot-%e5%85%a8%e9%9d%a2%e4%bb%8b%e7%bb%8d)
 
 
 ## Substrate 是什么
@@ -28,7 +31,7 @@
 * [工具集](https://substrate.dev/rustdocs/v1.0/substrate_service/index.html?search=srml)，用来修改运行环境的逻辑，例如管理存储、账户、权益、资产、共识算法等等
 * UI 工具
 
-它有一下特点：
+它有以下特点：
 - [x] Everything you Need to Build a Blockchain
 - [x] Fast and efficient database.
 - [x] Modular P2P networking stack in libp2p.
@@ -41,7 +44,7 @@
 - [英文版](https://github.com/substrate-developer-hub/awesome-substrate/blob/master/README.md)
 - [中文版](https://github.com/substrate-developer-hub/awesome-substrate/blob/master/README_CN.md)
 
-`标签`：`官方` `汇总`  `实时更新`
+`标签`：`官方` `汇总`  `实时更新` `多语言版本`
 
 这里实时更新了 Substrate 相关的信息的汇总。在这里可以得到：
 - Substrate Wiki、Polkadot Wiki、Research Wiki 等相关的官方文档；
@@ -51,11 +54,11 @@
 - 以及 Polkadot 生态里面的相关项目；
 - 最新公告和活动等。
 
-### Substrate.dev
+### substrate.dev
 
 https://substrate.dev/
 
-`标签`：`官方` `开发者中心`
+`标签`：`官方` `开发者中心` `多语言版本`
 
 这里是 Polkadot 团队官方维护的 Substrate 开发者中心，为了方便开发者学习、研究、使用 Substrate，Polkadot 团队精心地写了非常有用的文档：
 
@@ -70,4 +73,104 @@ https://substrate.dev/
 - [基于 Substrate 构建的区块链项目](https://substrate.dev/en/users.html)：从这里可以看到目前已经有了四五十个项目使用 Substrate 构建他们的区块链。
 
 ## 主页类
-### Plo
+### Polkadot Wiki
+https://wiki.polkadot.network/docs/en/
+
+`标签`：`官方` `开发者中心` `多语言版本`
+
+#### Polkadot 综合性资源
+- [Polakdot Wiki 的索引](https://wiki.polkadot.network/docs/en/)
+- [社区](https://wiki.polkadot.network/docs/en/community)
+  - 通用
+    - 区块链浏览器：[Polkadot UI](https://polkadot.js.org/apps/#/explorer)
+    - 源码链接：[Polkadot GitHub](https://github.com/paritytech/polkadot/)
+    - [聚会宣讲活动](https://github.com/w3f/Web3-collaboration/blob/master/meetups.md)
+  - Riot
+    - [Polkadot 入门聊天室](https://riot.im/app/#/room/#polkadotnoobs:matrix.org)：供入门者了解 Polkadot 的聊天室，**提问的好地方**。
+    - [Polkadot Watercooler Chat](https://riot.im/app/#/room/#polkadot-watercooler:matrix.org)：讨论 Polkadot 一般问题。
+    - [Polkadot 验证人频道](https://riot.im/app/#/room/#polkadot-validator-lounge:matrix.org)：验证人学习如何设定节点。
+    - [Substrate 技术频道](https://riot.im/app/#/room/#substrate-technical:matrix.org)：在这询问 Substrate 有关技术问题。
+  - 媒体链接
+    - [订阅 Polkadot 邮件](https://polkadot.network/#roadmap)：电子邮件注册表格在頁面底部。
+    - [Polkadot Telegram 群](https://t.me/polkadotofficial)：Polkadot 官方电报群 (聊天前请先阅读规则)。
+    - [Polkadot Twitter](https://twitter.com/polkadotnetwork)：Polkadot 官方推特帐户。
+    - [Polkadot Reddit](https://www.reddit.com/r/dot/)：Polkadot 官方 Reddit 账号。
+    - [Polkadot Youtube 频道](https://www.youtube.com/channel/UCB7PbjuZLEba_znc7mEGNgw)：来自创始人和 Polkadot 的视频内容，讲述了网络和愿景。
+  - Polkadot 生态项目
+    - [有那些项目在 Polkadot 生态上](https://forum.web3.foundation/t/teams-building-on-polkadot/67)
+- [怎样参与贡献](https://wiki.polkadot.network/docs/zh-CN/contributing)
+- [术语表](https://wiki.polkadot.network/docs/zh-CN/glossary)
+- [新闻](https://wiki.polkadot.network/docs/zh-CN/news)
+- [研究专页](https://wiki.polkadot.network/docs/zh-CN/research)
+
+#### 基于 Polkadot 开发
+- [开发者专页](https://wiki.polkadot.network/docs/en/build-index)
+  - [Polkadot 开发者入门指南](https://wiki.polkadot.network/docs/zh-CN/build-build-with-polkadot)
+  - [开发路线图](https://wiki.polkadot.network/docs/zh-CN/build-dev-roadmap)
+  - [平行链开发套件(PDKs)](https://wiki.polkadot.network/docs/zh-CN/build-pdk)
+  - [Cumulus](https://wiki.polkadot.network/docs/zh-CN/build-cumulus)
+  - [智能合约](https://wiki.polkadot.network/docs/zh-CN/build-smart-contracts)
+- [工具链索引](https://wiki.polkadot.network/docs/en/build-tools-index)
+  - 区块链浏览器/资源管理器
+    - [Polka.io](https://polka.io/)
+    - [Polkadot-JS Apps Explorer](https://polkadot.js.org/apps/#/explorer)
+    - [Polkascan](https://polkascan.io/)
+  - 钱包
+    - [Polkadot-JS Apps——账户](https://polkadot.js.org/apps/#/accounts)
+    - [Bonds oo7 Polkadot UI](https://github.com/paritytech/substrate-ui)
+    - [Polkawallet](https://polkawallet.io/)
+    - [SpeckleOS](https://www.speckleos.io/)
+    - [Enzyme](https://getenzyme.dev/)
+    - [Math Wallet](https://www.mathwallet.org/)
+  - 网络监控 & 报告
+    - [Polkadot 遥测服务](https://telemetry.polkadot.io/)
+    - [Polkabot](https://gitlab.com/Polkabot/polkabot)：Polkadot使用Riot聊天来进行网络监控和报告，用户可以自定义创建bot插件。[相关文章](https://medium.com/polkadot-network/polkabot-a3dba18c20c8)
+    - [PolkaStats](https://polkastats.io/)：[GitHub 链接](https://github.com/Colm3na/polkastats-v2/)
+- Rust 相关项目
+  - 客户端
+    - [Polkadot](https://github.com/paritytech/polkadot)：Polkadot运行时环境的Rust实现
+  - 工具
+    - [Substrate](https://github.com/paritytech/substrate)
+    - [Substrate Development Hub](https://substrate.dev/)
+- C++ 相关项目
+  - [Kagome](https://github.com/soramitsu/kagome)：Polkadot C++ 客户端。
+  - [Polkadot API Cpp](https://github.com/usetech-llc/polkadot_api_cpp)：С++ API for Polkadot
+- C# 相关项目
+  - [Polkadot API - .NET](https://github.com/usetech-llc/polkadot_api_dotnet)：Polkadot Substrate API for .NET
+- Go 相关项目
+  - [Gossamer](https://github.com/ChainSafe/gossamer): A Go implementation of the Polkadot Runtime Environment.
+  - [Golkadot](https://github.com/opennetsys/golkadot): A Go implementation of Polkadot Substrate.
+  - [GSRPC](https://github.com/centrifuge/go-substrate-rpc-client/): Substrate RPC client for go aka GSRPC
+- JS 相关项目
+  - [Polkadot-JS client](https://github.com/polkadot-js/client)
+- 其他资源
+  - 交易所整合
+  - 例子
+  - 如何查看及部署平行链
+  - 黑客马拉松
+
+#### Polkadot 全面介绍
+这里对 Polkadot 进行了全面的介绍，包括关于 Polkadot 的特点：
+- [Polkadot 基础](https://wiki.polkadot.network/docs/en/learn-introduction)
+  - Polkadot 架构
+  - 网络安全
+  - 共识机制
+  - 治理
+  - 桥接方案
+  - 平行链
+  - 平行线程
+  - Polkadot 运行时环境
+  - 财政库
+- 进阶
+  - 抵押
+  - 随机性
+  - SPREE
+  - Wasm
+  - 顺序弗拉格曼方法
+  - 跨链消息传递(ICMP)
+- 密码学相关
+  - 密码学讲解
+  - 密钥
+- 经济系统
+  - 
+- 路线图等
