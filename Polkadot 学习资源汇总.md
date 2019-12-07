@@ -108,13 +108,14 @@ https://www.polkaworld.org/explore
 
 `标签`：`社区` `中文`
 
-波卡世界是一个中文社区，有[网站](https://www.polkaworld.org/)以及公众号（搜索 `PolkaWorld`）以及对应的微信群。其公众号能及时发布关于 Polkadot 的最新公告等，定期会组织一些活动等。
+波卡世界是一个中文社区，有[网站](https://www.polkaworld.org/)以及公众号（搜索 `PolkaWorld`）以及对应的微信群。其公众号能及时发布关于 Polkadot 的最新公告，翻译发布一些 Polkadot 文章，定期会组织一些活动等。
 
 ### Boka.Network
 http://blog.boka.network/links/
 
 `标签`：`导航` `中文`
 
+功能和波卡世界类似。
 
 ## 主页类资源
 ### Polkadot Wiki
