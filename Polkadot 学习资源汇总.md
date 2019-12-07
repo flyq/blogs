@@ -4,15 +4,22 @@
 - [Polkadot 学习资源汇总](#polkadot-%e5%ad%a6%e4%b9%a0%e8%b5%84%e6%ba%90%e6%b1%87%e6%80%bb)
   - [`Contents`](#contents)
   - [Substrate 是什么](#substrate-%e6%98%af%e4%bb%80%e4%b9%88)
+  - [官网](#%e5%ae%98%e7%bd%91)
   - [导航类资源](#%e5%af%bc%e8%88%aa%e7%b1%bb%e8%b5%84%e6%ba%90)
     - [awesome-substrate](#awesome-substrate)
     - [substrate.dev](#substratedev)
+    - [PolkaWorld 波卡世界](#polkaworld-%e6%b3%a2%e5%8d%a1%e4%b8%96%e7%95%8c)
+    - [Boka.Network](#bokanetwork)
   - [主页类](#%e4%b8%bb%e9%a1%b5%e7%b1%bb)
     - [Polkadot Wiki](#polkadot-wiki)
       - [Polkadot 综合性资源](#polkadot-%e7%bb%bc%e5%90%88%e6%80%a7%e8%b5%84%e6%ba%90)
       - [基于 Polkadot 开发](#%e5%9f%ba%e4%ba%8e-polkadot-%e5%bc%80%e5%8f%91)
       - [Polkadot 全面介绍](#polkadot-%e5%85%a8%e9%9d%a2%e4%bb%8b%e7%bb%8d)
-      - [参与网络](#%e5%8f%82%e4%b8%8e%e7%bd%91%e7%bb%9c)
+      - [参与维护网络](#%e5%8f%82%e4%b8%8e%e7%bb%b4%e6%8a%a4%e7%bd%91%e7%bb%9c)
+    - [Web3 Foundation Research](#web3-foundation-research)
+      - [Polkadot 网络协议](#polkadot-%e7%bd%91%e7%bb%9c%e5%8d%8f%e8%ae%ae)
+      - [Web3 研究团队成员](#web3-%e7%a0%94%e7%a9%b6%e5%9b%a2%e9%98%9f%e6%88%90%e5%91%98)
+      - [Web3 基金会新闻](#web3-%e5%9f%ba%e9%87%91%e4%bc%9a%e6%96%b0%e9%97%bb)
 
 
 ## Substrate 是什么
@@ -39,6 +46,29 @@
 - [x] Hot-swappable consensus layer.
 - [x] Customizable transaction queue management system.
 - [x] Diverse library of runtime modules.
+
+## 官网
+[Polkadot 官网](https://polkadot.network/)  
+[Parity 官网](https://www.parity.io/)  
+[Web3 基金会官网](https://web3.foundation/)  
+
+[Parity 官方 GitHub 地址](https://github.com/paritytech/)  
+[Polkadot GitHub 地址](https://github.com/paritytech/polkadot)  
+[Substrate GitHub 地址](https://github.com/paritytech/substrate)  
+[Substrate 开发者中心 GitHub 地址](https://github.com/substrate-developer-hub)  
+[Web3 基金会 GitHub 地址](https://github.com/w3f)  
+
+[Polkadot 官方白皮书地址](https://polkadot.network/PolkaDotPaper.pdf)
+
+[Web3 基金会论坛](https://forum.web3.foundation/)  
+[官方维护的 Riot 群](##polkadot-%e7%bb%bc%e5%90%88%e6%80%a7%e8%b5%84%e6%ba%90)  
+[Polkadot 官方 Medium](https://medium.com/@polkadotnetwork)  
+[Polkadot 官方 Reddit](https://www.reddit.com/r/dot)  
+[Polkadot 官方 Twitter](https://twitter.com/polkadotnetwork)  
+[Polkadot 官方 Telegram](https://t.me/PolkadotOfficial)  
+[Polkadot 官方 Youtube](https://www.youtube.com/channel/UCB7PbjuZLEba_znc7mEGNgw)  
+[订阅 Polkadot 邮件](https://foundation.us16.list-manage.com/subscribe/post?u=a30a54feb730c7553e5d2eb0c&id=93eced75b7)
+
 
 ## 导航类资源
 ### awesome-substrate
@@ -72,6 +102,19 @@ https://substrate.dev/
 - [Get Started on Polkadot-JS](https://substrate.dev/en/who/front-end-developer)：从这里可以学会怎样从零开始使用 Polkadot-JS 来让前端与 Substrate 链进行交互。
 - [Get Started on ink!](https://substrate.dev/en/who/contract-developer)：从这里可以学会怎样从零开始使用 ink! 来构建运行在 Substrate 链上面的智能合约。
 - [基于 Substrate 构建的区块链项目](https://substrate.dev/en/users.html)：从这里可以看到目前已经有了四五十个项目使用 Substrate 构建他们的区块链。
+
+### PolkaWorld 波卡世界
+https://www.polkaworld.org/explore
+
+`标签`：`社区` `中文`
+
+波卡世界是一个中文社区，有[网站](https://www.polkaworld.org/)以及公众号（搜索 `PolkaWorld`）以及对应的微信群。其公众号能及时发布关于 Polkadot 的最新公告等，定期会组织一些活动等。
+
+### Boka.Network
+http://blog.boka.network/links/
+
+`标签`：`导航` `中文`
+
 
 ## 主页类
 ### Polkadot Wiki
@@ -198,4 +241,104 @@ https://wiki.polkadot.network/docs/en/
   - [相关链接](https://wiki.polkadot.network/docs/zh-CN/learn-relevant-links)
   - [常见问题](https://wiki.polkadot.network/docs/zh-CN/learn-faq)
 
-#### 参与网络
+#### 参与维护网络
+- [收集人](https://wiki.polkadot.network/docs/zh-CN/maintain-collator)
+- [提名人](https://wiki.polkadot.network/docs/zh-CN/maintain-nominator)
+  - [成为提名人](https://wiki.polkadot.network/docs/zh-CN/maintain-guides-how-to-nominate-alexander)
+  - [提名人指南](https://wiki.polkadot.network/docs/zh-CN/maintain-guides-how-to-nominate-kusama)
+- 验证人
+  - 指南
+    - [如何在 Alexander 运行节点](https://wiki.polkadot.network/docs/zh-CN/maintain-guides-how-to-validate-alexander)：逐步介绍如何在 Aexander 测试网上设置验证人的指南。
+    - [如何在 Kusama 运行节点](https://wiki.polkadot.network/docs/zh-CN/maintain-guides-how-to-validate-kusama)：逐步介绍如何在 Kusama 金丝雀网络上设置验证人的指南。
+    - [验证人奖励发放概述](https://wiki.polkadot.network/docs/zh-CN/maintain-guides-validator-payout)：简短概述验证人奖励发放机制原理。
+    - [如何将验证人程序作为 systemd 进程运行](https://wiki.polkadot.network/docs/zh-CN/maintain-guides-how-to-systemd)：有关将验证人程序作为systemd进程运行的指南 ，使它在背后运行，并当重新启动时自动启动。
+    - [如何升级您的验证人](https://wiki.polkadot.network/docs/zh-CN/maintain-guides-how-to-upgrade)：当要转换到另一台计算机或运行最新版本的客户端时 - 升级验证人指南。
+    - [如何设置哨兵节点](https://wiki.polkadot.network/docs/zh-CN/maintain-guides-how-to-setup-sentry-node)：为验证人设置哨兵节点。
+  - 其他参考
+    - [如何运行 Polkadot 节点 (Docker)](https://medium.com/@acvlls/setting-up-a-maintain-the-easy-way-3a885283091f)
+    - [Web 3.0 验证人节点的无服务器故障转移解决方案](https://medium.com/hackernoon/a-serverless-failover-solution-for-web-3-0-validator-nodes-e26b9d24c71d)：博客详细介绍了如何创建可靠的故障转移解决方案运行验证人。
+  - [获取测试网 DOTs](https://wiki.polkadot.network/docs/zh-CN/learn-DOT#getting-testnet-dots)
+  - [云服务器清单](https://wiki.polkadot.network/docs/zh-CN/maintain-guides-how-to-validate-kusama#vps-list)
+  - [Polkadot 验证人休息室](https://matrix.to/#/!NZrbtteFeqYKCUGQtr:matrix.parity.io?via=matrix.parity.io&via=matrix.org&via=web3.foundation)：验证人聊天室。
+  - 安全/密钥管理
+    - [验证人安全概览](https://github.com/w3f/validator-security)
+  - 监控工具
+    - [Polkadot Telemetry 服务](https://telemetry.polkadot.io/#/Alexander)：网络信息，包括在某一条链上有什么节点在运行，正在运行的版本以及同步状态。
+    - [Polkadash](http://polkadash.io/)：监测验证人
+    - [其它有用链接](https://forum.web3.foundation/t/useful-links-for-validators/20)
+- Governance
+  - [加入议会](https://wiki.polkadot.network/docs/zh-CN/maintain-guides-how-to-join-council)
+  - [投票选举议员](https://wiki.polkadot.network/docs/zh-CN/maintain-guides-how-to-vote-councillor)
+
+### Web3 Foundation Research
+https://research.web3.foundation/en/latest/
+
+`标签`：`官方` `研究`
+
+研究领域：
+- 去中心化算法：共识，优化，博弈论
+- 密码学
+- 网络
+
+目前研究：
+- [Polkadot network protocol research](https://research.web3.foundation/en/latest/polkadot.html)
+- [Messaging for Web3 initiative](https://github.com/w3f/messaging)
+
+联系方式：
+- Riot: #w3f:matrix.org 
+- [forum](https://forum.web3.foundation/)
+
+#### Polkadot 网络协议
+- [Polkadot](https://research.web3.foundation/en/latest/polkadot/index.html)
+  1. [Specification of the Polkadot Runtime Environment](https://github.com/w3f/polkadot-re-spec)
+  2. Identifying participants to run the network
+     1. Keys
+     2. Proof-of-Stake
+     3. Why not use different sets for different tasks?
+  3. Ensuring state transition properties
+     1. Utility
+     2. Validity
+     3. Finality
+     4. Availability
+     5. Messaging reliability
+     6. Size
+     7. Bandwidth
+  4. Desired architectural qualities
+
+- [可用性与有效性（Availability and Validity）](https://research.web3.foundation/en/latest/polkadot/Availability_and_Validity.html)
+- [GRANDPA 共识](https://research.web3.foundation/en/latest/polkadot/GRANDPA.html)
+- [平行链分配（Parachain Allocation）](https://research.web3.foundation/en/latest/polkadot/Parachain-Allocation.html)
+- [Polkadot 运行时环境规范（Polkadot Runtime Environment Specification）](https://research.web3.foundation/en/latest/polkadot/Polkadot-Runtime-Environment.html)
+- [代币经济（Token Economics）](https://research.web3.foundation/en/latest/polkadot/Token%20Economics.html)
+- [BABE 共识算法](https://research.web3.foundation/en/latest/polkadot/BABE.html)
+  - BABE
+    1. Overview
+    2. BABE
+    3. Best Chain Selection
+    4. Relative Time
+    5. Security Analysis
+  - Sortion
+- [NPoS 提名权益证明](https://research.web3.foundation/en/latest/polkadot/NPoS.html)
+  - [Intro to Nominated Proof-of-Stake](https://research.web3.foundation/en/latest/polkadot/NPoS/index.html#)
+  1. [Overview of results for the NPoS election problem](https://research.web3.foundation/en/latest/polkadot/NPoS/1.%20Overview.html)
+  2. [The min-norm max-flow problem](https://research.web3.foundation/en/latest/polkadot/NPoS/1.%20Overview.html)
+  3. [The maximin support problem](https://research.web3.foundation/en/latest/polkadot/NPoS/3.%20The%20maximin%20support%20problem.html)
+  4. [Sequential Phragmén’s method.](https://research.web3.foundation/en/latest/polkadot/NPoS/4.%20Sequential%20Phragm%C3%A9n%E2%80%99s%20method.html)
+  5. [A Phragmén-like Heuristic](https://research.web3.foundation/en/latest/polkadot/NPoS/5.%20A%20Phragm%C3%A9n-like%20Heuristic.html)
+- [账号体系 Keys](https://research.web3.foundation/en/latest/polkadot/keys.html)
+- [Networking](https://research.web3.foundation/en/latest/polkadot/networking.html)
+- [Slashing](https://research.web3.foundation/en/latest/polkadot/slashing.html)
+- [XCMP Scheme](https://research.web3.foundation/en/latest/polkadot/XCMP.html)
+
+#### Web3 研究团队成员
+- [Sergey Vasilyev](https://research.web3.foundation/en/latest/research_team_members/Sergey.html)
+- [Ximin Luo](https://research.web3.foundation/en/latest/research_team_members/Ximin.html)
+- [Alfonso Cevallos](https://research.web3.foundation/en/latest/research_team_members/alfonso.html)
+- [Alistair Stewart](https://research.web3.foundation/en/latest/research_team_members/alistair.html)
+- [Fatemeh Shirazi](https://research.web3.foundation/en/latest/research_team_members/fatemeh.html)
+- [Handan Kılınç Alper](https://research.web3.foundation/en/latest/research_team_members/handan.html)
+- [Jeff Burdges](https://research.web3.foundation/en/latest/research_team_members/jeff.html)
+- [Syed Hosseini](https://research.web3.foundation/en/latest/research_team_members/syed.html)
+
+#### Web3 基金会新闻
+https://research.web3.foundation/en/latest/news.html
