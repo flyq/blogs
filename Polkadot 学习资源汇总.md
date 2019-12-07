@@ -10,7 +10,7 @@
     - [substrate.dev](#substratedev)
     - [PolkaWorld 波卡世界](#polkaworld-%e6%b3%a2%e5%8d%a1%e4%b8%96%e7%95%8c)
     - [Boka.Network](#bokanetwork)
-  - [主页类](#%e4%b8%bb%e9%a1%b5%e7%b1%bb)
+  - [主页类资源](#%e4%b8%bb%e9%a1%b5%e7%b1%bb%e8%b5%84%e6%ba%90)
     - [Polkadot Wiki](#polkadot-wiki)
       - [Polkadot 综合性资源](#polkadot-%e7%bb%bc%e5%90%88%e6%80%a7%e8%b5%84%e6%ba%90)
       - [基于 Polkadot 开发](#%e5%9f%ba%e4%ba%8e-polkadot-%e5%bc%80%e5%8f%91)
@@ -116,7 +116,7 @@ http://blog.boka.network/links/
 `标签`：`导航` `中文`
 
 
-## 主页类
+## 主页类资源
 ### Polkadot Wiki
 https://wiki.polkadot.network/docs/en/
 
