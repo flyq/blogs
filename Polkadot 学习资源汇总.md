@@ -316,18 +316,18 @@ https://research.web3.foundation/en/latest/
 - [Polkadot 运行时环境规范（Polkadot Runtime Environment Specification）](https://research.web3.foundation/en/latest/polkadot/Polkadot-Runtime-Environment.html)
 - [代币经济（Token Economics）](https://research.web3.foundation/en/latest/polkadot/Token%20Economics.html)
   1. Introduction：介绍 DOT 与成为验证者，获取平行链插槽之间的关系。
-  2. Organization：组织形式，即该文将按照以下三部分详细描述 Polkadot 的 Token 经济
-  3. [NPoS payments and inflation](https://research.web3.foundation/en/latest/polkadot/Token%20Economics.html#npos-payments-and-inflation)：提名权益证明相关描述
+  2. Organization：组织形式，即该文将按照以下三部分详细描述 Polkadot 的 Token 经济。
+  3. [NPoS payments and inflation](https://research.web3.foundation/en/latest/polkadot/Token%20Economics.html#npos-payments-and-inflation)：提名权益证明相关描述。
      1. Inflation model
      2. Payment details
      3. Distribution of payment within a validator slot
-  4. [Relay-chain transaction fees and per-block transaction limits](https://research.web3.foundation/en/latest/polkadot/Token%20Economics.html#relay-chain-transaction-fees-and-per-block-transaction-limits)：中继链交易费用相关描述
+  4. [Relay-chain transaction fees and per-block transaction limits](https://research.web3.foundation/en/latest/polkadot/Token%20Economics.html#relay-chain-transaction-fees-and-per-block-transaction-limits)：中继链交易费用相关描述。
      1. Limits on resource usage
      2. Setting transaction fees
      3. Adjustment of fees over time
         1. Fast adjusting mechanism
         2. Slow adjusting mechanism
-  5. [Treasury](https://research.web3.foundation/en/latest/polkadot/Token%20Economics.html#treasury)：资金库相关
+  5. [Treasury](https://research.web3.foundation/en/latest/polkadot/Token%20Economics.html#treasury)：资金库相关。
 - [BABE 共识算法](https://research.web3.foundation/en/latest/polkadot/BABE.html)
   - [BABE](https://research.web3.foundation/en/latest/polkadot/BABE/Babe.html#)
     1. Overview
