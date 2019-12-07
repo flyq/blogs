@@ -12,6 +12,7 @@
       - [Polkadot 综合性资源](#polkadot-%e7%bb%bc%e5%90%88%e6%80%a7%e8%b5%84%e6%ba%90)
       - [基于 Polkadot 开发](#%e5%9f%ba%e4%ba%8e-polkadot-%e5%bc%80%e5%8f%91)
       - [Polkadot 全面介绍](#polkadot-%e5%85%a8%e9%9d%a2%e4%bb%8b%e7%bb%8d)
+      - [参与网络](#%e5%8f%82%e4%b8%8e%e7%bd%91%e7%bb%9c)
 
 
 ## Substrate 是什么
@@ -76,7 +77,7 @@ https://substrate.dev/
 ### Polkadot Wiki
 https://wiki.polkadot.network/docs/en/
 
-`标签`：`官方` `开发者中心` `多语言版本`
+`标签`：`官方` `Wiki` `多语言版本`
 
 #### Polkadot 综合性资源
 - [Polakdot Wiki 的索引](https://wiki.polkadot.network/docs/en/)
@@ -126,51 +127,75 @@ https://wiki.polkadot.network/docs/en/
     - [Polkadot 遥测服务](https://telemetry.polkadot.io/)
     - [Polkabot](https://gitlab.com/Polkabot/polkabot)：Polkadot使用Riot聊天来进行网络监控和报告，用户可以自定义创建bot插件。[相关文章](https://medium.com/polkadot-network/polkabot-a3dba18c20c8)
     - [PolkaStats](https://polkastats.io/)：[GitHub 链接](https://github.com/Colm3na/polkastats-v2/)
-- Rust 相关项目
-  - 客户端
-    - [Polkadot](https://github.com/paritytech/polkadot)：Polkadot运行时环境的Rust实现
-  - 工具
-    - [Substrate](https://github.com/paritytech/substrate)
-    - [Substrate Development Hub](https://substrate.dev/)
-- C++ 相关项目
-  - [Kagome](https://github.com/soramitsu/kagome)：Polkadot C++ 客户端。
-  - [Polkadot API Cpp](https://github.com/usetech-llc/polkadot_api_cpp)：С++ API for Polkadot
-- C# 相关项目
-  - [Polkadot API - .NET](https://github.com/usetech-llc/polkadot_api_dotnet)：Polkadot Substrate API for .NET
-- Go 相关项目
-  - [Gossamer](https://github.com/ChainSafe/gossamer): A Go implementation of the Polkadot Runtime Environment.
-  - [Golkadot](https://github.com/opennetsys/golkadot): A Go implementation of Polkadot Substrate.
-  - [GSRPC](https://github.com/centrifuge/go-substrate-rpc-client/): Substrate RPC client for go aka GSRPC
-- JS 相关项目
-  - [Polkadot-JS client](https://github.com/polkadot-js/client)
+  - Rust 相关项目
+    - 客户端
+      - [Polkadot](https://github.com/paritytech/polkadot)：Polkadot运行时环境的Rust实现
+    - 工具
+      - [Substrate](https://github.com/paritytech/substrate)
+      - [Substrate Development Hub](https://substrate.dev/)
+  - C++ 相关项目
+    - [Kagome](https://github.com/soramitsu/kagome)：Polkadot C++ 客户端。
+    - [Polkadot API Cpp](https://github.com/usetech-llc/polkadot_api_cpp)：С++ API for Polkadot
+  - C# 相关项目
+    - [Polkadot API - .NET](https://github.com/usetech-llc/polkadot_api_dotnet)：Polkadot Substrate API for .NET
+  - Go 相关项目
+    - [Gossamer](https://github.com/ChainSafe/gossamer): A Go implementation of the Polkadot Runtime Environment.
+    - [Golkadot](https://github.com/opennetsys/golkadot): A Go implementation of Polkadot Substrate.
+    - [GSRPC](https://github.com/centrifuge/go-substrate-rpc-client/): Substrate RPC client for go aka GSRPC
+  - JS 相关项目
+    - 客户端
+      - [Polkadot-JS client](https://github.com/polkadot-js/client)
+    - 库
+      - [Polkadot-JS Common](https://polkadot.js.org/common/)
+      - [Bonds oo7](https://github.com/polkadot-js/oo7-polkadot)
+    - 命令行工具
+      - [@polkadot/api-cli](https://github.com/polkadot-js/tools/tree/master/packages/api-cli)：Polkadot API 的简单命令行界面。[文档](https://polkadot.js.org/api/api/)
+      - [@polkadot/monitor-rpc ](https://github.com/polkadot-js/tools/tree/master/packages/monitor-rpc) Polkadot 的一个简单 RPC 监视器。
+    - RPC 工具
+      - [@polkadot/api/rpc-provider](https://github.com/polkadot-js/api/tree/master/packages/rpc-provider)
+      - [RPC documentation](RPC documentation)
 - 其他资源
-  - 交易所整合
-  - 例子
-  - 如何查看及部署平行链
-  - 黑客马拉松
+  - [交易所整合](https://wiki.polkadot.network/docs/zh-CN/build-exchange-integration)
+  - [例子](https://wiki.polkadot.network/docs/zh-CN/build-examples-index)：这里有很多和 Polkadot 相关的例子。
+  - [如何查看及部署平行链](https://wiki.polkadot.network/docs/zh-CN/build-deploy-parachains)
+  - [黑客马拉松](https://wiki.polkadot.network/docs/zh-CN/build-hackathon)
 
 #### Polkadot 全面介绍
 这里对 Polkadot 进行了全面的介绍，包括关于 Polkadot 的特点：
 - [Polkadot 基础](https://wiki.polkadot.network/docs/en/learn-introduction)
-  - Polkadot 架构
-  - 网络安全
-  - 共识机制
-  - 治理
-  - 桥接方案
-  - 平行链
-  - 平行线程
-  - Polkadot 运行时环境
-  - 财政库
+  - [Polkadot 架构](https://wiki.polkadot.network/docs/zh-CN/learn-architecture)
+  - [网络安全](https://wiki.polkadot.network/docs/zh-CN/learn-security)
+  - [共识机制](https://wiki.polkadot.network/docs/zh-CN/learn-consensus)
+  - [治理](https://wiki.polkadot.network/docs/zh-CN/learn-governance)
+  - [桥接方案](https://wiki.polkadot.network/docs/zh-CN/learn-bridges)
+  - [平行链](https://wiki.polkadot.network/docs/zh-CN/learn-parachains)
+  - [平行线程](https://wiki.polkadot.network/docs/zh-CN/learn-parathreads)
+  - [Polkadot 运行时环境](https://wiki.polkadot.network/docs/zh-CN/learn-PRE)
+  - [财政库](https://wiki.polkadot.network/docs/zh-CN/learn-treasury)
 - 进阶
-  - 抵押
-  - 随机性
-  - SPREE
-  - Wasm
-  - 顺序弗拉格曼方法
-  - 跨链消息传递(ICMP)
+  - [抵押](https://wiki.polkadot.network/docs/zh-CN/learn-staking)
+  - [随机性](https://wiki.polkadot.network/docs/zh-CN/learn-randomness)
+  - [SPREE](https://wiki.polkadot.network/docs/zh-CN/learn-spree)
+  - [WebAssemble(Wasm)](https://wiki.polkadot.network/docs/zh-CN/learn-wasm)
+    - [WebAssembly.org](https://webassembly.org/)：WebAssembly 官网。
+    - [Wasmi](https://github.com/paritytech/Wasmi)：Parity 团队使用 Rust 编写的 WebAssembly 解释器。
+    - [Parity Wasm](https://github.com/paritytech/parity-Wasm)：WebAssembly 序列化 / 反序列化。
+    - [Wasm 实用程序](https://github.com/paritytech/Wasm-utils)
+  - [顺序弗拉格曼方法](https://wiki.polkadot.network/docs/zh-CN/learn-phragmen)
+  - 跨链消息传递 (ICMP)
 - 密码学相关
-  - 密码学讲解
-  - 密钥
+  - [密码学讲解](https://wiki.polkadot.network/docs/zh-CN/learn-cryptography)
+  - [密钥](https://wiki.polkadot.network/docs/zh-CN/learn-keys)
 - 经济系统
-  - 
-- 路线图等
+  - [DOT](https://wiki.polkadot.network/docs/zh-CN/learn-DOT)
+  - [平行链插槽拍卖](https://wiki.polkadot.network/docs/zh-CN/learn-auction)
+- 与其他方案比较
+  - [Cosmos 和 Polkadot](https://wiki.polkadot.network/docs/zh-CN/learn-comparisons-cosmos)
+  - [Dfinity 和 Polkadot](https://wiki.polkadot.network/docs/zh-CN/learn-comparisons-dfinit)
+  - [其他](https://wiki.polkadot.network/docs/zh-CN/learn-comparisons)
+- Miscellaneous
+  - [路线图](https://wiki.polkadot.network/docs/zh-CN/learn-roadmap)
+  - [相关链接](https://wiki.polkadot.network/docs/zh-CN/learn-relevant-links)
+  - [常见问题](https://wiki.polkadot.network/docs/zh-CN/learn-faq)
+
+#### 参与网络
