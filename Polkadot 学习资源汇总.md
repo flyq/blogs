@@ -291,7 +291,8 @@ https://research.web3.foundation/en/latest/
 
 #### Polkadot 网络协议
 - [Polkadot](https://research.web3.foundation/en/latest/polkadot/index.html)
-  1. [Specification of the Polkadot Runtime Environment](https://github.com/w3f/polkadot-re-spec)
+  1. Specification of the Polkadot Runtime Environment  
+     1. 对应 GitHub 地址：https://github.com/w3f/polkadot-re-spec 
   2. Identifying participants to run the network
      1. Keys
      2. Proof-of-Stake
@@ -309,16 +310,33 @@ https://research.web3.foundation/en/latest/
 - [可用性与有效性（Availability and Validity）](https://research.web3.foundation/en/latest/polkadot/Availability_and_Validity.html)
 - [GRANDPA 共识](https://research.web3.foundation/en/latest/polkadot/GRANDPA.html)
 - [平行链分配（Parachain Allocation）](https://research.web3.foundation/en/latest/polkadot/Parachain-Allocation.html)
+  - 介绍 Introduction
+  - 平行链插槽拍卖 Auctioning Parachain Slots
+  - 分析 Analysis
 - [Polkadot 运行时环境规范（Polkadot Runtime Environment Specification）](https://research.web3.foundation/en/latest/polkadot/Polkadot-Runtime-Environment.html)
 - [代币经济（Token Economics）](https://research.web3.foundation/en/latest/polkadot/Token%20Economics.html)
+  1. Introduction：介绍 DOT 与成为验证者，获取平行链插槽之间的关系。
+  2. Organization：组织形式，即该文将按照以下三部分详细描述 Polkadot 的 Token 经济
+  3. [NPoS payments and inflation](https://research.web3.foundation/en/latest/polkadot/Token%20Economics.html#npos-payments-and-inflation)：提名权益证明相关描述
+     1. Inflation model
+     2. Payment details
+     3. Distribution of payment within a validator slot
+  4. [Relay-chain transaction fees and per-block transaction limits](https://research.web3.foundation/en/latest/polkadot/Token%20Economics.html#relay-chain-transaction-fees-and-per-block-transaction-limits)：中继链交易费用相关描述
+     1. Limits on resource usage
+     2. Setting transaction fees
+     3. Adjustment of fees over time
+        1. Fast adjusting mechanism
+        2. Slow adjusting mechanism
+  5. [Treasury](https://research.web3.foundation/en/latest/polkadot/Token%20Economics.html#treasury)：资金库相关
 - [BABE 共识算法](https://research.web3.foundation/en/latest/polkadot/BABE.html)
-  - BABE
+  - [BABE](https://research.web3.foundation/en/latest/polkadot/BABE/Babe.html#)
     1. Overview
     2. BABE
     3. Best Chain Selection
     4. Relative Time
     5. Security Analysis
-  - Sortion
+  - [Sortion](https://research.web3.foundation/en/latest/polkadot/BABE/sortition.html)
+    1. [Cryptographic sortition for constant-time block production](https://research.web3.foundation/en/latest/polkadot/BABE/sortition/index.html#)
 - [NPoS 提名权益证明](https://research.web3.foundation/en/latest/polkadot/NPoS.html)
   - [Intro to Nominated Proof-of-Stake](https://research.web3.foundation/en/latest/polkadot/NPoS/index.html#)
   1. [Overview of results for the NPoS election problem](https://research.web3.foundation/en/latest/polkadot/NPoS/1.%20Overview.html)
