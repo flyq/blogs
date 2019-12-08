@@ -61,7 +61,7 @@
 [Polkadot 官方白皮书地址](https://polkadot.network/PolkaDotPaper.pdf)
 
 [Web3 基金会论坛](https://forum.web3.foundation/)  
-[官方维护的 Riot 群](##polkadot-%e7%bb%bc%e5%90%88%e6%80%a7%e8%b5%84%e6%ba%90)  
+[官方维护的 Riot 群](#polkadot-%e7%bb%bc%e5%90%88%e6%80%a7%e8%b5%84%e6%ba%90)  
 [Polkadot 官方 Medium](https://medium.com/@polkadotnetwork)  
 [Polkadot 官方 Reddit](https://www.reddit.com/r/dot)  
 [Polkadot 官方 Twitter](https://twitter.com/polkadotnetwork)  
