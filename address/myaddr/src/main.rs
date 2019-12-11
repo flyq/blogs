@@ -17,5 +17,7 @@ fn fib(n: usize) -> BigUint {
     f0
 }
 
-// This is a very large number.
-println!("fib(1000) = {}", fib(1000));
+fn main() {
+    // This is a very large number.
+    println!("fib(1000) = {}", fib(1000));
+}
