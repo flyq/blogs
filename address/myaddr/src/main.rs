@@ -2,22 +2,30 @@ extern crate num_bigint;
 extern crate num_traits;
 
 use num_bigint::BigUint;
-use num_traits::{Zero, One};
-use std::mem::replace;
-
-// Calculate large fibonacci numbers.
-fn fib(n: usize) -> BigUint {
-    let mut f0: BigUint = Zero::zero();
-    let mut f1: BigUint = One::one();
-    for _ in 0..n {
-        let f2 = f0 + &f1;
-        // This is a low cost way of swapping f0 with f1 and f1 with f2.
-        f0 = replace(&mut f1, f2);
-    }
-    f0
-}
+use num_traits::Zero;
 
 fn main() {
-    // This is a very large number.
-    println!("fib(1000) = {}", fib(1000));
+    let s =String::from("80DD5113FEDED638E5500E65779613BDD3BDDBEB8EB5D86CDD3370E629B02E92CDE3C3FC9D");
+    
+    println!("{:?}", hexstring_to_base58(&s));
 }
+
+fn hexstring_to_base58(s: &String) -> String {
+    let base_char = String::from("123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz");
+    let base_char_vec: Vec<char> = base_char.chars().collect();
+
+    
+    let mut a: BigUint = BigUint::parse_bytes(s.as_bytes(),16).unwrap();
+
+    let mut res = vec![];
+    while a.clone() > Zero::zero() {
+        let index = a.clone() % BigUint::from(58u32);
+        let index = *index.to_bytes_le().get(0).unwrap() as usize;
+        res.push(base_char_vec[index]);
+        a /= BigUint::from(58u32);
+    }
+
+    let res: String = res.iter().rev().collect();
+    res
+}
+
