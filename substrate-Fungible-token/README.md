@@ -2,7 +2,8 @@
 
 这个文档将手把手教你怎么从零开始使用 Substrate 框架开发一条 Token 链。顾名思义，这条链的功能就是能够在上面发行 Token。其实，类似的文档官方有一个：[substrate-collectables-workshop](https://substrate.dev/substrate-collectables-workshop/#/)，而且汉化也做得非常好，里面的逻辑参考的是曾经在以太坊上大火的 CryptoKitties。考虑到大家可能对 ERC20 Token 合约更加熟悉，因此写了这个文档，如果大家先把这个文档过了一遍，再去看官方的 substrate-collectables-workshop，就会更容易上手。
 
-⚠️ NOTE: 本文档以及里面涉及到的代码仅作 Demo 展示用，不要将其用于生产环境。
+⚠️ IMPORTANT NOTE: 本文档以及里面涉及到的代码仅作 Demo 展示用，不要将其用于生产环境。  
+⚠️ IMPORTANT NOTE: This code is just a sample for learning purposes. It is not audited and reviewed for production use cases. You can expect bugs and security vulnerabilities. Do not use it as-is in real applications.
 
 ## `Contents`
 - [基于 Substrate 开发一条 Token 链](#%e5%9f%ba%e4%ba%8e-substrate-%e5%bc%80%e5%8f%91%e4%b8%80%e6%9d%a1-token-%e9%93%be)
@@ -25,6 +26,8 @@
     - [3.1 Substrate 更新 Runtime 的一般步骤](#31-substrate-%e6%9b%b4%e6%96%b0-runtime-%e7%9a%84%e4%b8%80%e8%88%ac%e6%ad%a5%e9%aa%a4)
     - [3.2 单账本形式的 erc20 的 Runtime 逻辑](#32-%e5%8d%95%e8%b4%a6%e6%9c%ac%e5%bd%a2%e5%bc%8f%e7%9a%84-erc20-%e7%9a%84-runtime-%e9%80%bb%e8%be%91)
       - [3.2.1 增加 module](#321-%e5%a2%9e%e5%8a%a0-module)
+      - [3.2.2 修改 erc20 module](#322-%e4%bf%ae%e6%94%b9-erc20-module)
+        - [3.2.2.1 设置好类型](#3221-%e8%ae%be%e7%bd%ae%e5%a5%bd%e7%b1%bb%e5%9e%8b)
 
 ## 一、环境搭建
 
@@ -539,7 +542,7 @@ interface IERC20 {
 第三个在 209 行这里，功能类似构造函数：  
 ![tem12](images/sub012.png)  
 
-然后我们可以看一下 [template.rs](https://github.com/flyq/erc20/blob/master/runtime/src/template.rs)，整体来看，其实现了三个宏 `decl_storage!{}`，`decl_module!{}`，`decl_event!{}`，分别负责这个 module 的数据存储，方法逻辑，以及 event 申明等：
+然后我们可以看一下 [template.rs](https://github.com/flyq/erc20/blob/master/runtime/src/template.rs)，整体来看，其实现了三个宏 `decl_storage!{}`，`decl_module!{}`，`decl_event!{}`，分别负责这个 module 的状态变量的数据存储，方法逻辑，以及 event 申明等。具体这三个宏的作用参考官方给出的[文档](https://substrate.dev/rustdocs/v1.0/srml_support/macro.decl_storage.html)：
 ```rust
 decl_storage! {
 	trait Store for Module<T: Trait> as TemplateModule {
@@ -580,4 +583,64 @@ SRML module created as ./erc20.rs and added to git.
 Ensure that you include in your ./lib.rs the line:
    mod erc20;
 
+flyq@ubuntu:~/workspace/polkadot/erc20/runtime/src$ ls
+erc20.rs  lib.rs  template.rs
+```
+可以看出，新增了 erc20.rs 文件。
+
+根据提示，我们先去 lib.rs，参考 template，把我们新增的 erc20 module “登记”一下，分别在对应位置依次增加以下部分：
+```rust
+mod erc20;
+
+
+impl erc20::Trait for Runtime {
+    // add required types here
+    type Event = Event;
+}
+
+
+Erc20Module: erc20::{Module, Call, Storage, Event<T>},
+```
+
+然后我们尝试检查一下是否有错误：
+```shell
+$ cd erc20
+
+$ cargo check
+   Compiling libc v0.2.62
+   Compiling semver-parser v0.7.0
+   Compiling arrayvec v0.4.11
+   Compiling byteorder v1.3.2
+···
+    Checking substrate-service v1.0.0 (https://github.com/paritytech/substrate.git?rev=cc1d67e973fd02c0c997b164ba516cf041bf21f1#cc1d67e9)
+    Checking substrate-cli v1.0.0 (https://github.com/paritytech/substrate.git?rev=cc1d67e973fd02c0c997b164ba516cf041bf21f1#cc1d67e9)
+    Finished dev [unoptimized + debuginfo] target(s) in 5m 30s
+```
+耗时 5 min 左右。一切正常，没有报错。
+
+到这里，我们已经新建好了 erc20 module。
+
+#### 3.2.2 修改 erc20 module
+##### 3.2.2.1 设置好类型
+
+我们先设计好状态变量，状态变量的用处在代码里面注释说明：
+```rust
+decl_storage! {
+	trait Store for Module<T: Trait> as erc20 {
+    // 记录是否被初始化，启动后，有且只允许初始化一次。bool类型
+		Init get(is_init): bool;
+    // 记录一个 owner，类似管理员角色，有一些特权，这是一个账号，因此是 AccountId 类型
+		Owner get(owner) config(): T::AccountId;
+    // 总供应量，返回值是我们的余额
+		TotalSupply get(total_supply) config(): T::TokenBalance;
+		
+		// not really needed - name and ticker, but why not?
+		Name get(name) config(): Vec<u8>;
+		Ticker get (ticker) config(): Vec<u8>;
+	
+		// standard balances and allowances mappings for ERC20 implementation
+		BalanceOf get(balance_of): map T::AccountId => T::TokenBalance;
+		Allowance get(allowance): map (T::AccountId, T::AccountId) => T::TokenBalance;
+	}
+}
 ```
