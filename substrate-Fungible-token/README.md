@@ -983,10 +983,11 @@ $ ./target/release/erc20 --dev
 
 
 ## 五、总结
-到现在为止，大家应该拥有了一个 Substrate 的开发环境，并且掌握了一个简单的 Substrate module 该怎么实现。整个项目代码在：
+到现在为止，大家应该拥有了一个 Substrate 的开发环境，并且掌握了一个简单的 Substrate module 该怎么实现，甚至还找到参考资料的一个 Bug，收获很多。
 
+
+整个项目代码在：  
 https://github.com/flyq/erc20
-
 
 后续可以参考以下资料：  
 - https://substrate.dev/substrate-collectables-workshop/#/zh-cn/README
