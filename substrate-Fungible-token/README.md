@@ -28,6 +28,10 @@
       - [3.2.1 增加 module](#321-%e5%a2%9e%e5%8a%a0-module)
       - [3.2.2 修改 erc20 module](#322-%e4%bf%ae%e6%94%b9-erc20-module)
         - [3.2.2.1 设置好类型](#3221-%e8%ae%be%e7%bd%ae%e5%a5%bd%e7%b1%bb%e5%9e%8b)
+      - [3.2.2.1 设置状态变量](#3221-%e8%ae%be%e7%bd%ae%e7%8a%b6%e6%80%81%e5%8f%98%e9%87%8f)
+      - [3.2.2.2 设置 Event](#3222-%e8%ae%be%e7%bd%ae-event)
+      - [3.2.2.3 编写 module 里面的 function](#3223-%e7%bc%96%e5%86%99-module-%e9%87%8c%e9%9d%a2%e7%9a%84-function)
+      - [3.2.2.4 其他方面的小修改](#3224-%e5%85%b6%e4%bb%96%e6%96%b9%e9%9d%a2%e7%9a%84%e5%b0%8f%e4%bf%ae%e6%94%b9)
 
 ## 一、环境搭建
 
@@ -621,8 +625,30 @@ $ cargo check
 到这里，我们已经新建好了 erc20 module。
 
 #### 3.2.2 修改 erc20 module
+这里是参考：https://github.com/Genysys/substrate-erc20 ，以及  https://github.com/substrate-developer-hub/substrate-erc20-multi 。
 ##### 3.2.2.1 设置好类型
+我们可以设计一个 TokenBalance 类型来保存发行的币的余额。它本质是一个 u128 类型。
+可能有人会问为什么不直接用 u128，想一下以太坊里面的 ERC20 Token 合约，它里面直接用 uint256 类型来表示 Token 余额，结果好几个合约出现溢出错误，导致重大损失。后续也出现了可以自己加上的 SafeMath 库，所以为什么不直接将对应的功能封装在里面，加完后对应代码为：
+```rust
+pub trait Trait: system::Trait {
+    // TODO: Add other types and constants required configure this module.
 
+    /// The overarching event type.
+    type Event: From<Event<Self>> + Into<<Self as system::Trait>::Event>;
+    type TokenBalance: Parameter + Member + SimpleArithmetic + Codec + Default + Copy + As<usize> + As<u128>;    
+}
+```
+而上面用了一系列的 Trait，类似 Parameter，Member 等，这些需要我们在 erc20.rs 说明来源。同样的，可以在 https://substrate.dev/rustdocs/v1.0/sr_primitives/traits/trait.Member.html 里面查询这些 Trait 的功能。
+
+并且需要在 lib.rs 里面添加其具体类型：
+```rust
+impl erc20::Trait for Runtime {
+    // add required types here
+    type Event = Event;
+    type TokenBalance = u128;
+}
+```
+#### 3.2.2.1 设置状态变量
 我们先设计好状态变量，状态变量的用处在代码里面注释说明：
 ```rust
 decl_storage! {
@@ -631,16 +657,152 @@ decl_storage! {
 		Init get(is_init): bool;
     // 记录一个 owner，类似管理员角色，有一些特权，这是一个账号，因此是 AccountId 类型
 		Owner get(owner) config(): T::AccountId;
-    // 总供应量，返回值是我们的余额
+    // 总供应量，返回值是 TokenBalance 类型
 		TotalSupply get(total_supply) config(): T::TokenBalance;
-		
-		// not really needed - name and ticker, but why not?
+		// 下面两个是这个 Token 的名字和简称，因为 Wasm 里面不支持标准库，所以没用 String。
 		Name get(name) config(): Vec<u8>;
 		Ticker get (ticker) config(): Vec<u8>;
-	
-		// standard balances and allowances mappings for ERC20 implementation
+		// 下面是我们熟悉的两个变量，都是映射。一个表示余额，一个表示 A 允许 B 使用 A 多少 Token。
 		BalanceOf get(balance_of): map T::AccountId => T::TokenBalance;
 		Allowance get(allowance): map (T::AccountId, T::AccountId) => T::TokenBalance;
 	}
 }
 ```
+上面出现 config() ，表示对应的状态变量在链启动时会有对应的配置。具体怎么配置查看 [3.2.2.4 其他方面的小修改](#3224-%e5%85%b6%e4%bb%96%e6%96%b9%e9%9d%a2%e7%9a%84%e5%b0%8f%e4%bf%ae%e6%94%b9)
+
+#### 3.2.2.2 设置 Event
+```rust
+decl_event!(
+    pub enum Event<T>
+    where
+        AccountId = <T as system::Trait>::AccountId,
+	Balance = <T as self::Trait>::TokenBalance,
+    {
+        // 发生转账时发出该事件。
+        Transfer(AccountId, AccountId, Balance),
+        // 发生 approval 时发出该事件。
+        Approval(AccountId, AccountId, Balance),
+    }
+);
+```
+
+#### 3.2.2.3 编写 module 里面的 function
+```rust
+decl_module! {
+    pub struct Module<T: Trait> for enum Call where origin: T::Origin {
+      fn deposit_event<T>() = default;
+
+      // 初始化函数，检查完 Init 状态，是否有对应权限后，将所有的的 Token 记在 Owner 地址下。
+      fn init(origin) -> Result {
+          let sender = ensure_signed(origin)?;
+          ensure!(Self::is_init() == false, "Already initialized.");
+          ensure!(Self::owner() == sender, "Only owner can initialize.");
+
+          <BalanceOf<T>>::insert(sender.clone(), Self::total_supply());
+          <Init<T>>::put(true);
+
+          Ok(())
+      }
+
+      // 转账函数。因为多次用到转账逻辑，因此把这部分逻辑抽出去独立成一个 _transfer() 函数
+      fn transfer(_origin, to: T::AccountId, #[compact] value: T::TokenBalance) -> Result {
+          let sender = ensure_signed(_origin)?;
+          Self::_transfer(sender, to, value)
+      }
+
+      // 允许 spender 使用调用这个函数的人的部分 Token。
+      fn approve(origin, spender: T::AccountId, #[compact] value: T::TokenBalance) -> Result {
+          let sender = ensure_signed(origin)?;
+          // 保证“我”有这个 Token
+          ensure!(<BalanceOf<T>>::exists(&sender), "Account does not own this token");
+
+          // 拿到现有的允许额度，如果没有会返回 0
+          let allowance = Self::allowance((sender.clone(), spender.clone()));
+
+          // 现有额度 + 这次将增加的额度。并且检测了是否溢出。
+          let updated_allowance = allowance.checked_add(&value).ok_or("overflow in calculating allowance")?;
+
+          // 将更新后的额度保存在 Allowance 状态变量里面
+          <Allowance<T>>::insert((sender.clone(), spender.clone()), updated_allowance);
+
+          // 发出对应的 Event。
+          Self::deposit_event(RawEvent::Approval(sender, spender, value));
+          Ok(())
+      }
+
+      // 从 From 转 value 数量的 Token 给 to
+      fn transfer_from(_origin, from: T::AccountId, to: T::AccountId, #[compact] value: T::TokenBalance) -> Result {
+          ensure!(<Allowance<T>>::exists((from.clone(), to.clone())), "Allowance does not exist.");
+          let allowance = Self::allowance((from.clone(), to.clone()));
+          ensure!(allowance >= value, "Not enough allowance.");
+
+          let updated_allowance = allowance.checked_sub(&value).ok_or("overflow in calculating allowance")?;
+          <Allowance<T>>::insert((from.clone(), to.clone()), updated_allowance);
+
+          Self::deposit_event(RawEvent::Approval(from.clone(), to.clone(), value));
+          Self::_transfer(from, to, value)
+      }
+    }
+}
+
+// 实现 _transfer() 的具体逻辑。
+impl<T: Trait> Module<T> {
+    fn _transfer(
+        from: T::AccountId,
+        to: T::AccountId,
+        value: T::TokenBalance,
+    ) -> Result {
+        ensure!(<BalanceOf<T>>::exists(from.clone()), "Account does not own this token");
+        let sender_balance = Self::balance_of(from.clone());
+        ensure!(sender_balance >= value, "Not enough balance.");
+
+        let updated_from_balance = sender_balance.checked_sub(&value).ok_or("overflow in calculating balance")?;
+        let receiver_balance = Self::balance_of(to.clone());
+        let updated_to_balance = receiver_balance.checked_add(&value).ok_or("overflow in calculating balance")?;
+        <BalanceOf<T>>::insert(from.clone(), updated_from_balance);
+        <BalanceOf<T>>::insert(to.clone(), updated_to_balance);
+        Self::deposit_event(RawEvent::Transfer(from, to, value));
+        Ok(())
+    }
+}
+```
+这里有个小插曲，不知道大家有没有认真看上面的代码，尤其是 transfer_from 函数。它的逻辑功能竟然是把 from 允许 to 使用的额度转给 to。这是不合常理的，因为这个函数可以任何人调用，就是有人有对某人的额度 Allowance 就会被旁人转到对应人的地址下。虽然不会不会造成 Token 的损失，但会让 Allowance 失去意义。我记得 ERC20 Token 里面 transferFrom 的逻辑是把 from 允许“我”（函数调用者）使用的额度（_allowances）对应数量的 token 转给 to。参考：https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol#L86-L102  
+
+下面的逻辑和注释也说得很清楚: the caller must have allowance for ***`sender`***'s tokens of at least `amount`.
+```solidity
+    /**
+     * @dev See {IERC20-transferFrom}.
+     *
+     * Emits an {Approval} event indicating the updated allowance. This is not
+     * required by the EIP. See the note at the beginning of {ERC20};
+     *
+     * Requirements:
+     * - `sender` and `recipient` cannot be the zero address.
+     * - `sender` must have a balance of at least `amount`.
+     * - the caller must have allowance for `sender`'s tokens of at least
+     * `amount`.
+     */
+    function transferFrom(address sender, address recipient, uint256 amount) public returns (bool) {
+        _transfer(sender, recipient, amount);
+        _approve(sender, _msgSender(), _allowances[sender][_msgSender()].sub(amount, "ERC20: transfer amount exceeds allowance"));
+        return true;
+    }
+```
+所以我决定把 transfer_from 那部分的逻辑改一下：
+```rust
+      // 从 From 转 value 数量的 Token 给 to
+      fn transfer_from(_origin, from: T::AccountId, to: T::AccountId, #[compact] value: T::TokenBalance) -> Result {
+          let sender = ensure_signed(_origin)?;
+          ensure!(<Allowance<T>>::exists((from.clone(), sender.clone())), "Allowance does not exist.");
+          let allowance = Self::allowance((from.clone(), sender.clone()));
+          ensure!(allowance >= value, "Not enough allowance.");
+
+          let updated_allowance = allowance.checked_sub(&value).ok_or("overflow in calculating allowance")?;
+          <Allowance<T>>::insert((from.clone(), sender.clone()), updated_allowance);
+
+          Self::deposit_event(RawEvent::Approval(from.clone(), to.clone(), value));
+          Self::_transfer(from, to, value)
+      }
+```
+
+#### 3.2.2.4 其他方面的小修改
