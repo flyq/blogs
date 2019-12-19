@@ -817,12 +817,12 @@ impl<T: Trait> Module<T> {
 ```
 
 ##### 3.2.2.4 其他方面的小修改
-a. 在 runtime/src/lib.rs 的 218 行里面增加 Config<T>
+a. 在 runtime/src/lib.rs 的 218 行里面增加 Config<T> ：  
 ```rust
 		Erc20Module: erc20::{Module, Call, Storage, Event<T>, Config<T>},
 ```
 
-b. 在 src/chain_spec.rs 第 4 行最后加上 Erc20Config
+b. 在 src/chain_spec.rs 第 4 行最后加上 Erc20ModuleConfig
 ```rust
 use erc20_runtime::{
 	AccountId, GenesisConfig, ConsensusConfig, TimestampConfig, BalancesConfig,
@@ -849,6 +849,12 @@ d. 在 src/chain_spec.rs 118 行加入：
     }),
 ```
 这就是在链启动时，就对 owner 等状态变量进行了设置。
+
+
+最后，整个项目代码在：  
+https://github.com/flyq/erc20  
+可以自行对比参考。
+
 
 ## 四、启动 erc20 链，并检验。
 ### 4.1 检测是否有语法错误：
@@ -985,9 +991,6 @@ $ ./target/release/erc20 --dev
 ## 五、总结
 到现在为止，大家应该拥有了一个 Substrate 的开发环境，并且掌握了一个简单的 Substrate module 该怎么实现，甚至还找到参考资料的一个 Bug，收获很多。
 
-
-整个项目代码在：  
-https://github.com/flyq/erc20
 
 后续可以参考以下资料：  
 - https://substrate.dev/substrate-collectables-workshop/#/zh-cn/README
