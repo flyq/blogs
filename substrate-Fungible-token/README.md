@@ -18,10 +18,10 @@
       - [1.2.2 Substrate 相关脚本安装](#122-substrate-%e7%9b%b8%e5%85%b3%e8%84%9a%e6%9c%ac%e5%ae%89%e8%a3%85)
       - [1.2.3 关于 apt 源问题的解决](#123-%e5%85%b3%e4%ba%8e-apt-%e6%ba%90%e9%97%ae%e9%a2%98%e7%9a%84%e8%a7%a3%e5%86%b3)
   - [二、新建一个 Substrate 项目 erc20](#%e4%ba%8c%e6%96%b0%e5%bb%ba%e4%b8%80%e4%b8%aa-substrate-%e9%a1%b9%e7%9b%ae-erc20)
-      - [2.1 下载 erc20 项目所需源码](#21-%e4%b8%8b%e8%bd%bd-erc20-%e9%a1%b9%e7%9b%ae%e6%89%80%e9%9c%80%e6%ba%90%e7%a0%81)
-      - [2.2 编译启动项目](#22-%e7%bc%96%e8%af%91%e5%90%af%e5%8a%a8%e9%a1%b9%e7%9b%ae)
-      - [2.3 Substrate 编译时下载依赖库很慢](#23-substrate-%e7%bc%96%e8%af%91%e6%97%b6%e4%b8%8b%e8%bd%bd%e4%be%9d%e8%b5%96%e5%ba%93%e5%be%88%e6%85%a2)
-      - [2.4 启动节点](#24-%e5%90%af%e5%8a%a8%e8%8a%82%e7%82%b9)
+    - [2.1 下载 erc20 项目所需源码](#21-%e4%b8%8b%e8%bd%bd-erc20-%e9%a1%b9%e7%9b%ae%e6%89%80%e9%9c%80%e6%ba%90%e7%a0%81)
+    - [2.2 编译启动项目](#22-%e7%bc%96%e8%af%91%e5%90%af%e5%8a%a8%e9%a1%b9%e7%9b%ae)
+    - [2.3 Substrate 编译时下载依赖库很慢](#23-substrate-%e7%bc%96%e8%af%91%e6%97%b6%e4%b8%8b%e8%bd%bd%e4%be%9d%e8%b5%96%e5%ba%93%e5%be%88%e6%85%a2)
+    - [2.4 启动节点](#24-%e5%90%af%e5%8a%a8%e8%8a%82%e7%82%b9)
   - [三、定制 erc20 的 Runtime](#%e4%b8%89%e5%ae%9a%e5%88%b6-erc20-%e7%9a%84-runtime)
     - [3.1 Substrate 更新 Runtime 的一般步骤](#31-substrate-%e6%9b%b4%e6%96%b0-runtime-%e7%9a%84%e4%b8%80%e8%88%ac%e6%ad%a5%e9%aa%a4)
     - [3.2 单账本形式的 erc20 的 Runtime 逻辑](#32-%e5%8d%95%e8%b4%a6%e6%9c%ac%e5%bd%a2%e5%bc%8f%e7%9a%84-erc20-%e7%9a%84-runtime-%e9%80%bb%e8%be%91)
@@ -255,7 +255,7 @@ E: Unable to correct problems, you have held broken packages.
 网上搜索，应该是我的 Ubuntu apt 源没有及时更新导致（我之前用的是中科大的 apt 源，可能它没有及时更新），参考[这个文档](https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/)，把 apt 源换成这个。注意要选择和自己的系统对应的，比如我的是 Ubuntu 16.06，所以选择这个：
 ![ubuntu_apt](images/sub002.png)
 
-具体操作是：
+具体操作是：  
 一、备份：
 ```shell
 $ sudo cp sources.list sources.list.bak
@@ -284,7 +284,7 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted
 
 然后保存退出即可。
 
-三、更新软件：
+三、更新软件：  
 分步执行：
 ```shell
 $ sudo apt update
@@ -330,7 +330,7 @@ Get:1 https://mirrors.tuna.tsinghua.edu.cn/ubuntu xenial-updates/main amd64 dbus
 接下来可以回 `1.2.1 安装 Substrate 相关环境` 再次执行那个命令了。
 
 ## 二、新建一个 Substrate 项目 erc20
-#### 2.1 下载 erc20 项目所需源码
+### 2.1 下载 erc20 项目所需源码
 为了目录的整洁性，新建一个目录并进入：
 ```shell
 $ mkdir polkadot
@@ -363,7 +363,7 @@ PS：有时候会卡很久：
 ![down](images/sub004.PNG)
 比如上面就是我们卡了一个半小时了，我直接 CTRL+c 中断了，然后删掉那个没下载完整的： `sudo rm -r substrate-node-template/`，重新试了一遍，就好了。
 
-#### 2.2 编译启动项目
+### 2.2 编译启动项目
 
 因为我们的这个脚本 `substrate-node-new` 是安装的 [Substrate 1.0 版本](https://github.com/paritytech/substrate-up/blob/master/substrate-node-new#L44) 的，因此启动项目之前还需要先编译 wasm: `./scripts/build.sh` 。如果是 [Substrate 2.0 版本](https://gist.github.com/flyq/e2471d5f80d4b61e6e7b101a0a36429d#file-substrate-node-new-2-0-L42)，下面 `./scripts/build.sh ` 步骤就可以省略。官方正式的 2.0 版本还没有发布。
 下面步骤终端有 log 输出的我贴出部分，方便对比。
@@ -427,15 +427,15 @@ build.rs    Cargo.toml  README.md  scripts  target
 Cargo.lock  LICENSE     runtime    src
 ```
 
-#### 2.3 Substrate 编译时下载依赖库很慢
+### 2.3 Substrate 编译时下载依赖库很慢
 
 ⚠️ NOTE: 如果编译时网速不慢，没有下载时卡死等，就不需要执行这个标题下的内容。
 
-在编译 Substrate 的时候，需要下载很多 Rust 库，部分库的下载地址在 GitHub 上，要是出现无法下载，可以参考[这篇文章](https://blog.csdn.net/xiangxianghehe/article/details/53471936)，把它换成国内中科大源就行，最后的效果就是在 `~/.cargo/` 文件夹下新建了一个 config 文件，里面内容是：：
+在编译 Substrate 的时候，需要下载很多 Rust 库，部分库的下载地址在 GitHub 上，要是出现无法下载，可以参考[这篇文章](https://blog.csdn.net/xiangxianghehe/article/details/53471936)，把它换成国内中科大源就行，最后的效果就是在 `~/.cargo/` 文件夹下新建了一个 config 文件，里面内容是：
 ![git_mirror](images/sub005.PNG)
 
 
-#### 2.4 启动节点
+### 2.4 启动节点
 
 ```shell
 $ ./target/release/erc20 --dev
@@ -983,11 +983,16 @@ $ ./target/release/erc20 --dev
 
 
 ## 五、总结
-到现在为止，大家应该拥有了一个 Substrate 的开发环境，并且掌握了一个简单的 Substrate module 该怎么实现。后续参考： 
+到现在为止，大家应该拥有了一个 Substrate 的开发环境，并且掌握了一个简单的 Substrate module 该怎么实现。整个项目代码在：
+
+https://github.com/flyq/erc20
+
+
+后续可以参考以下资料：  
 - https://substrate.dev/substrate-collectables-workshop/#/zh-cn/README
 - https://substrate.dev/recipes/base/index.html
 
 进行更深入的学习。
 
-更多资料：  
+更多 Substrate 相关的资料：  
 [Polkadot 学习资源汇总](https://github.com/flyq/blogs/blob/master/Polkadot%20%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB.md)
