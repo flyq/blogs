@@ -16,11 +16,15 @@
       - [1.2.1 安装 Substrate 相关环境](#121-%e5%ae%89%e8%a3%85-substrate-%e7%9b%b8%e5%85%b3%e7%8e%af%e5%a2%83)
       - [1.2.2 Substrate 相关脚本安装](#122-substrate-%e7%9b%b8%e5%85%b3%e8%84%9a%e6%9c%ac%e5%ae%89%e8%a3%85)
       - [1.2.3 关于 apt 源问题的解决](#123-%e5%85%b3%e4%ba%8e-apt-%e6%ba%90%e9%97%ae%e9%a2%98%e7%9a%84%e8%a7%a3%e5%86%b3)
-  - [二、新建一个 Substrate 项目](#%e4%ba%8c%e6%96%b0%e5%bb%ba%e4%b8%80%e4%b8%aa-substrate-%e9%a1%b9%e7%9b%ae)
+  - [二、新建一个 Substrate 项目 erc20](#%e4%ba%8c%e6%96%b0%e5%bb%ba%e4%b8%80%e4%b8%aa-substrate-%e9%a1%b9%e7%9b%ae-erc20)
       - [2.1 下载 erc20 项目所需源码](#21-%e4%b8%8b%e8%bd%bd-erc20-%e9%a1%b9%e7%9b%ae%e6%89%80%e9%9c%80%e6%ba%90%e7%a0%81)
       - [2.2 编译启动项目](#22-%e7%bc%96%e8%af%91%e5%90%af%e5%8a%a8%e9%a1%b9%e7%9b%ae)
       - [2.3 Substrate 编译时下载依赖库很慢](#23-substrate-%e7%bc%96%e8%af%91%e6%97%b6%e4%b8%8b%e8%bd%bd%e4%be%9d%e8%b5%96%e5%ba%93%e5%be%88%e6%85%a2)
       - [2.4 启动节点](#24-%e5%90%af%e5%8a%a8%e8%8a%82%e7%82%b9)
+  - [三、定制 erc20 的 Runtime](#%e4%b8%89%e5%ae%9a%e5%88%b6-erc20-%e7%9a%84-runtime)
+    - [3.1 Substrate 更新 Runtime 的一般步骤](#31-substrate-%e6%9b%b4%e6%96%b0-runtime-%e7%9a%84%e4%b8%80%e8%88%ac%e6%ad%a5%e9%aa%a4)
+    - [3.2 单账本形式的 erc20 的 Runtime 逻辑](#32-%e5%8d%95%e8%b4%a6%e6%9c%ac%e5%bd%a2%e5%bc%8f%e7%9a%84-erc20-%e7%9a%84-runtime-%e9%80%bb%e8%be%91)
+      - [3.2.1 增加 module](#321-%e5%a2%9e%e5%8a%a0-module)
 
 ## 一、环境搭建
 
@@ -307,7 +311,7 @@ Get:1 https://mirrors.tuna.tsinghua.edu.cn/ubuntu xenial-updates/main amd64 dbus
 ```
 接下来可以回 `1.2.1 安装 Substrate 相关环境` 再次执行那个命令了。
 
-## 二、新建一个 Substrate 项目
+## 二、新建一个 Substrate 项目 erc20
 #### 2.1 下载 erc20 项目所需源码
 为了目录的整洁性，新建一个目录并进入：
 ```shell
@@ -438,11 +442,142 @@ $ ./target/release/erc20 --dev
 到这里，我们成功将一条链运行起来了，并且还有了对应的浏览器以及钱包：
 ![all](images/sub007.PNG)
 
-下面是它的钱包功能，系统自动生成了一系列的初始账号，并且给 ALICE 账号预分配了 1.151M 的 DEV，刚刚我给 BOB 账号转了 1000 DEV。可以看到，左侧栏里面还有很多其他功能，包括：
+下面是它的钱包功能，系统预定义一系列的初始账号，并且给 ALICE 账号预分配了 1.151M 的 DEV，刚刚我给 BOB 账号转了 1000 DEV。可以看到，左侧栏里面还有很多其他功能，包括：
 - 转账（transfer），
 - 链上状态查询（Chain state），
 - 发起交易包括调用函数之类的（Extrinsics），
 - 超级权限（Sudo，一般用于链刚刚启动时还不稳定的时候，后续就交给治理了），
 - 设置（Settings）等等。
 
+![test](images/sub008.PNG)
 
+等你探索结束，你可以在链运行的终端按下 CTRL + C 来停止 Substrate。
+
+到这里，你已经看到了我们创建、运行并且与我们自己的本地 Substrate 链进行交互的整个过程是有多么快速。
+
+
+## 三、定制 erc20 的 Runtime
+
+### 3.1 Substrate 更新 Runtime 的一般步骤
+这个小标题下面参考官方 [Substrate-collectables-workshop](https://substrate.dev/substrate-collectables-workshop/#/zh-cn/0/common-patterns-moving-forward) 的内容。
+
+
+在我们开始创建自定义 Substrate runtime 之前，你应该熟悉一些可以帮助你迭代和运行代码的模式。
+
+你的 Substrate runtime 代码被编译为两个版本：
+- WebAssembly（Wasm）image
+- 标准二进制可执行文件
+
+Wasm 文件被用来编译二进制文件的一部分，因此在构建可执行文件之前需要先编译 Wasm image。
+
+步骤应该是：
+```
+./scripts/build.sh               // 构建 Wasm
+cargo build --release            // 构建 binary
+```
+
+此外，当你对节点进行更改时，之前旧版本节点生成的块仍然存在。你可能会注意到，当重启节点时，块只会从中断处继续生成：
+
+![again](images/sub009.png)  
+*链从上次结束的第 162 个块继续出块*
+
+
+但是，如果你对 runtime 的改动内容很多，那么可能需要使用以下命令清除链上先前的数据：
+
+```shell
+$ ./target/release/erc20 purge-chain --dev
+Are you sure to remove "/home/flyq/.local/share/erc20/chains/dev/db"? (y/n)y
+"/home/flyq/.local/share/erc20/chains/dev/db" removed.
+```
+完成所有这些后，你将能够再次启动一个没有历史数据的链：
+```shell
+$ ./target/release/erc20 --dev
+```
+记住这种模式; 你会经常使用它。
+
+### 3.2 单账本形式的 erc20 的 Runtime 逻辑
+
+关于怎样基于 Substrate 实现更安全的 module，推荐这本 [Substrate Recipes](https://substrate.dev/recipes/)。因为篇幅原因，这里不做过多介绍，后续有时间建议认真过一遍。
+
+我们先回顾一下 [ERC20 标准](https://github.com/ethereum/EIPs/issues/20)：
+```solidity
+interface IERC20 {
+    function totalSupply() external view returns (uint256);
+    function balanceOf(address account) external view returns (uint256);
+    function transfer(address recipient, uint256 amount) external returns (bool);
+    function allowance(address owner, address spender) external view returns (uint256);
+    function approve(address spender, uint256 amount) external returns (bool);
+    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
+
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+}
+```
+上面这个就是以太坊 Solidity 形式的 ERC20 标准的对应 function 和 event。
+
+因为一个地址对应一个合约，对应一个 token 账本，我们参考这个先实现一条链对应一个账本，后续再实现一条链对应多个账本，就是多个 Token。
+
+
+#### 3.2.1 增加 module
+
+```shell
+├── runtime
+│   ├── Cargo.toml
+│   ├── src
+│   │   ├── lib.rs
+│   │   └── template.rs
+···
+
+```
+我们先进入到 runtime/src/ 文件夹，可以看到里面有两个文件，一个是 lib.rs，这个是 runtime 模块的总领文件，我们等下新增 module 需要在这里“登记”一下；一个是 template.rs，这个是新增 module 的模板，我们新增的 module 可以参考它来实现。我们先看看这两个文件的内容。
+
+先查看 [lib.rs](https://github.com/flyq/erc20/blob/master/runtime/src/lib.rs)，可以看出有三个地方涉及到 template 这个 module：  
+第一个在 59 行这里，作用是告诉 runtime 新增了一个名叫 template 的 module：  
+![tem10](images/sub010.png)  
+第二个在 191 行这里，作用是实现 template 的 Trait：  
+![tem11](images/sub011.png)  
+第三个在 209 行这里，功能类似构造函数：  
+![tem12](images/sub012.png)  
+
+然后我们可以看一下 [template.rs](https://github.com/flyq/erc20/blob/master/runtime/src/template.rs)，整体来看，其实现了三个宏 `decl_storage!{}`，`decl_module!{}`，`decl_event!{}`，分别负责这个 module 的数据存储，方法逻辑，以及 event 申明等：
+```rust
+decl_storage! {
+	trait Store for Module<T: Trait> as TemplateModule {
+		Something get(something): Option<u32>;
+	}
+}
+
+decl_module! {
+	pub struct Module<T: Trait> for enum Call where origin: T::Origin {
+		fn deposit_event<T>() = default;
+
+    pub fn do_something(origin, something: u32) -> Result {
+			let who = ensure_signed(origin)?;
+			<Something<T>>::put(something);
+			Self::deposit_event(RawEvent::SomethingStored(something, who));
+			Ok(())
+		}
+	}
+}
+
+decl_event!(
+	pub enum Event<T> where AccountId = <T as system::Trait>::AccountId {
+		SomethingStored(u32, AccountId),
+	}
+);
+```
+
+知道 module 在 Runtime 里面的位置以及怎么实现之后，接下来借助 `substrate-module-new` 来新建 erc20 Module：
+```shell
+flyq@ubuntu:~/workspace/polkadot/erc20$ cd runtime/src/
+flyq@ubuntu:~/workspace/polkadot/erc20/runtime/src$ substrate-module-new erc20
+
+  Substrate Module Setup 
+  Creating module in ....
+  Customising module...
+
+SRML module created as ./erc20.rs and added to git.
+Ensure that you include in your ./lib.rs the line:
+   mod erc20;
+
+```
