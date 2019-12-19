@@ -28,10 +28,21 @@
       - [3.2.1 增加 module](#321-%e5%a2%9e%e5%8a%a0-module)
       - [3.2.2 修改 erc20 module](#322-%e4%bf%ae%e6%94%b9-erc20-module)
         - [3.2.2.1 设置好类型](#3221-%e8%ae%be%e7%bd%ae%e5%a5%bd%e7%b1%bb%e5%9e%8b)
-      - [3.2.2.1 设置状态变量](#3221-%e8%ae%be%e7%bd%ae%e7%8a%b6%e6%80%81%e5%8f%98%e9%87%8f)
-      - [3.2.2.2 设置 Event](#3222-%e8%ae%be%e7%bd%ae-event)
-      - [3.2.2.3 编写 module 里面的 function](#3223-%e7%bc%96%e5%86%99-module-%e9%87%8c%e9%9d%a2%e7%9a%84-function)
-      - [3.2.2.4 其他方面的小修改](#3224-%e5%85%b6%e4%bb%96%e6%96%b9%e9%9d%a2%e7%9a%84%e5%b0%8f%e4%bf%ae%e6%94%b9)
+        - [3.2.2.1 设置状态变量](#3221-%e8%ae%be%e7%bd%ae%e7%8a%b6%e6%80%81%e5%8f%98%e9%87%8f)
+        - [3.2.2.2 设置 Event](#3222-%e8%ae%be%e7%bd%ae-event)
+        - [3.2.2.3 编写 module 里面的 function](#3223-%e7%bc%96%e5%86%99-module-%e9%87%8c%e9%9d%a2%e7%9a%84-function)
+        - [3.2.2.4 其他方面的小修改](#3224-%e5%85%b6%e4%bb%96%e6%96%b9%e9%9d%a2%e7%9a%84%e5%b0%8f%e4%bf%ae%e6%94%b9)
+  - [四、启动 erc20 链，并检验。](#%e5%9b%9b%e5%90%af%e5%8a%a8-erc20-%e9%93%be%e5%b9%b6%e6%a3%80%e9%aa%8c)
+    - [4.1 检测是否有语法错误：](#41-%e6%a3%80%e6%b5%8b%e6%98%af%e5%90%a6%e6%9c%89%e8%af%ad%e6%b3%95%e9%94%99%e8%af%af)
+    - [4.2 编译、运行这条链](#42-%e7%bc%96%e8%af%91%e8%bf%90%e8%a1%8c%e8%bf%99%e6%9d%a1%e9%93%be)
+    - [4.3 清理之前的链的历史数据，然后启动这条链](#43-%e6%b8%85%e7%90%86%e4%b9%8b%e5%89%8d%e7%9a%84%e9%93%be%e7%9a%84%e5%8e%86%e5%8f%b2%e6%95%b0%e6%8d%ae%e7%84%b6%e5%90%8e%e5%90%af%e5%8a%a8%e8%bf%99%e6%9d%a1%e9%93%be)
+    - [4.5 测试/体验一下对应的功能](#45-%e6%b5%8b%e8%af%95%e4%bd%93%e9%aa%8c%e4%b8%80%e4%b8%8b%e5%af%b9%e5%ba%94%e7%9a%84%e5%8a%9f%e8%83%bd)
+      - [4.5.1 设置前端](#451-%e8%ae%be%e7%bd%ae%e5%89%8d%e7%ab%af)
+      - [4.5.2 转 DEV](#452-%e8%bd%ac-dev)
+      - [4.5.3 查询某个 module 状态](#453-%e6%9f%a5%e8%af%a2%e6%9f%90%e4%b8%aa-module-%e7%8a%b6%e6%80%81)
+      - [4.5.4 调用 init 函数](#454-%e8%b0%83%e7%94%a8-init-%e5%87%bd%e6%95%b0)
+      - [4.5.5 测试其他功能](#455-%e6%b5%8b%e8%af%95%e5%85%b6%e4%bb%96%e5%8a%9f%e8%83%bd)
+  - [五、总结](#%e4%ba%94%e6%80%bb%e7%bb%93)
 
 ## 一、环境搭建
 
@@ -648,7 +659,7 @@ impl erc20::Trait for Runtime {
     type TokenBalance = u128;
 }
 ```
-#### 3.2.2.1 设置状态变量
+##### 3.2.2.1 设置状态变量
 我们先设计好状态变量，状态变量的用处在代码里面注释说明：
 ```rust
 decl_storage! {
@@ -670,7 +681,7 @@ decl_storage! {
 ```
 上面出现 config() ，表示对应的状态变量在链启动时会有对应的配置。具体怎么配置查看 [3.2.2.4 其他方面的小修改](#3224-%e5%85%b6%e4%bb%96%e6%96%b9%e9%9d%a2%e7%9a%84%e5%b0%8f%e4%bf%ae%e6%94%b9)
 
-#### 3.2.2.2 设置 Event
+##### 3.2.2.2 设置 Event
 ```rust
 decl_event!(
     pub enum Event<T>
@@ -686,7 +697,7 @@ decl_event!(
 );
 ```
 
-#### 3.2.2.3 编写 module 里面的 function
+##### 3.2.2.3 编写 module 里面的 function
 ```rust
 decl_module! {
     pub struct Module<T: Trait> for enum Call where origin: T::Origin {
@@ -805,4 +816,178 @@ impl<T: Trait> Module<T> {
       }
 ```
 
-#### 3.2.2.4 其他方面的小修改
+##### 3.2.2.4 其他方面的小修改
+a. 在 runtime/src/lib.rs 的 218 行里面增加 Config<T>
+```rust
+		Erc20Module: erc20::{Module, Call, Storage, Event<T>, Config<T>},
+```
+
+b. 在 src/chain_spec.rs 第 4 行最后加上 Erc20Config
+```rust
+use erc20_runtime::{
+	AccountId, GenesisConfig, ConsensusConfig, TimestampConfig, BalancesConfig,
+	SudoConfig, IndicesConfig, Erc20ModuleConfig,
+};
+```
+c. 在 src/chain_spec.rs 31 行加入，这个函数主要用于 d. 中：
+```rust
+fn account_key(s: &str) -> AccountId {
+	sr25519::Pair::from_string(&format!("//{}", s), None)
+		.expect("static values are valid; qed")
+		.public()
+}
+```
+
+d. 在 src/chain_spec.rs 118 行加入：
+```rust
+		erc20: Some(Erc20ModuleConfig {
+			owner: account_key("Alice");
+			// setting total supply of erc20 tokens to 21M because `Satoshi` said so
+			total_supply: 21000000,
+			name: "SubstrateDemoToken".as_bytes().into(),
+			ticker: "SDT".as_bytes().into(),
+    }),
+```
+这就是在链启动时，就对 owner 等状态变量进行了设置。
+
+## 四、启动 erc20 链，并检验。
+### 4.1 检测是否有语法错误：
+```shell
+$ cargo check
+    Checking erc20-runtime v1.0.0 (/home/flyq/workspace/polkadot/erc20/runtime)
+    Checking erc20 v1.0.0 (/home/flyq/workspace/polkadot/erc20)
+    Finished dev [unoptimized + debuginfo] target(s) in 1.46s
+```
+
+这里省略了一个步骤，测试，更多关于测试的内容参考：https://substrate.dev/recipes/testing/index.html
+
+### 4.2 编译、运行这条链
+按照前面之前说得，先编译 Wasm，然后编译二进制程序：
+```shell
+$ cd erc20
+
+
+$ ./scripts/build.sh 
+Building webassembly binary in runtime/wasm...
+   Compiling erc20-runtime v1.0.0 (/home/flyq/workspace/polkadot/erc20/runtime)
+warning: the feature `alloc` has been stable since 1.36.0 and no longer requires an attribute to enable
+ --> /home/flyq/workspace/polkadot/erc20/runtime/src/lib.rs:4:43
+  |
+4 | #![cfg_attr(not(feature = "std"), feature(alloc))]
+  |                                           ^^^^^
+  |
+  = note: `#[warn(stable_features)]` on by default
+
+   Compiling erc20-runtime-wasm v1.0.0 (/home/flyq/workspace/polkadot/erc20/runtime/wasm)
+    Finished release [optimized] target(s) in 4.11s
+
+
+$ cargo build --release 
+   Compiling erc20 v1.0.0 (/home/flyq/workspace/polkadot/erc20)
+    Finished release [optimized] target(s) in 1m 42s
+```
+编译过程一切正常。
+
+### 4.3 清理之前的链的历史数据，然后启动这条链
+```shell
+$ ./target/release/erc20 purge-chain --dev 
+Are you sure to remove "/home/flyq/.local/share/erc20/chains/dev/db"? (y/n)y
+"/home/flyq/.local/share/erc20/chains/dev/db" did not exist.
+
+
+$ ./target/release/erc20 --dev 
+2019-12-19 07:52:47 Substrate Node
+2019-12-19 07:52:47   version 1.0.0-65481ac-x86_64-linux-gnu
+2019-12-19 07:52:47   by flyq, 2017, 2018
+2019-12-19 07:52:47 Chain specification: Development
+2019-12-19 07:52:47 Node name: pumped-cats-3507
+2019-12-19 07:52:47 Roles: AUTHORITY
+···
+```
+链已经正常启动：  
+![erc20](images/sub0114.PNG)
+
+
+### 4.5 测试/体验一下对应的功能
+#### 4.5.1 设置前端
+因为我们链里面新建一个类型，TokenBalance，前端拿到这个数据不清楚这个代表什么，需要我们设置一下：
+
+![steps](images/sub016.PNG)
+
+按步骤把下面这个 json 填进去就好：
+```json
+{
+  "TokenBalance": "u128"
+}
+```
+
+#### 4.5.2 转 DEV
+链本身自带了一个币，符号是 DEV，全部 DEV 都分配给了 ALICE。先转一些给 BOB，这样等下测试时 BOB 有 DEV 去交手续费了。
+
+因此先让 ALICE 转 10000 DEV 给 BOB，然后 BOB 转 1000 DEV　给　CHARILIE。结果如下图：　　
+
+![bob](images/sub015.PNG)
+
+右上角是确认信息，表示转账成功。
+
+
+#### 4.5.3 查询某个 module 状态
+可以按照以下步骤查询 erc20 module 里面的状态变量值：
+
+![erc20state](images/sub018.png)
+
+1. 点击 Chain state。
+2. 选择 erc20 module（选择别的就是查询其他的 module）。
+3. 选择想查询的状态变量对应的方法。
+4. 点击 + 号，就能得到结果。
+
+刚刚查了一些，比如依次是总量 21000000 的 Token，简称的 u8 编码是 0x534454，owner 是 5Grw 开头的要给账号，然后对比了一下，正是 ALICE，然后 init 状态是 false，表示还没初始化。因此一切正常。
+
+#### 4.5.4 调用 init 函数
+可以按照以下方法调用 init 函数：
+
+![init](images/sub017.png)
+
+1. 选择 Extrinsics。
+2. 选择账号，就是选择用哪个身份执行接下来的这个函数，这里选择 BOB，因为想测试一下链里面的权限控制逻辑是否正确，如果不是 ALICE，链应该拒绝执行。
+3. 选择 module。
+4. 选择想执行的函数。
+5. 点击执行，然后输入密码签名（如果是新建的账号）。
+
+前端返回结果果然是执行失败：
+
+![failed](images/sub019.PNG)
+
+然后账号改成 ALICE，就执行成功了，因为我们设置了 ALICE 是 Owner，有这个权限：
+
+![alicesucess](images/sub0120.PNG)
+
+因为 init 代码逻辑包括将所有的 Token 转给 ALICE，因此可以查到 ALICE 的余额是：
+
+![alicebalance](images/sub021.PNG)
+
+#### 4.5.5 测试其他功能
+接下来，ALICE 转 10000 Token 给 BOB，并且再给 BOB 10000 Token 的额度。
+然后 BOB 用自己的**额度**转 5000 Token 给 CHARLIE。
+
+上面两步前端都提示成功执行了，  
+最后我们查询相应的结果：
+
+![result](images/sub022.PNG)
+从下往上看：
+1. 20985000 表示 ALICE 余额，21000000 - 10000 - 5000，正确；
+2. 5000 表示 ALICE 给 BOB 的额度，10000 - 5000（用掉了5000），正确；
+3. 10000 表示 BOB 的余额，正确；
+4. 5000 表示 CHARLIE 的余额，正确；
+5. 0 表示 Dave 的余额，正确。
+
+
+## 五、总结
+到现在为止，大家应该拥有了一个 Substrate 的开发环境，并且掌握了一个简单的 Substrate module 该怎么实现。后续参考： 
+- https://substrate.dev/substrate-collectables-workshop/#/zh-cn/README
+- https://substrate.dev/recipes/base/index.html
+
+进行更深入的学习。
+
+更多资料：  
+[Polkadot 学习资源汇总](https://github.com/flyq/blogs/blob/master/Polkadot%20%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB.md)
