@@ -557,7 +557,7 @@ interface IERC20 {
 第三个在 209 行这里，功能类似构造函数：  
 ![tem12](images/sub012.png)  
 
-然后我们可以看一下 [template.rs](https://github.com/flyq/erc20/blob/master/runtime/src/template.rs)，整体来看，其实现了三个宏 `decl_storage!{}`，`decl_module!{}`，`decl_event!{}`，分别负责这个 module 的状态变量的数据存储，方法逻辑，以及 event 申明等。具体这三个宏的作用参考官方给出的[文档](https://substrate.dev/rustdocs/v1.0/srml_support/macro.decl_storage.html)：
+然后我们可以看一下 [template.rs](https://github.com/flyq/erc20/blob/master/runtime/src/template.rs)，整体来看，其实现了三个宏 `decl_storage!{}`，`decl_module!{}`，`decl_event!()`，分别负责这个 module 的状态变量的数据存储，方法逻辑，以及 event 申明等。具体这三个宏的作用参考官方给出的[文档](https://substrate.dev/rustdocs/v1.0/srml_support/macro.decl_storage.html)：
 ```rust
 decl_storage! {
 	trait Store for Module<T: Trait> as TemplateModule {
