@@ -10,6 +10,7 @@
     - [substrate.dev](#substratedev)
     - [PolkaWorld 波卡世界](#polkaworld-%e6%b3%a2%e5%8d%a1%e4%b8%96%e7%95%8c)
     - [Boka.Network](#bokanetwork)
+    - [Polka Project](#polka-project)
   - [主页类资源](#%e4%b8%bb%e9%a1%b5%e7%b1%bb%e8%b5%84%e6%ba%90)
     - [Polkadot Wiki](#polkadot-wiki)
       - [Polkadot 综合性资源](#polkadot-%e7%bb%bc%e5%90%88%e6%80%a7%e8%b5%84%e6%ba%90)
@@ -117,6 +118,15 @@ http://blog.boka.network/links/
 `标签`：`导航` `中文`
 
 功能和波卡世界类似。
+
+
+### Polka Project
+http://polkaproject.com/
+
+`标签`：`导航` `英文` `项目`
+
+波卡生态目前已有的项目汇总，包括其官方，邮箱，联系地址等，并已按功能分好类。
+
 
 ## 主页类资源
 ### Polkadot Wiki
