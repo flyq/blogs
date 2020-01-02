@@ -18,3 +18,36 @@
 
 ## 定位
 区块链基础设施，类似云。
+
+
+## 学习历程
+### 整体概述
+https://docs.nearprotocol.com/docs/hackathon/startup-guide  
+
+
+### near 命令行工具
+https://docs.nearprotocol.com/docs/development/near-clitool
+
+### near 本地开发环境
+https://docs.nearprotocol.com/docs/local-setup/local-dev-testnet
+
+### near 钱包
+https://wallet.nearprotocol.com/
+
+### near 智能合约开发概述
+https://docs.nearprotocol.com/docs/quick-start/development-overview
+
+### near TypeScript 智能合约详解
+https://docs.nearprotocol.com/docs/development/writing-smart-contracts
+
+### near 黑客松相关
+https://docs.nearprotocol.com/docs/hackathon/startup-guide
+
+### near 浏览器
+https://explorer.nearprotocol.com/accounts/flyq
+
+### near 创建账号
+https://docs.nearprotocol.com/docs/local-setup/create-account#set-up-your-wallet
+
+### ft 同质代币
+https://github.com/nearprotocol/neps/pull/21
