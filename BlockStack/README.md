@@ -31,3 +31,11 @@ BNS Blockstack 域名系统
 * namespace：*.id, *.helloworld
 * BNS 域名：flyqflyq.id
 * BNS 子域名：flyqflyq.id.blockstack
+
+### blockstack.js
+
+https://blockstack.github.io/blockstack.js/
+
+### blockstack 授权
+![authcode](images/auth_code.png)
+![auth](images/auth.PNG)
