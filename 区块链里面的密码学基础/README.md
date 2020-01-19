@@ -3,7 +3,7 @@
 
 ## `Contents`
 - [区块链里面的密码学基础](#%e5%8c%ba%e5%9d%97%e9%93%be%e9%87%8c%e9%9d%a2%e7%9a%84%e5%af%86%e7%a0%81%e5%ad%a6%e5%9f%ba%e7%a1%80)
-  - [Contents](#contents)
+  - [`Contents`](#contents)
   - [substrate](#substrate)
 
 ## substrate
