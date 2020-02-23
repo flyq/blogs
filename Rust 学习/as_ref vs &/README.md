@@ -39,6 +39,46 @@ We call having references as function parameters borrowing.
 这个参数在新函数里面能不能修改，取决于是否传入的可变引用 `&mut String`。  
 在特定作用域中的特定数据有且只有一个可变引用。
 
+
+```rust
+use std::borrow::Borrow;
+use std::fmt::Display;
+
+fn foo<T: Borrow<i32> + Display>(a: T) {
+    println!("a is borrowed: {}", a);
+}
+
+fn foo2<T: Borrow<i32> + Display>(a: &T) {
+    println!("a is borrowed: {}", a);
+}
+
+fn foo3(a: i32) {
+    println!("a is borrowed: {}", a);
+}
+
+fn foo4(a: &i32) {
+    println!("a is borrowed: {}", a);
+}
+
+fn main() {
+    let mut i = 5;
+
+    foo(i);
+    foo(&i);
+
+    foo2(&i);
+    foo2(&mut i);
+    // foo2(i);  // error
+
+    // foo3(&i); // error
+    foo3(i);
+
+    // foo4(i); // error
+    foo4(&i);
+}
+```
+
+
 ## slice
 另一个没有所有权的数据类型是 slice。slice 允许你引用集合中一段连续的元素序列，而不用引用整个集合。
 
@@ -95,44 +135,21 @@ https://www.jianshu.com/p/0f039b76aa09
 
 * 总的印象就是如果只要用到一个对象的引用，就用 AsRef；
 * 如果又要用到它的引用，又要用到它本身自身那个对象，就用 Borrow
+* 如果你搞不清它是不是已经是引用了，只想得到某类型的引用，用 AsRef，多次 AsRef 仍然只有一层引用：
 
 ```rust
-use std::borrow::Borrow;
-use std::fmt::Display;
-
-fn foo<T: Borrow<i32> + Display>(a: T) {
-    println!("a is borrowed: {}", a);
+fn is_hello<T: AsRef<str>>(s: T) {
+   assert_eq!("hello", s.as_ref());
 }
 
-fn foo2<T: Borrow<i32> + Display>(a: &T) {
-    println!("a is borrowed: {}", a);
-}
+let s1 = "hello";
+is_hello(s1);
 
-fn foo3(a: i32) {
-    println!("a is borrowed: {}", a);
-}
-
-fn foo4(a: &i32) {
-    println!("a is borrowed: {}", a);
-}
-
-fn main() {
-    let mut i = 5;
-
-    foo(i);
-    foo(&i);
-
-    foo2(&i);
-    foo2(&mut i);
-    // foo2(i);  // error
-
-    // foo3(&i); // error
-    foo3(i);
-
-    // foo4(i); // error
-    foo4(&i);
-}
+let s2 = "hello".to_string();
+is_hello(s2);
 ```
+比如以上，s1 已经是 &str，已经是有个引用了。但是 s1.as_ref() 仍然是 &str，而不是 &&str。
+而 s2 是 String，s2.as_ref() 是 &str。
 
 ## 智能指针
 参考 https://rustlang-cn.org/office/rust/book/smart-pointers/ch15-00-smart-pointers.html
