@@ -96,6 +96,44 @@ https://www.jianshu.com/p/0f039b76aa09
 * 总的印象就是如果只要用到一个对象的引用，就用 AsRef；
 * 如果又要用到它的引用，又要用到它本身自身那个对象，就用 Borrow
 
+```rust
+use std::borrow::Borrow;
+use std::fmt::Display;
+
+fn foo<T: Borrow<i32> + Display>(a: T) {
+    println!("a is borrowed: {}", a);
+}
+
+fn foo2<T: Borrow<i32> + Display>(a: &T) {
+    println!("a is borrowed: {}", a);
+}
+
+fn foo3(a: i32) {
+    println!("a is borrowed: {}", a);
+}
+
+fn foo4(a: &i32) {
+    println!("a is borrowed: {}", a);
+}
+
+fn main() {
+    let mut i = 5;
+
+    foo(i);
+    foo(&i);
+
+    foo2(&i);
+    foo2(&mut i);
+    // foo2(i);  // error
+
+    // foo3(&i); // error
+    foo3(i);
+
+    // foo4(i); // error
+    foo4(&i);
+}
+```
+
 ## 智能指针
 参考 https://rustlang-cn.org/office/rust/book/smart-pointers/ch15-00-smart-pointers.html
 
