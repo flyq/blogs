@@ -1,0 +1,103 @@
+[[bin]]
+name = "substrate"
+path = "node/src/main.rs"
+
+[package]
+name = "substrate"
+version = "1.0.0"
+authors = ["Parity Technologies <admin@parity.io>"]
+build = "build.rs"
+edition = "2018"
+
+[dependencies]
+error-chain = "0.12"
+cli = { package = "node-cli", path = "node/cli" }
+futures = "0.1"
+ctrlc = { version = "3.0", features = ["termination"] }
+
+[build-dependencies]
+vergen = "3"
+
+[workspace]
+members = [
+	"core/cli",
+	"core/client",
+	"core/client/db",
+	"core/consensus/common",
+	"core/consensus/aura",
+	"core/consensus/rhd",
+	"core/executor",
+	"core/finality-grandpa",
+	"core/finality-grandpa/primitives",
+	"core/keyring",
+	"core/network",
+	"core/panic-handler",
+	"core/primitives",
+	"core/rpc",
+	"core/rpc-servers",
+	"core/serializer",
+	"core/service",
+	"core/service/test",
+	"core/sr-api-macros",
+	"core/sr-io",
+	"core/sr-primitives",
+	"core/sr-sandbox",
+	"core/sr-std",
+	"core/sr-version",
+	"core/state-machine",
+	"core/test-runtime",
+	"core/telemetry",
+	"core/trie",
+	"core/keystore",
+	"core/transaction-pool",
+	"core/transaction-pool/graph",
+	"core/inherents",
+	"core/util/fork-tree",
+	"srml/support",
+	"srml/support/procedural",
+	"srml/support/procedural/tools",
+	"srml/support/procedural/tools/derive",
+	"srml/support/test",
+	"srml/assets",
+	"srml/aura",
+	"srml/balances",
+	"srml/consensus",
+	"srml/contract",
+	"srml/council",
+	"srml/democracy",
+	"srml/example",
+	"srml/executive",
+	"srml/finality-tracker",
+	"srml/grandpa",
+	"srml/indices",
+	"srml/metadata",
+	"srml/session",
+	"srml/staking",
+	"srml/sudo",
+	"srml/system",
+	"srml/timestamp",
+	"srml/treasury",
+	"node/cli",
+	"node/executor",
+	"node/primitives",
+	"node/runtime",
+	"node-template",
+	"subkey",
+]
+exclude = [
+	"node/runtime/wasm",
+	"core/executor/wasm",
+	"core/test-runtime/wasm",
+	"test-utils/chain-spec-builder"
+]
+
+[badges]
+travis-ci = { repository = "paritytech/substrate", branch = "master" }
+maintenance = { status = "actively-developed" }
+is-it-maintained-issue-resolution = { repository = "paritytech/substrate" }
+is-it-maintained-open-issues = { repository = "paritytech/substrate" }
+
+[profile.release]
+# Substrate runtime requires unwinding.
+panic = "unwind"
+

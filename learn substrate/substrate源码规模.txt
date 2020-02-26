@@ -1,0 +1,14 @@
+(v1.0 last)
+find substrate/ -name "*.rs"   | xargs cat |wc -l
+110946
+
+(substrate-template-v1.0)
+find erc20/ -name "*.rs"   | xargs cat |wc -l
+13467
+flyq@ubuntu:~/workspaces/flyq$ find erc20/ -name "*.rs"   | xargs cat |wc -l
+14407
+
+flyq@ubuntu:~/workspaces/paritytech$ find ink/ -name "*.rs"   | xargs cat |wc -l 
+16707
+flyq@ubuntu:~/workspaces/paritytech$ find substrate-master/ -name "*.rs"   | xargs cat |wc -l
+203048

@@ -1,0 +1,37 @@
+[package]
+name = "substrate-trie"
+version = "1.0.0"
+authors = ["Parity Technologies <admin@parity.io>"]
+description = "Patricia trie stuff using a parity-codec node format"
+repository = "https://github.com/paritytech/parity-common"
+license = "GPL-3.0"
+edition = "2018"
+
+[[bench]]
+name = "bench"
+harness = false
+
+[dependencies]
+codec = { package = "parity-codec", version = "3.2" }
+hash-db = { version = "0.12", default-features = false }
+trie-db = { version = "0.12", optional = true }
+trie-root = { version = "0.12", default-features = false }
+memory-db = { version = "0.12", optional = true }
+substrate-primitives = { path = "../primitives", default-features = false }
+
+[dev-dependencies]
+trie-bench = { version = "0.12" }
+trie-standardmap = { version = "0.12" }
+keccak-hasher = { version = "0.12" }
+criterion = "0.2"
+hex-literal = "0.1.0"
+
+[features]
+default = ["std"]
+std = [
+	"hash-db/std",
+	"memory-db",
+	"trie-db",
+	"trie-root/std",
+	"substrate-primitives/std",
+]
