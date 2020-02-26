@@ -1,0 +1,3 @@
+[submodule "web-api-rust"]
+	path = web-api-rust
+	url = https://github.com/flyq/web-api-rust
