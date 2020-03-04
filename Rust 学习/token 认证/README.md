@@ -2,6 +2,8 @@
 
 参考： https://zhuanlan.zhihu.com/p/51497187
 
+https://gill.net.in/posts/auth-microservice-rust-actix-web-diesel-complete-tutorial-part-2/
+
 ## `Contents`
 - [Rust Actix-Web 验证 Auth Web 微服务](#rust-actix-web-%e9%aa%8c%e8%af%81-auth-web-%e5%be%ae%e6%9c%8d%e5%8a%a1)
   - [`Contents`](#contents)
