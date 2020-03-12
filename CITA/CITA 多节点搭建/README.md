@@ -28,6 +28,7 @@
       - [3. 安装区块链浏览器](#3-%e5%ae%89%e8%a3%85%e5%8c%ba%e5%9d%97%e9%93%be%e6%b5%8f%e8%a7%88%e5%99%a8)
       - [4. 安装移动端钱包](#4-%e5%ae%89%e8%a3%85%e7%a7%bb%e5%8a%a8%e7%ab%af%e9%92%b1%e5%8c%85)
       - [5. 安装 First-forever-demo](#5-%e5%ae%89%e8%a3%85-first-forever-demo)
+    - [五、节点停止后的重启](#%e4%ba%94%e8%8a%82%e7%82%b9%e5%81%9c%e6%ad%a2%e5%90%8e%e7%9a%84%e9%87%8d%e5%90%af)
 
 
 ## 特性
@@ -527,3 +528,77 @@ $ serve -l 3000 -s build/
 最后的效果图：
 ![demo](demo.png)
 ![demo1](demo1.png)
+
+
+
+### 五、节点停止后的重启
+当出块节点停止后，满足一定添加（如停止多少个节点）整个链就不出块了。但是发给未停止节点的交易仍然在其交易池里。一旦整个链重新开始出块，那些交易即成功执行。
+
+
+先查看 docker 是否还在运行：
+```shell
+$ docker ps
+```
+发行这个容器已经没在运行了： cita_run_container。
+先删除这个容器：
+```shell
+$ docker ps -a
+06214fca1178        cita/cita-run:ubuntu-18.04-20190829     "/usr/bin/entrypoint…"   14 minutes ago      Exited (137) 11 seconds ago                       cita_run_container
+
+$ docker rm 06214fca1178
+```
+
+然后重启节点：
+```shell
+$ cd /data/cita/
+$ ./bin/cita setup test-chain/1
+$ ./bin/cita start test-chain/1
+```
+
+如果直接运行 `./bin/cita start test-chain/1` 则会报错（报错 log 在）cita/test-chain/1/logs/cita-chain.log :
+```shell
+2020-03-02 - 07:57:25 | core::libchain::chai - 1356  | INFO  - new chain status height 1209536, hash f05b6d7fc307761d2861880e147f82fc48b7e4f903a0f985b2d26673348ada08
+2020-03-02 - 07:57:28 | core::libchain::chai - 1356  | INFO  - new chain status height 1209537, hash 576542001b3af000bce40d4d4ad7eb5b246b0121167714475fc3d4a1411ba87e
+2020-03-12 - 06:15:32 | cita_chain           - 107   | INFO  - CITA:chain
+2020-03-12 - 06:15:32 | cita_chain           - 108   | INFO  - Version: v1.0.0-dev
+2020-03-12 - 06:15:32 | panic_hook           - 59    | ERROR -
+============================
+stack backtrace:
+   0:     0x5646a0fe14ed - backtrace::backtrace::trace::h427274634b26cc90
+   1:     0x5646a0fe10d2 - <backtrace::capture::Backtrace as core::default::Default>::default::h094442244fd75184
+   2:     0x5646a0fe03e4 - panic_hook::panic_hook::h49ebbf6f4135f29c
+   3:     0x5646a0fe0118 - core::ops::function::Fn::call::h4af4df279732d685
+   4:     0x5646a149e358 - rust_panic_with_hook
+                        at src/libstd/panicking.rs:482
+   5:     0x5646a149ddf1 - continue_panic_fmt
+                        at src/libstd/panicking.rs:385
+   6:     0x5646a149dd3e - begin_panic_fmt
+                        at src/libstd/panicking.rs:340
+   7:     0x5646a0f8e3ac - pubsub_rabbitmq::start_rabbitmq::h404a867181e14e29
+   8:     0x5646a0e402bd - pubsub::start_pubsub::h4d6cfe6368e2fab2
+   9:     0x5646a0e70999 - cita_chain::main::h9514f7bd2301ae0d
+  10:     0x5646a0e72712 - std::rt::lang_start::{{closure}}::h069306adf2dc882b
+  11:     0x5646a149dc72 - {{closure}}
+                        at src/libstd/rt.rs:49
+                         - do_call<closure,i32>
+                        at src/libstd/panicking.rs:297
+  12:     0x5646a14a2889 - __rust_maybe_catch_panic
+                        at src/libpanic_unwind/lib.rs:87
+  13:     0x5646a149e77c - try<i32,closure>
+                        at src/libstd/panicking.rs:276
+                         - catch_unwind<closure,i32>
+                        at src/libstd/panic.rs:388
+                         - lang_start_internal
+                        at src/libstd/rt.rs:48
+  14:     0x5646a0e71331 - main
+  15:     0x7f6af5010b96 - __libc_start_main
+  16:     0x5646a0e39f39 - _start
+  17:                0x0 - <unknown>
+
+position:
+Thread main panicked at failed to open url amqp://guest:guest@localhost/test-chain/1 : IoError(ConnectionRefused), /opt/.cargo/git/checkouts/cita-common-1aad419f3e80ba17/7884446/pubsub_rabbitmq/src/lib.rs:57
+
+This is a bug. Please report it at:
+
+    https://github.com/cryptape/cita/issues/new?labels=bug&template=bug_report.md
+```
