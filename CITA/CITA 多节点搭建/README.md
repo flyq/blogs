@@ -245,7 +245,7 @@ quata 模式，即发起交易不需要 Gas 费，只要使用的资源不超过
 #### 1. 在本地初始化链
 生成个节点对应文件：
 ```shell
-bin/cita create --super_admin "[Super Admin 地址的私钥]" --nodes "[节点0的服务器IP]:4000,[节点1的服务器IP]:4000"
+bin/cita create --super_admin "[Super Admin 地址]" --nodes "[节点0的服务器IP]:4000,[节点1的服务器IP]:4000"
 ```
 
 #### 2. 在 2 台服务器上创建目录
