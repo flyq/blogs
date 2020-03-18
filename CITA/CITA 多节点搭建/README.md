@@ -29,6 +29,9 @@
       - [4. 安装移动端钱包](#4-%e5%ae%89%e8%a3%85%e7%a7%bb%e5%8a%a8%e7%ab%af%e9%92%b1%e5%8c%85)
       - [5. 安装 First-forever-demo](#5-%e5%ae%89%e8%a3%85-first-forever-demo)
     - [五、节点停止后的重启](#%e4%ba%94%e8%8a%82%e7%82%b9%e5%81%9c%e6%ad%a2%e5%90%8e%e7%9a%84%e9%87%8d%e5%90%af)
+  - [服务器配置：](#%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%85%8d%e7%bd%ae)
+    - [仅仅运行一个节点：](#%e4%bb%85%e4%bb%85%e8%bf%90%e8%a1%8c%e4%b8%80%e4%b8%aa%e8%8a%82%e7%82%b9)
+    - [运行一个节点+缓存服务器等其他工具链](#%e8%bf%90%e8%a1%8c%e4%b8%80%e4%b8%aa%e8%8a%82%e7%82%b9%e7%bc%93%e5%ad%98%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%ad%89%e5%85%b6%e4%bb%96%e5%b7%a5%e5%85%b7%e9%93%be)
 
 
 ## 特性
@@ -555,6 +558,8 @@ $ ./bin/cita setup test-chain/1
 $ ./bin/cita start test-chain/1
 ```
 
+之后就可以在浏览器看到正常出块了。
+
 如果直接运行 `./bin/cita start test-chain/1` 则会报错（报错 log 在）cita/test-chain/1/logs/cita-chain.log :
 ```shell
 2020-03-02 - 07:57:25 | core::libchain::chai - 1356  | INFO  - new chain status height 1209536, hash f05b6d7fc307761d2861880e147f82fc48b7e4f903a0f985b2d26673348ada08
@@ -602,3 +607,68 @@ This is a bug. Please report it at:
 
     https://github.com/cryptape/cita/issues/new?labels=bug&template=bug_report.md
 ```
+
+
+## 服务器配置：
+
+4C15.6G 
+
+
+### 仅仅运行一个节点：
+```shell
+$ df -h ./cita
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme0n1    251G  4.8G  234G   3% /data
+
+$ top
+top - 04:00:59 up 60 days,  2:15,  2 users,  load average: 0.00, 0.04, 0.02
+Tasks: 227 total,   1 running,  93 sleeping,   0 stopped,  85 zombie
+%Cpu(s):  0.4 us,  0.4 sy,  0.0 ni, 99.2 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem : 16122908 total,   674376 free,   921796 used, 14526736 buff/cache
+KiB Swap:        0 total,        0 free,        0 used. 14841624 avail Mem 
+```
+4C15.6G 
+内存占用 10%，即 1.6G 左右的内存
+CPU 基本没占用
+目前130万个块占用磁盘4.8G左右
+
+### 运行一个节点+缓存服务器等其他工具链
+```shell
+$ df -h ./cita/
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme0n1    251G   19G  220G   8% /data
+
+$ top
+top - 04:06:30 up 60 days,  2:14,  2 users,  load average: 0.00, 0.07, 0.04
+Tasks: 268 total,   1 running, 131 sleeping,   0 stopped,  86 zombie
+%Cpu(s):  0.8 us,  0.5 sy,  0.0 ni, 98.6 id,  0.1 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem : 15950876 total,   268444 free,  1494388 used, 14188044 buff/cache
+KiB Swap:        0 total,        0 free,        0 used. 13975800 avail Mem 
+
+
+
+$ docker ps
+CONTAINER ID        IMAGE                                 COMMAND                   CREATED             STATUS              PORTS                    NAMES
+0bbbeb9ba5e6        nginx:1.16.0                          "/bin/bash -c 'envsu…"    8 weeks ago         Up 8 weeks          0.0.0.0:1920->80/tcp     citamon_agent_proxy_exporter
+61e4f1306aef        ncabatoff/process-exporter:0.4.0      "/bin/process-export…"    8 weeks ago         Up 8 weeks          9256/tcp                 citamon_agent_process_exporter
+d988e9e89523        citamon/agent-cita-exporter           "/bin/sh -c '\"python…"   8 weeks ago         Up 8 weeks                                   citamon_agent_cita_exporter_18.141.111.251_1337
+8607b7296656        prom/node-exporter:v0.17.0            "/bin/node_exporter …"    8 weeks ago         Up 8 weeks          9100/tcp                 citamon_agent_host_exporter
+905611bd7ca5        kbudde/rabbitmq-exporter:1.0.0-RC     "/app"                    8 weeks ago         Up 8 weeks                                   citamon_agent_rabbitmq_exporter
+0884c5d0d7b3        cryptape/grafana:5.4.2                "/run.sh"                 8 weeks ago         Up 8 weeks          0.0.0.0:1919->3000/tcp   citamon_server_grafana
+9a089a817d69        prom/prometheus:v2.6.0                "/bin/prometheus --c…"    8 weeks ago         Up 8 weeks          0.0.0.0:1918->9090/tcp   citamon_server_prometheus
+55b70cb8fd02        prom/alertmanager:v0.15.3             "/bin/alertmanager -…"    8 weeks ago         Up 8 weeks          0.0.0.0:1917->9093/tcp   citamon_server_alertmanager
+3887319d36e2        rebirth_web                           "nginx -g 'daemon of…"    8 weeks ago         Up 8 weeks          0.0.0.0:8888->80/tcp     rebirth_web_1
+da18de807805        rebirth_sidekiq                       "bundle exec sidekiq…"    8 weeks ago         Up 8 weeks          3000/tcp                 rebirth_sidekiq_1
+a6a0b2ba8e5a        rebirth_app                           "bundle exec puma -C…"    8 weeks ago         Up 8 weeks          3000/tcp                 rebirth_app_1
+5026c8f9bb99        rebirth_sync                          "bash -c 'rails daem…"    8 weeks ago         Up 8 weeks          3000/tcp                 rebirth_sync_1
+e9c7f0cb6916        postgres:10.5                         "docker-entrypoint.s…"    8 weeks ago         Up 8 weeks          5432/tcp                 rebirth_db_1
+6f8e8bdff8a5        redis:5.0.1                           "docker-entrypoint.s…"    8 weeks ago         Up 8 weeks          6379/tcp                 rebirth_redis_1
+a3ab1bded784        cita/cita-run:ubuntu-18.04-20190829   "/usr/bin/entrypoint…"    8 weeks ago         Up 8 weeks                                   cita_run_container
+
+```
+
+4C15.2G 
+内存占用 14%，即 2.4G 左右
+CPU 同样没占用
+目前130万个块占用磁盘 19G 左右（本身链一份，加缓存服务器那一份）
+
