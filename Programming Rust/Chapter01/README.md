@@ -4,6 +4,7 @@
 - [Chapter 1. Why Rust](#chapter-1-why-rust)
   - [`Contents`](#contents)
   - [特点](#%e7%89%b9%e7%82%b9)
+  - [类型安全](#%e7%b1%bb%e5%9e%8b%e5%ae%89%e5%85%a8)
 
 ## 特点
 系统编程源远流长。
@@ -22,4 +23,13 @@
 因为 Rust 提供了 ownership，moves，borrows，这些都是在编译时进行检查。
 还有灵活的 静态类型系统
 
-* ownership 系统：为每一个变量建立清晰的生命周期
+* ownership 系统：为每一个变量建立清晰的生命周期，从而不需要垃圾回收机制
+* 拥有健全灵活的接口来管理其他各种资源。比如文件 handler 以及sockets
+* moves：value from one owner to another.
+* borrowing: use value temporarily without affecting its ownership
+* ownership 也是 Rust 值得信赖的并发模型的基础
+
+
+* 有面向对象元素，不是真正的面向对象语言
+
+## 类型安全
