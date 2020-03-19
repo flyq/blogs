@@ -346,7 +346,7 @@ $ make up #（如果需要调试，那就用 make start 替代，make start 会�
 
 一般来讲，这时 rebirth 服务就启动好了。可以通过浏览器里面访问 http://[rebirth所在服务器IP地址]:8888 来查看是否正常，正常情况如下图：
 
-![rebirth](./rebirth.PNG)
+![rebirth](./images/rebirth.PNG)
 
 **如果无法连接，可以查看云服务器的防火墙是否放开了 8888 端口。**
 
@@ -388,7 +388,7 @@ nginx.conf:
 #### 3. 安装区块链浏览器
 参考 [micrscope V2 文档](https://github.com/citahub/microscope-v2/blob/develop/README-CN.md#%E5%BF%AB%E9%80%9F%E6%8B%A5%E6%9C%89%E4%B8%80%E4%B8%AAmicrscope)，直接部署在 GitHub Page 上。然后在右上角设置节点 https://testnode.xxx.com:8888 就可以查看当前链的数据了。大概效果是：
 
-![micr](micr.png)
+![micr](./images/micr.png)
 
 
 
@@ -403,7 +403,7 @@ nginx.conf:
 
 导入 CITA 链的超级管理员的账户后，最后效果图：
 
-![cyton](cyton.jpg)
+![cyton](./images/cyton.jpg)
 
 
 #### 5. 安装 First-forever-demo
@@ -529,8 +529,8 @@ $ serve -l 3000 -s build/
 ```
 
 最后的效果图：
-![demo](demo.png)
-![demo1](demo1.png)
+![demo](./images/demo.png)
+![demo1](./images/demo1.png)
 
 
 
