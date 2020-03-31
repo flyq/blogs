@@ -6,32 +6,32 @@
   - [特性](#%e7%89%b9%e6%80%a7)
   - [配置步骤](#%e9%85%8d%e7%bd%ae%e6%ad%a5%e9%aa%a4)
     - [一、安装对应环境](#%e4%b8%80%e5%ae%89%e8%a3%85%e5%af%b9%e5%ba%94%e7%8e%af%e5%a2%83)
-      - [登录服务器](#%e7%99%bb%e5%bd%95%e6%9c%8d%e5%8a%a1%e5%99%a8)
-      - [更新软件源](#%e6%9b%b4%e6%96%b0%e8%bd%af%e4%bb%b6%e6%ba%90)
-      - [安装趁手工具](#%e5%ae%89%e8%a3%85%e8%b6%81%e6%89%8b%e5%b7%a5%e5%85%b7)
-      - [安装 CITA 环境](#%e5%ae%89%e8%a3%85-cita-%e7%8e%af%e5%a2%83)
-        - [安装 Docker 环境（所有节点服务器需要安装）](#%e5%ae%89%e8%a3%85-docker-%e7%8e%af%e5%a2%83%e6%89%80%e6%9c%89%e8%8a%82%e7%82%b9%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%9c%80%e8%a6%81%e5%ae%89%e8%a3%85)
-        - [安装 Docker-compose （只有节点0，也就是运行工具链的服务器需要安装）](#%e5%ae%89%e8%a3%85-docker-compose-%e5%8f%aa%e6%9c%89%e8%8a%82%e7%82%b90%e4%b9%9f%e5%b0%b1%e6%98%af%e8%bf%90%e8%a1%8c%e5%b7%a5%e5%85%b7%e9%93%be%e7%9a%84%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%9c%80%e8%a6%81%e5%ae%89%e8%a3%85)
-        - [安装客户端工具：CITA-CLI （所有节点服务器需要安装）](#%e5%ae%89%e8%a3%85%e5%ae%a2%e6%88%b7%e7%ab%af%e5%b7%a5%e5%85%b7cita-cli-%e6%89%80%e6%9c%89%e8%8a%82%e7%82%b9%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%9c%80%e8%a6%81%e5%ae%89%e8%a3%85)
-        - [下载 CITA 链的程序 （一般来说节点服务器不需要安装，一般是本地生成后通过 scp 统一上传到服务器。）](#%e4%b8%8b%e8%bd%bd-cita-%e9%93%be%e7%9a%84%e7%a8%8b%e5%ba%8f-%e4%b8%80%e8%88%ac%e6%9d%a5%e8%af%b4%e8%8a%82%e7%82%b9%e6%9c%8d%e5%8a%a1%e5%99%a8%e4%b8%8d%e9%9c%80%e8%a6%81%e5%ae%89%e8%a3%85%e4%b8%80%e8%88%ac%e6%98%af%e6%9c%ac%e5%9c%b0%e7%94%9f%e6%88%90%e5%90%8e%e9%80%9a%e8%bf%87-scp-%e7%bb%9f%e4%b8%80%e4%b8%8a%e4%bc%a0%e5%88%b0%e6%9c%8d%e5%8a%a1%e5%99%a8)
+      - [1.1 登录服务器](#11-%e7%99%bb%e5%bd%95%e6%9c%8d%e5%8a%a1%e5%99%a8)
+      - [1.2 更新软件源](#12-%e6%9b%b4%e6%96%b0%e8%bd%af%e4%bb%b6%e6%ba%90)
+      - [1.3 安装趁手工具](#13-%e5%ae%89%e8%a3%85%e8%b6%81%e6%89%8b%e5%b7%a5%e5%85%b7)
+      - [1.4 安装 CITA 环境](#14-%e5%ae%89%e8%a3%85-cita-%e7%8e%af%e5%a2%83)
+        - [1.4.1 安装 Docker 环境（所有节点服务器需要安装）](#141-%e5%ae%89%e8%a3%85-docker-%e7%8e%af%e5%a2%83%e6%89%80%e6%9c%89%e8%8a%82%e7%82%b9%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%9c%80%e8%a6%81%e5%ae%89%e8%a3%85)
+        - [1.4.2 安装 Docker-compose （只有节点0，也就是运行工具链的服务器需要安装）](#142-%e5%ae%89%e8%a3%85-docker-compose-%e5%8f%aa%e6%9c%89%e8%8a%82%e7%82%b90%e4%b9%9f%e5%b0%b1%e6%98%af%e8%bf%90%e8%a1%8c%e5%b7%a5%e5%85%b7%e9%93%be%e7%9a%84%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%9c%80%e8%a6%81%e5%ae%89%e8%a3%85)
+        - [1.4.3 安装客户端工具：CITA-CLI （所有节点服务器需要安装）](#143-%e5%ae%89%e8%a3%85%e5%ae%a2%e6%88%b7%e7%ab%af%e5%b7%a5%e5%85%b7cita-cli-%e6%89%80%e6%9c%89%e8%8a%82%e7%82%b9%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%9c%80%e8%a6%81%e5%ae%89%e8%a3%85)
+        - [1.4.4 下载 CITA 链的程序 （一般来说节点服务器不需要安装，一般是本地生成后通过 scp 统一上传到服务器。）](#144-%e4%b8%8b%e8%bd%bd-cita-%e9%93%be%e7%9a%84%e7%a8%8b%e5%ba%8f-%e4%b8%80%e8%88%ac%e6%9d%a5%e8%af%b4%e8%8a%82%e7%82%b9%e6%9c%8d%e5%8a%a1%e5%99%a8%e4%b8%8d%e9%9c%80%e8%a6%81%e5%ae%89%e8%a3%85%e4%b8%80%e8%88%ac%e6%98%af%e6%9c%ac%e5%9c%b0%e7%94%9f%e6%88%90%e5%90%8e%e9%80%9a%e8%bf%87-scp-%e7%bb%9f%e4%b8%80%e4%b8%8a%e4%bc%a0%e5%88%b0%e6%9c%8d%e5%8a%a1%e5%99%a8)
     - [二、定制配置](#%e4%ba%8c%e5%ae%9a%e5%88%b6%e9%85%8d%e7%bd%ae)
-      - [概述](#%e6%a6%82%e8%bf%b0)
-      - [具体配置](#%e5%85%b7%e4%bd%93%e9%85%8d%e7%bd%ae)
+      - [1.1 概述](#11-%e6%a6%82%e8%bf%b0)
+      - [2.2 具体配置](#22-%e5%85%b7%e4%bd%93%e9%85%8d%e7%bd%ae)
     - [三、初始化并启动链](#%e4%b8%89%e5%88%9d%e5%a7%8b%e5%8c%96%e5%b9%b6%e5%90%af%e5%8a%a8%e9%93%be)
-      - [1. 在本地初始化链](#1-%e5%9c%a8%e6%9c%ac%e5%9c%b0%e5%88%9d%e5%a7%8b%e5%8c%96%e9%93%be)
-      - [2. 在 2 台服务器上创建目录](#2-%e5%9c%a8-2-%e5%8f%b0%e6%9c%8d%e5%8a%a1%e5%99%a8%e4%b8%8a%e5%88%9b%e5%bb%ba%e7%9b%ae%e5%bd%95)
-      - [3. 将生成的节点拷贝到所有主机](#3-%e5%b0%86%e7%94%9f%e6%88%90%e7%9a%84%e8%8a%82%e7%82%b9%e6%8b%b7%e8%b4%9d%e5%88%b0%e6%89%80%e6%9c%89%e4%b8%bb%e6%9c%ba)
-      - [4. 依次启动节点0，节点1](#4-%e4%be%9d%e6%ac%a1%e5%90%af%e5%8a%a8%e8%8a%82%e7%82%b90%e8%8a%82%e7%82%b91)
+      - [3.1 在本地初始化链](#31-%e5%9c%a8%e6%9c%ac%e5%9c%b0%e5%88%9d%e5%a7%8b%e5%8c%96%e9%93%be)
+      - [3.2 在 2 台服务器上创建目录](#32-%e5%9c%a8-2-%e5%8f%b0%e6%9c%8d%e5%8a%a1%e5%99%a8%e4%b8%8a%e5%88%9b%e5%bb%ba%e7%9b%ae%e5%bd%95)
+      - [3.3 将生成的节点拷贝到所有主机](#33-%e5%b0%86%e7%94%9f%e6%88%90%e7%9a%84%e8%8a%82%e7%82%b9%e6%8b%b7%e8%b4%9d%e5%88%b0%e6%89%80%e6%9c%89%e4%b8%bb%e6%9c%ba)
+      - [3.4 依次启动节点0，节点1](#34-%e4%be%9d%e6%ac%a1%e5%90%af%e5%8a%a8%e8%8a%82%e7%82%b90%e8%8a%82%e7%82%b91)
     - [四、配置工具链，Demo](#%e5%9b%9b%e9%85%8d%e7%bd%ae%e5%b7%a5%e5%85%b7%e9%93%bedemo)
-      - [1. 安装需要的开发工具](#1-%e5%ae%89%e8%a3%85%e9%9c%80%e8%a6%81%e7%9a%84%e5%bc%80%e5%8f%91%e5%b7%a5%e5%85%b7)
-      - [2. 安装 rebirth 缓存服务器](#2-%e5%ae%89%e8%a3%85-rebirth-%e7%bc%93%e5%ad%98%e6%9c%8d%e5%8a%a1%e5%99%a8)
-      - [3. 安装区块链浏览器](#3-%e5%ae%89%e8%a3%85%e5%8c%ba%e5%9d%97%e9%93%be%e6%b5%8f%e8%a7%88%e5%99%a8)
-      - [4. 安装移动端钱包](#4-%e5%ae%89%e8%a3%85%e7%a7%bb%e5%8a%a8%e7%ab%af%e9%92%b1%e5%8c%85)
-      - [5. 安装 First-forever-demo](#5-%e5%ae%89%e8%a3%85-first-forever-demo)
+      - [4.1 安装需要的开发工具](#41-%e5%ae%89%e8%a3%85%e9%9c%80%e8%a6%81%e7%9a%84%e5%bc%80%e5%8f%91%e5%b7%a5%e5%85%b7)
+      - [4.2 安装 rebirth 缓存服务器](#42-%e5%ae%89%e8%a3%85-rebirth-%e7%bc%93%e5%ad%98%e6%9c%8d%e5%8a%a1%e5%99%a8)
+      - [4.3 安装区块链浏览器](#43-%e5%ae%89%e8%a3%85%e5%8c%ba%e5%9d%97%e9%93%be%e6%b5%8f%e8%a7%88%e5%99%a8)
+      - [4.4 安装移动端钱包](#44-%e5%ae%89%e8%a3%85%e7%a7%bb%e5%8a%a8%e7%ab%af%e9%92%b1%e5%8c%85)
+      - [4.5 安装 First-forever-demo](#45-%e5%ae%89%e8%a3%85-first-forever-demo)
     - [五、节点停止后的重启](#%e4%ba%94%e8%8a%82%e7%82%b9%e5%81%9c%e6%ad%a2%e5%90%8e%e7%9a%84%e9%87%8d%e5%90%af)
-  - [服务器配置：](#%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%85%8d%e7%bd%ae)
-    - [仅仅运行一个节点：](#%e4%bb%85%e4%bb%85%e8%bf%90%e8%a1%8c%e4%b8%80%e4%b8%aa%e8%8a%82%e7%82%b9)
-    - [运行一个节点+缓存服务器等其他工具链](#%e8%bf%90%e8%a1%8c%e4%b8%80%e4%b8%aa%e8%8a%82%e7%82%b9%e7%bc%93%e5%ad%98%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%ad%89%e5%85%b6%e4%bb%96%e5%b7%a5%e5%85%b7%e9%93%be)
+    - [六、服务器配置：](#%e5%85%ad%e6%9c%8d%e5%8a%a1%e5%99%a8%e9%85%8d%e7%bd%ae)
+      - [6.1 仅仅运行一个节点：](#61-%e4%bb%85%e4%bb%85%e8%bf%90%e8%a1%8c%e4%b8%80%e4%b8%aa%e8%8a%82%e7%82%b9)
+      - [6.2 运行一个节点+缓存服务器等其他工具链](#62-%e8%bf%90%e8%a1%8c%e4%b8%80%e4%b8%aa%e8%8a%82%e7%82%b9%e7%bc%93%e5%ad%98%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%ad%89%e5%85%b6%e4%bb%96%e5%b7%a5%e5%85%b7%e9%93%be)
 
 
 ## 特性
@@ -40,7 +40,7 @@
 
 ## 配置步骤
 ### 一、安装对应环境
-#### 登录服务器
+#### 1.1 登录服务器
 ```shell
 $ ssh XXX@IP_address
 ```
@@ -52,7 +52,7 @@ $ cat /proc/version
 ```
 通过这个可以得到发行版本，从而根据不同的发行版执行不同的命令。下面因为使用的是 Ubuntu 发行版，就用 Ubuntu 为例子。
 
-#### 更新软件源
+#### 1.2 更新软件源
 依次执行：
 ```shell
 $ sudo apt update
@@ -61,7 +61,7 @@ $ sudo apt upgrade
 ```
 更新软件的时候，会有个确认：是否更新软件，输入 `Y` 再回车确认即可。
 
-#### 安装趁手工具
+#### 1.3 安装趁手工具
 个人习惯使用 emacs, byobu。先安装它们。
 ```shell
 sudo apt install emacs 
@@ -72,11 +72,11 @@ byobu 的安装配置参考[这里](https://cloud.tencent.com/developer/article/
 sudo apt install byobu
 ```
 
-#### 安装 CITA 环境
+#### 1.4 安装 CITA 环境
 
 所有将会运行节点的服务器都需要安装环境。但是为了保证环境的一致性，一般先在某个地方生成链级配置生成节点配置文件，然后分别用 scp 传到各个节点服务器。
 
-##### 安装 Docker 环境（所有节点服务器需要安装）
+##### 1.4.1 安装 Docker 环境（所有节点服务器需要安装）
 
 以下命令按条执行：
 ```shell
@@ -124,7 +124,7 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 ```
 说明 Docker 成功安装。
 
-##### 安装 Docker-compose （只有节点0，也就是运行工具链的服务器需要安装）
+##### 1.4.2 安装 Docker-compose （只有节点0，也就是运行工具链的服务器需要安装）
 依次执行下面命令
 ```shell
 $ sudo apt install docker-compose
@@ -137,7 +137,7 @@ $ docker-compose --version
 docker-compose version 1.17.1, build unknown
 ```
 
-##### 安装客户端工具：CITA-CLI （所有节点服务器需要安装）
+##### 1.4.3 安装客户端工具：CITA-CLI （所有节点服务器需要安装）
 我们把整个从 CITA 下载的客户端等程序，以及后续区块链的数据等，都放在 `/data/cita` 文件夹下。
 
 1. 创建目录
@@ -175,7 +175,7 @@ cita-cli 0.19.6-2-g6167b75 2019-05-22, use rustls
 $ sudo cp -rp cita-cli /usr/local/bin/
 ```
 
-##### 下载 CITA 链的程序 （一般来说节点服务器不需要安装，一般是本地生成后通过 scp 统一上传到服务器。）
+##### 1.4.4 下载 CITA 链的程序 （一般来说节点服务器不需要安装，一般是本地生成后通过 scp 统一上传到服务器。）
 之前尝试在某个服务器根据链级配置生成各节点配置，发现从服务器 A 无法传到服务器 B，因为登录服务用的是 ssh 密钥认证，只有本地有一份。到时还需要 scp 复制到本地，再复制到 B，还不如干脆本地生成。
 
 **因此，下面的命令都是再本地 Ubuntu 计算机里面执行的：**
@@ -206,7 +206,7 @@ bin  resource  scripts
 
 ### 二、定制配置
 *这次启动比较着急，而且也只是测试，场景需要不是特别明确，并没有很细节地去定制*
-#### 概述
+#### 1.1 概述
 具体参考 CITA 文档，以及 [链级配置](./链级配置.md)
 
 总的来讲，CITA 链分三类配置：
@@ -229,7 +229,7 @@ bin  resource  scripts
 2. 配置文件输入部分链级配置 init_data.yml
 3. 配置文件输入微服务配置 *.toml
 
-#### 具体配置
+#### 2.2 具体配置
 2个共识节点，0 个普通节点。其中一台服务器配置 1 个节点，一台服务器配置 1 个节点 + 所有的工具链以及 DEMO。
 
 出块时间设置 3 s，即默认值
@@ -242,24 +242,24 @@ quata 模式，即发起交易不需要 Gas 费，只要使用的资源不超过
 
 参考[官方文档](https://docs.citahub.com/zh-CN/cita/install#%E9%83%A8%E7%BD%B2-cita)的分布式部署。
 
-#### 1. 在本地初始化链
+#### 3.1 在本地初始化链
 生成个节点对应文件：
 ```shell
 bin/cita create --super_admin "[Super Admin 地址]" --nodes "[节点0的服务器IP]:4000,[节点1的服务器IP]:4000"
 ```
 
-#### 2. 在 2 台服务器上创建目录
+#### 3.2 在 2 台服务器上创建目录
 ```shell
 $ mkdir -p /data/cita/
 ```
 
-#### 3. 将生成的节点拷贝到所有主机
+#### 3.3 将生成的节点拷贝到所有主机
 ```shell
 $ scp -r cita_secp256k1_sha3/* [节点0IP地址]:/data/cita/
 $ scp -r cita_secp256k1_sha3/* [节点1IP地址]:/data/cita/
 ```
 
-#### 4. 依次启动节点0，节点1
+#### 3.4 依次启动节点0，节点1
 以节点 0 为例：
 依次执行：
 ```shell
@@ -303,7 +303,7 @@ sudo: unable to resolve host ip-10-0-48-21
 
 工具链一般运行在节点 0 上。因此下面的操作只需要在节点 0 上执行
 
-#### 1. 安装需要的开发工具
+#### 4.1 安装需要的开发工具
 
 工具链需要安装 git，make，node 等开发工具。其中 git，make 可以直接用 apt 安装：依次执行：
 
@@ -327,7 +327,7 @@ $ nvm --version
 具体安装参考[How to Install Node.js and npm on Ubuntu 18.04](https://linuxize.com/post/how-to-install-node-js-on-ubuntu-18.04/#installing-nodejs-and-npm-using-nvm)，这样就能够指定版本了。
 
 
-#### 2. 安装 rebirth 缓存服务器
+#### 4.2 安装 rebirth 缓存服务器
 rebirth 很重要，后续包括区块链浏览器，钱包都是从 rebirth 这里获取数据。这样也更科学，减少链的数据读取负担。
 
 参考[官方文档](https://github.com/citahub/re-birth/blob/develop/README-CN.md)。总结一下就是依次执行：
@@ -385,14 +385,14 @@ nginx.conf:
 添加以上几行。
 
 
-#### 3. 安装区块链浏览器
+#### 4.3 安装区块链浏览器
 参考 [micrscope V2 文档](https://github.com/citahub/microscope-v2/blob/develop/README-CN.md#%E5%BF%AB%E9%80%9F%E6%8B%A5%E6%9C%89%E4%B8%80%E4%B8%AAmicrscope)，直接部署在 GitHub Page 上。然后在右上角设置节点 https://testnode.xxx.com:8888 就可以查看当前链的数据了。大概效果是：
 
 ![micr](./images/micr.png)
 
 
 
-#### 4. 安装移动端钱包
+#### 4.4 安装移动端钱包
 从[官方文档](https://docs.citahub.com/zh-CN/toolchain/cyton/cyton-intro)下载对应的移动端钱包。安装好后按照如下设置：
 
 设置：  
@@ -406,7 +406,7 @@ nginx.conf:
 ![cyton](./images/cyton.jpg)
 
 
-#### 5. 安装 First-forever-demo
+#### 4.5 安装 First-forever-demo
 
 参考[官方文档](https://github.com/citahub/first-forever-demo)
 
@@ -609,12 +609,12 @@ This is a bug. Please report it at:
 ```
 
 
-## 服务器配置：
+### 六、服务器配置：
 
 4C15.6G 
 
 
-### 仅仅运行一个节点：
+#### 6.1 仅仅运行一个节点：
 ```shell
 $ df -h ./cita
 Filesystem      Size  Used Avail Use% Mounted on
@@ -632,7 +632,7 @@ KiB Swap:        0 total,        0 free,        0 used. 14841624 avail Mem
 CPU 基本没占用    
 目前130万个块占用磁盘4.8G左右   
 
-### 运行一个节点+缓存服务器等其他工具链
+#### 6.2 运行一个节点+缓存服务器等其他工具链
 ```shell
 $ df -h ./cita/
 Filesystem      Size  Used Avail Use% Mounted on
