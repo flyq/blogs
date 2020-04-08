@@ -70,6 +70,22 @@ ubuntu=> \list
 
 ```
 
+
+It sounds like you want the PostgreSQL server:
+```shell
+apt-get install postgresql-server-all
+```
+Also, you never need to use sudo su - postgres. Just:
+```shell
+sudo -u postgres -i
+```
+to get an interactive shell, or
+```shell
+sudo -u postgres psql
+```
+(or whatever) to run a command.
+
+
 可以看出，成功在 postgres 里面创建 Ubuntu 的账号。
 
 
