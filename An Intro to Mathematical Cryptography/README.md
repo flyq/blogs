@@ -51,6 +51,10 @@
 大于 10^26
 
 ### 1.2 Divisibility and greatest common divisors 整除与最大公约数
+
+整除的定义：
+![divide](./images/divide.PNG)
+
 a = bc (b != 0)
 
 b divides a
@@ -62,6 +66,11 @@ b | a
 奇数 odd integers
 
 gcd(a, b)
+最大公因数的定义:
+
+![gcd](./images/gcd.PNG)
+
+欧几里得算法算最大公因数：
 
 ![oujilide](./images/Euclidean.PNG)
 
@@ -70,6 +79,9 @@ a = b · q + r
 a,b 的所有公因子与 b, r 的所有公因子相同。
 
 互质 relatively prime
+
+整除算法定义:
+![divideAlgo](./images/divideAlgo.PNG)
 
 扩展欧几里得算法：
 au + bv = gcd(a,b)
@@ -95,8 +107,30 @@ gcd(a, b) = a*w + b*v
 
 ![pqpq](./images/qpqp.PNG)
 
+互质定义：
+![relativeprime](./images/relativeprime.PNG)
+
 
 ### 1.3 Modular arithmetic 模运算
-a - b 能被 m 整除：
-a ≡ b (mod m)  
+a - b 能被 m 整除：   
+a ≡ b (mod m)   
 
+模运算定义：
+![modulo](./images/modulo.PNG)
+
+
+Proposition 1.13. m >= 1 的整数：
+
+a * b = 1 (mod m) 当且仅当 gcd(a, m) = 1
+
+
+整数模 n 的环：
+![ring](./images/rings.PNG)
+
+group of units modulo m 的定义：
+
+![unit](./images/unit.PNG)
+
+欧拉函数（Euler's phi function）的定义:
+
+![eulerf](./images/eulerf.PNG)
