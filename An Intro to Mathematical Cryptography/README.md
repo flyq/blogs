@@ -6,7 +6,9 @@
     - [总体](#%e6%80%bb%e4%bd%93)
     - [细节](#%e7%bb%86%e8%8a%82)
   - [Chapter 1 An Introduction to Cryptography](#chapter-1-an-introduction-to-cryptography)
-    - [Simple substitution ciphers](#simple-substitution-ciphers)
+    - [1.1 Simple substitution ciphers 简单替换密码](#11-simple-substitution-ciphers-%e7%ae%80%e5%8d%95%e6%9b%bf%e6%8d%a2%e5%af%86%e7%a0%81)
+    - [1.2 Divisibility and greatest common divisors 整除与最大公约数](#12-divisibility-and-greatest-common-divisors-%e6%95%b4%e9%99%a4%e4%b8%8e%e6%9c%80%e5%a4%a7%e5%85%ac%e7%ba%a6%e6%95%b0)
+    - [1.3 Modular arithmetic 模运算](#13-modular-arithmetic-%e6%a8%a1%e8%bf%90%e7%ae%97)
 
 
 ## 数学基础：
@@ -40,11 +42,61 @@
 * Lattices
 
 ## Chapter 1 An Introduction to Cryptography
-### Simple substitution ciphers
+### 1.1 Simple substitution ciphers 简单替换密码
 简单替换密码：
 * Caesar cipher （shift cipher）
 
 解空间：
 26!
 大于 10^26
+
+### 1.2 Divisibility and greatest common divisors 整除与最大公约数
+a = bc (b != 0)
+
+b divides a
+a is divisible by b
+
+b | a
+
+偶数 even integers
+奇数 odd integers
+
+gcd(a, b)
+
+![oujilide](./images/Euclidean.PNG)
+
+a = b · q + r 
+
+a,b 的所有公因子与 b, r 的所有公因子相同。
+
+互质 relatively prime
+
+扩展欧几里得算法：
+au + bv = gcd(a,b)
+
+r2 = a - bq1      =>  
+r3 = b - r2q2     =>  b = (a-bq1)q2 + r3   
+r3 = -aq2 + b(q1q2+1)  
+r4 = r2 - r3q3 = a(1 + q2q3) - b(q1 + q3 + q1q2q3)
+
+归纳得出 
+```
+gcd(a, b) = a*w + b*v
+```
+
+73, 25
+
+73 = 25 · 2 + 23  
+25 = 23 · 1 + 2  
+23 = 2 · 11 + 1  
+2 = 1 · 2 + 0  
+
+![7325](./images/7325.PNG)
+
+![pqpq](./images/qpqp.PNG)
+
+
+### 1.3 Modular arithmetic 模运算
+a - b 能被 m 整除：
+a ≡ b (mod m)  
 
