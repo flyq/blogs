@@ -11,6 +11,7 @@
     - [1.3 Modular arithmetic 模运算](#13-modular-arithmetic-%e6%a8%a1%e8%bf%90%e7%ae%97)
     - [1.4 Prime number, unique factorization, and finite fields](#14-prime-number-unique-factorization-and-finite-fields)
     - [1.5 Powers and primitive roots in finite fields](#15-powers-and-primitive-roots-in-finite-fields)
+    - [1.6 Cryptography before the computer age](#16-cryptography-before-the-computer-age)
 
 
 ## 数学基础：
@@ -167,3 +168,22 @@ The Fast Powering Algorithm:
 费马小定理：
 ![Fermat's Little Theorem](./images/FermatLittle.PNG)
 
+
+order of a modulo p:
+![order_modulo](./images/order_modulo_p.PNG)
+
+感觉等价于， a^k (mod p) 是一循环。这个循环的最小长度就叫 a 模 p 的阶
+
+A divides B： B 除以 A 结果是整数。
+
+
+primitive roots of Fp (F*p 的生成元)：
+![primive](./images/primitive.PNG)
+
+F29:
+{2, 3, 8, 10, 11, 14, 15, 18, 19, 21, 26, 27}
+可以看出几个特征，原根/生成元 小于 p；
+素数质数都有；
+个数的 %(p-1)；比如这里是%(29-1) = %(28) = 28 * (1/2) * (6/7) = 12，正好 12 个
+
+### 1.6 Cryptography before the computer age
