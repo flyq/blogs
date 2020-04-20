@@ -164,3 +164,6 @@ The Fast Powering Algorithm:
 
 
 ### 1.5 Powers and primitive roots in finite fields
+费马小定理：
+![Fermat's Little Theorem](./images/FermatLittle.PNG)
+
