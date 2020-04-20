@@ -9,6 +9,8 @@
     - [1.1 Simple substitution ciphers 简单替换密码](#11-simple-substitution-ciphers-%e7%ae%80%e5%8d%95%e6%9b%bf%e6%8d%a2%e5%af%86%e7%a0%81)
     - [1.2 Divisibility and greatest common divisors 整除与最大公约数](#12-divisibility-and-greatest-common-divisors-%e6%95%b4%e9%99%a4%e4%b8%8e%e6%9c%80%e5%a4%a7%e5%85%ac%e7%ba%a6%e6%95%b0)
     - [1.3 Modular arithmetic 模运算](#13-modular-arithmetic-%e6%a8%a1%e8%bf%90%e7%ae%97)
+    - [1.4 Prime number, unique factorization, and finite fields](#14-prime-number-unique-factorization-and-finite-fields)
+    - [1.5 Powers and primitive roots in finite fields](#15-powers-and-primitive-roots-in-finite-fields)
 
 
 ## 数学基础：
@@ -134,3 +136,31 @@ group of units modulo m 的定义：
 欧拉函数（Euler's phi function）的定义:
 
 ![eulerf](./images/eulerf.PNG)
+
+![eulerfunPic](./images/EulerPhi.svg)
+
+The Fast Powering Algorithm:
+
+![fastpowing](./images/fastpowing.PNG)
+
+### 1.4 Prime number, unique factorization, and finite fields
+
+素数的定义：
+![prime](./images/prime.PNG)
+
+合数的质因子（算术基本定理）：
+![factor](./images/factor.PNG)
+
+质因数指数的定义（order）：
+![order](./images/order.PNG)
+
+模乘法逆：
+![order](./images/multiinv.PNG)
+等价于：
+![uint](./images/unitprime.PNG)
+
+域的定义（field）：
+![field](./images/field.PNG)
+
+
+### 1.5 Powers and primitive roots in finite fields
