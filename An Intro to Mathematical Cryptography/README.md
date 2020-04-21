@@ -12,6 +12,7 @@
     - [1.4 Prime number, unique factorization, and finite fields](#14-prime-number-unique-factorization-and-finite-fields)
     - [1.5 Powers and primitive roots in finite fields](#15-powers-and-primitive-roots-in-finite-fields)
     - [1.6 Cryptography before the computer age](#16-cryptography-before-the-computer-age)
+    - [1.7 Symmetric and asymmetric ciphers](#17-symmetric-and-asymmetric-ciphers)
 
 
 ## 数学基础：
@@ -56,11 +57,13 @@
 ### 1.2 Divisibility and greatest common divisors 整除与最大公约数
 
 整除的定义：
+
 ![divide](./images/divide.PNG)
 
 a = bc (b != 0)
 
 b divides a
+
 a is divisible by b
 
 b | a
@@ -84,6 +87,7 @@ a,b 的所有公因子与 b, r 的所有公因子相同。
 互质 relatively prime
 
 整除算法定义:
+
 ![divideAlgo](./images/divideAlgo.PNG)
 
 扩展欧几里得算法：
@@ -111,6 +115,7 @@ gcd(a, b) = a*w + b*v
 ![pqpq](./images/qpqp.PNG)
 
 互质定义：
+
 ![relativeprime](./images/relativeprime.PNG)
 
 
@@ -119,6 +124,7 @@ a - b 能被 m 整除：
 a ≡ b (mod m)   
 
 模运算定义：
+
 ![modulo](./images/modulo.PNG)
 
 
@@ -127,7 +133,12 @@ Proposition 1.13. m >= 1 的整数：
 a * b = 1 (mod m) 当且仅当 gcd(a, m) = 1
 
 
+模运算性质：
+
+![inversegcd](./images/inversegcd.PNG)
+
 整数模 n 的环：
+
 ![ring](./images/rings.PNG)
 
 group of units modulo m 的定义：
@@ -147,29 +158,38 @@ The Fast Powering Algorithm:
 ### 1.4 Prime number, unique factorization, and finite fields
 
 素数的定义：
+
 ![prime](./images/prime.PNG)
 
 合数的质因子（算术基本定理）：
+
 ![factor](./images/factor.PNG)
 
 质因数指数的定义（order）：
+
 ![order](./images/order.PNG)
 
 模乘法逆：
+
 ![order](./images/multiinv.PNG)
+
 等价于：
+
 ![uint](./images/unitprime.PNG)
 
 域的定义（field）：
+
 ![field](./images/field.PNG)
 
 
 ### 1.5 Powers and primitive roots in finite fields
 费马小定理：
+
 ![Fermat's Little Theorem](./images/FermatLittle.PNG)
 
 
 order of a modulo p:
+
 ![order_modulo](./images/order_modulo_p.PNG)
 
 感觉等价于， a^k (mod p) 是一循环。这个循环的最小长度就叫 a 模 p 的阶
@@ -178,6 +198,7 @@ A divides B： B 除以 A 结果是整数。
 
 
 primitive roots of Fp (F*p 的生成元)：
+
 ![primive](./images/primitive.PNG)
 
 F29:
@@ -187,3 +208,6 @@ F29:
 个数的 %(p-1)；比如这里是%(29-1) = %(28) = 28 * (1/2) * (6/7) = 12，正好 12 个
 
 ### 1.6 Cryptography before the computer age
+扯淡
+
+### 1.7 Symmetric and asymmetric ciphers
