@@ -13,6 +13,13 @@
     - [1.5 Powers and primitive roots in finite fields](#15-powers-and-primitive-roots-in-finite-fields)
     - [1.6 Cryptography before the computer age](#16-cryptography-before-the-computer-age)
     - [1.7 Symmetric and asymmetric ciphers](#17-symmetric-and-asymmetric-ciphers)
+      - [1.7.1 Symmetric ciphers](#171-symmetric-ciphers)
+      - [1.7.2 Encoding schemes](#172-encoding-schemes)
+      - [1.7.3 Symmetric encryption of encoded blocks](#173-symmetric-encryption-of-encoded-blocks)
+      - [1.7.4 Examples of symmetric ciphers](#174-examples-of-symmetric-ciphers)
+      - [1.7.5 Random bit sequences and symmetric ciphers](#175-random-bit-sequences-and-symmetric-ciphers)
+      - [1.7.6 Asymmetric ciphers make a first appearance](#176-asymmetric-ciphers-make-a-first-appearance)
+  - [2 Discrete Logarithms and Diffie-Hellman](#2-discrete-logarithms-and-diffie-hellman)
 
 
 ## 数学基础：
@@ -211,3 +218,31 @@ F29:
 扯淡
 
 ### 1.7 Symmetric and asymmetric ciphers
+
+#### 1.7.1 Symmetric ciphers
+
+![cipher](./images/safecipher.PNG)
+
+
+#### 1.7.2 Encoding schemes
+ASCII
+
+encoding scheme 编码方案:(eight bits)
+
+![encoding](./images/encoding.PNG)
+
+#### 1.7.3 Symmetric encryption of encoded blocks
+
+exhaustive search attack/brute-force attack
+
+meet-in-the-middle
+
+collision attacks
+
+#### 1.7.4 Examples of symmetric ciphers
+
+#### 1.7.5 Random bit sequences and symmetric ciphers
+
+#### 1.7.6 Asymmetric ciphers make a first appearance
+
+## 2 Discrete Logarithms and Diffie-Hellman
