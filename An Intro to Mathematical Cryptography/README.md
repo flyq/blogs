@@ -20,6 +20,8 @@
       - [1.7.5 Random bit sequences and symmetric ciphers](#175-random-bit-sequences-and-symmetric-ciphers)
       - [1.7.6 Asymmetric ciphers make a first appearance](#176-asymmetric-ciphers-make-a-first-appearance)
   - [2 Discrete Logarithms and Diffie-Hellman](#2-discrete-logarithms-and-diffie-hellman)
+    - [2.1 The birth of public key cryptography](#21-the-birth-of-public-key-cryptography)
+    - [2.2 The discrete logarithm problem](#22-the-discrete-logarithm-problem)
 
 
 ## 数学基础：
@@ -246,3 +248,14 @@ collision attacks
 #### 1.7.6 Asymmetric ciphers make a first appearance
 
 ## 2 Discrete Logarithms and Diffie-Hellman
+
+### 2.1 The birth of public key cryptography
+
+1976
+
+**We stand today on the brink of a revolution in cryptography.**
+
+### 2.2 The discrete logarithm problem
+
+离散对数问题：
+
