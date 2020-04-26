@@ -257,5 +257,8 @@ collision attacks
 
 ### 2.2 The discrete logarithm problem
 
-离散对数问题：
+离散对数问题定义：
 
+![dlp](./images/dlp.PNG)
+
+ind<sub>g</sub>(h)
