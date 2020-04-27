@@ -261,4 +261,12 @@ collision attacks
 
 ![dlp](./images/dlp.PNG)
 
-ind<sub>g</sub>(h)
+ind<sub>g</sub>(h) 定义：
+
+![ind](./images/ind.PNG)
+
+可以将离散对数问题等价为一个函数：
+
+![dlp_fun](./images/dlp_fun.PNG)
+
+如图，其中 F*<sub>p</sub> 表示集合 { 1, 2, ... , p-1 }。右边表示 { 0, 1, ... , p-2 }
