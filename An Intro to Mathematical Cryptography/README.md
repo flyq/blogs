@@ -22,6 +22,8 @@
   - [2 Discrete Logarithms and Diffie-Hellman](#2-discrete-logarithms-and-diffie-hellman)
     - [2.1 The birth of public key cryptography](#21-the-birth-of-public-key-cryptography)
     - [2.2 The discrete logarithm problem](#22-the-discrete-logarithm-problem)
+    - [2.3 Diffie-Hellman key exchange](#23-diffie-hellman-key-exchange)
+    - [2.4 The ElGamal public key cryptosystem](#24-the-elgamal-public-key-cryptosystem)
 
 
 ## 数学基础：
@@ -270,3 +272,22 @@ ind<sub>g</sub>(h) 定义：
 ![dlp_fun](./images/dlp_fun.PNG)
 
 如图，其中 F*<sub>p</sub> 表示集合 { 1, 2, ... , p-1 }。右边表示 { 0, 1, ... , p-2 }
+
+
+群论的离散对数问题定义：
+
+![dlp_group](./images/dlp_group.PNG)
+
+
+### 2.3 Diffie-Hellman key exchange
+
+Diffie-Hellman key exchange:
+
+![dhke](./images/dhke.PNG)
+
+Diffie-Hellman Problem(DHP):
+
+![DHP](./images/DHP.PNG)
+
+### 2.4 The ElGamal public key cryptosystem
+
