@@ -24,6 +24,8 @@
     - [2.2 The discrete logarithm problem](#22-the-discrete-logarithm-problem)
     - [2.3 Diffie-Hellman key exchange](#23-diffie-hellman-key-exchange)
     - [2.4 The ElGamal public key cryptosystem](#24-the-elgamal-public-key-cryptosystem)
+    - [2.5 An overview of the theory of groups](#25-an-overview-of-the-theory-of-groups)
+    - [2.6 How hard is the discrete logarithm problem?](#26-how-hard-is-the-discrete-logarithm-problem)
 
 
 ## 数学基础：
@@ -290,4 +292,70 @@ Diffie-Hellman Problem(DHP):
 ![DHP](./images/DHP.PNG)
 
 ### 2.4 The ElGamal public key cryptosystem
+
+### 2.5 An overview of the theory of groups
+
+乘法群特点：
+
+![mul_group](./images/group_mul.PNG)
+
+加法群特点：
+
+![group_add](./images/group_add.PNG)
+
+可交换群（阿贝尔群）的定义：    
+commutative group/abelian group
+
+![group](./images/group.PNG)
+
+什么是 Order 👆：群的元素个数。
+
+General linear group 定义：
+
+![glg](./images/glg.PNG)
+
+infinite order 定义:
+
+群里面某一个元素的 order，基本就是 p-1：
+
+![io](./images/infinite_order.PNG)
+
+元素的 order 和 k 的 n 倍关系
+
+![fg](./images/fg_order.PNG)
+
+
+拉格朗日理论：
+
+![Lagrange](./images/lagrange.PNG)
+
+
+### 2.6 How hard is the discrete logarithm problem?
+
+计算复杂理论：
+
+Order Notation:
+
+![order_notation](./images/order_notation.PNG)
+
+
+多项式时间（线性时间，二次方时间）：  
+polynomial（linear time, quadratic time）：
+
+![polynomial_time](./images/polynomial.PNG)
+
+指数时间：  
+exponential time:
+
+![exponential](./images/exponential.PNG)
+
+次指数时间：  
+subexponential-time：
+
+![subexponential](./images/subexponential.PNG)
+
+什么是“easy”问题，什么是“hard”问题？
+
+多项式时间内的问题是容易问题；
+指数时间的是难问题；
 
