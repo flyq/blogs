@@ -26,6 +26,14 @@
     - [2.4 The ElGamal public key cryptosystem](#24-the-elgamal-public-key-cryptosystem)
     - [2.5 An overview of the theory of groups](#25-an-overview-of-the-theory-of-groups)
     - [2.6 How hard is the discrete logarithm problem?](#26-how-hard-is-the-discrete-logarithm-problem)
+    - [2.7 A collision algorithm for the DLP](#27-a-collision-algorithm-for-the-dlp)
+    - [2.8 The Chinese remainder theorem](#28-the-chinese-remainder-theorem)
+      - [2.8.1 Solving congruences with composite moduli](#281-solving-congruences-with-composite-moduli)
+    - [2.9 The Pohlig-Hellman algorithm](#29-the-pohlig-hellman-algorithm)
+    - [2.10 Rings, quotient rings, polynomial rings, and finite fields](#210-rings-quotient-rings-polynomial-rings-and-finite-fields)
+      - [2.10.1 An overview of the theory of rings](#2101-an-overview-of-the-theory-of-rings)
+      - [2.10.2 Divisibility and quotient rings](#2102-divisibility-and-quotient-rings)
+      - [2.10.3 Polynomial rings and the Euclidean algorithm](#2103-polynomial-rings-and-the-euclidean-algorithm)
 
 
 ## 数学基础：
@@ -360,3 +368,114 @@ subexponential-time：
 指数时间的是难问题；
 当然，都是在输入很大的情况下。
 
+
+有限域里面的加法群 O(log p)，不适合做密码学的陷门函数（one-way function）
+
+乘法群的 通用算法是 subexponential，
+
+不同的群有不同的难度。
+
+解决椭圆曲线的DLP需要 O(N^1/2)
+
+### 2.7 A collision algorithm for the DLP
+
+碰撞算法（collision algorithm/meet-in-the-middle algorithm）
+
+the trivial brute-force algorithm
+
+Shanks's algorithm
+
+![shanks](./images/shanks.PNG)
+
+Shanks’s Babystep–Giantstep Algorithm：
+
+![sbga](./images/sbga.PNG)
+
+### 2.8 The Chinese remainder theorem
+
+中国剩余定理：
+
+Chinese Remainder Theorem：
+
+![CRT](./images/CRT.PNG)
+
+中国剩余定理说明了一个什么问题？
+
+可以类别代数里面的方程组。代数里面的一个方程一般代表一条线，方程组是否有解代表那些线是否有交点。
+
+同理，给定一组模等式，每一个模等式代表由离散的点组成的“线”，怎么判断是否有解。或者说线有"交点"？由于模运算自带循环，一般"交点"也是一个“线”。循环周期为子循环周期乘积。联立全等。
+
+这个吧，其实和公倍数，很类似，2 的公倍数和 3 的公倍数重合的就是 6 的公倍数类似。
+
+In addition to being a theorem and an algorithm, we would suggest to the reader that the Chinese remainder theorem is also a **state of mind**.
+
+#### 2.8.1 Solving congruences with composite moduli
+
+![congruence](./images/congruence.PNG)
+
+如果，a 是质数，则x有双根，a为 p1*p2 （p1 p2 为质数），a有 4 根。
+
+### 2.9 The Pohlig-Hellman algorithm
+
+Pohlig-Hellman Algorithm:
+
+![pha](./images/pha.PNG)
+
+
+![p234](./images/p234.PNG)
+
+### 2.10 Rings, quotient rings, polynomial rings, and finite fields
+
+#### 2.10.1 An overview of the theory of rings
+
+Ring 的定义：
+
+环不一定需要乘法交换律，不一定存在乘法单位元1。
+
+commutative rings with (multiplicative) identity：
+
+![ring_def](./images/ring_def.PNG)
+
+加法：
+
+1. 加法单位元
+2. 逆元（a + b = 0）
+3. 结合律
+4. 交互律
+
+因此，仅从环的加法性质来讲，环是一个阿贝尔群（可交换群）并且有一个加法单位元
+
+乘法：
+
+1. 乘法单位元
+2. 结合律
+3. 交换律
+
+因此，仅从环的乘法性质来看，它就是一个阿贝尔群（可交换群）并且有一个乘法单位元，但是里面的元素没有乘法逆的要求。
+
+加法和乘法：
+
+1. 分配律
+
+
+不过我们讨论的环都是可交换环，后续就简称环、
+
+
+field:
+
+![field](./images/field_1.PNG)
+
+#### 2.10.2 Divisibility and quotient rings
+
+环里面的整除：
+
+![Divisibility](./images/Divisibility.PNG)
+
+同余类：
+
+![congruence](./images/congruence_ring.PNG)
+
+
+#### 2.10.3 Polynomial rings and the Euclidean algorithm
+
+多项式环：
