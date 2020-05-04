@@ -479,3 +479,7 @@ field:
 #### 2.10.3 Polynomial rings and the Euclidean algorithm
 
 多项式环：
+
+![polynomial](./images/polynomial_ring.PNG)
+
+多项式的 degree，deg(**a**)
