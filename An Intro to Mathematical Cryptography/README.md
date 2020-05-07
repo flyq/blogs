@@ -483,3 +483,7 @@ field:
 ![polynomial](./images/polynomial_ring.PNG)
 
 多项式的 degree，deg(**a**)
+
+多项式环的扩展欧几里得算法：
+
+![extendedEuclidean](./images/extend_euclidean_F.PNG)
