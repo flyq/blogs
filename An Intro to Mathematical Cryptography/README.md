@@ -34,6 +34,9 @@
       - [2.10.1 An overview of the theory of rings](#2101-an-overview-of-the-theory-of-rings)
       - [2.10.2 Divisibility and quotient rings](#2102-divisibility-and-quotient-rings)
       - [2.10.3 Polynomial rings and the Euclidean algorithm](#2103-polynomial-rings-and-the-euclidean-algorithm)
+      - [2.10.4 Quotients of polynomial rings and finite fields of prime power order](#2104-quotients-of-polynomial-rings-and-finite-fields-of-prime-power-order)
+  - [Chapte 3 Integer Factorizatoin and RSA](#chapte-3-integer-factorizatoin-and-rsa)
+    - [3.1 Euler’s formula and roots modulo pq](#31-eulers-formula-and-roots-modulo-pq)
 
 
 ## 数学基础：
@@ -487,3 +490,26 @@ field:
 多项式环的扩展欧几里得算法：
 
 ![extendedEuclidean](./images/extend_euclidean_F.PNG)
+
+
+![monic irreducible](./images/monic_irreducible_polynomial.PNG)
+
+#### 2.10.4 Quotients of polynomial rings and finite fields of prime power order
+
+![finite_fields](./images/finite_fields.PNG)
+
+GF:
+
+![Galois_fields](./images/Galois_fields.PNG)
+
+
+![primitive_root](./images/primitive_root.PNG)
+
+
+## Chapte 3 Integer Factorizatoin and RSA
+
+### 3.1 Euler’s formula and roots modulo pq
+
+欧拉公式：
+
+![eulerformula](./images/eulerformula.PNG)
