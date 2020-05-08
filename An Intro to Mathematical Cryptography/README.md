@@ -37,12 +37,13 @@
       - [2.10.4 Quotients of polynomial rings and finite fields of prime power order](#2104-quotients-of-polynomial-rings-and-finite-fields-of-prime-power-order)
   - [Chapte 3 Integer Factorizatoin and RSA](#chapte-3-integer-factorizatoin-and-rsa)
     - [3.1 Euler’s formula and roots modulo pq](#31-eulers-formula-and-roots-modulo-pq)
+    - [3.2 The RSA public key cryptosystem](#32-the-rsa-public-key-cryptosystem)
 
 
 ## 数学基础：
 ### 总体
 * 数论 number theory
-* 抽象代数 abstract algebra: `groups, rings, fields`
+* 抽象代数 abstract algebra: **groups**, **rings**, **fields**
 * 概率论 probability
 * 信息论 information theory
 * 线性代数 linear algebra
@@ -510,6 +511,18 @@ GF:
 
 ### 3.1 Euler’s formula and roots modulo pq
 
-欧拉公式：
+欧拉公式 pq 版：
 
 ![eulerformula](./images/eulerformula.PNG)
+
+
+
+![32](./images/3.2.PNG)
+
+![3.4](./images/3.3.PNG)
+
+
+![rsa](./images/rsa.PNG)
+
+
+### 3.2 The RSA public key cryptosystem
