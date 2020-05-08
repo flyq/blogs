@@ -217,7 +217,7 @@ order of a modulo p:
 
 ![order_modulo](./images/order_modulo_p.PNG)
 
-感觉等价于， a^k (mod p) 是一循环。这个循环的最小长度就叫 a 模 p 的阶
+感觉等价于， a^k (mod p) 是一循环。这个循环的最小长度就叫 a 模 p 的 order
 
 A divides B： B 除以 A 结果是整数。
 
