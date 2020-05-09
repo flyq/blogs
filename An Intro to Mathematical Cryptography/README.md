@@ -526,3 +526,5 @@ GF:
 
 
 ### 3.2 The RSA public key cryptosystem
+
+![rsa](./images/rsa_concept.PNG)
