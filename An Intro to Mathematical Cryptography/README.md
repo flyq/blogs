@@ -38,6 +38,12 @@
   - [Chapte 3 Integer Factorizatoin and RSA](#chapte-3-integer-factorizatoin-and-rsa)
     - [3.1 Euler’s formula and roots modulo pq](#31-eulers-formula-and-roots-modulo-pq)
     - [3.2 The RSA public key cryptosystem](#32-the-rsa-public-key-cryptosystem)
+    - [3.3 Implementation and security issues](#33-implementation-and-security-issues)
+    - [3.4 Primality testing](#34-primality-testing)
+      - [3.4.1 The distribution of the set of primes](#341-the-distribution-of-the-set-of-primes)
+      - [3.4.2 Primality proofs versus probabilistic tests](#342-primality-proofs-versus-probabilistic-tests)
+    - [3.5 Pollard’s p − 1 factorization algorithm](#35-pollards-p-%e2%88%92-1-factorization-algorithm)
+    - [3.6 Factorization via difference of squares](#36-factorization-via-difference-of-squares)
 
 
 ## 数学基础：
@@ -528,3 +534,36 @@ GF:
 ### 3.2 The RSA public key cryptosystem
 
 ![rsa](./images/rsa_concept.PNG)
+
+### 3.3 Implementation and security issues
+
+Man-in-the-middle attack
+
+### 3.4 Primality testing
+
+![feimat](./images/feimat.PNG)
+
+见证人，如果存在一个整数让另一个整数无法满足费马小定理：它就是那个模的见证人：
+
+![witness](./images/witness.PNG)
+
+carmichael numbers:
+
+![carmichael](./images/carmichael.PNG)
+
+carmichael 数的存在，表示：   
+素数 必定满足 费马小定理那个等式；   
+也有部分合数（carmichael 数）满足；
+
+#### 3.4.1 The distribution of the set of primes
+
+![PNT](./images/PNT.PNG)
+
+#### 3.4.2 Primality proofs versus probabilistic tests
+
+### 3.5 Pollard’s p − 1 factorization algorithm
+
+![pollard](./images/pollard.PNG)
+
+
+### 3.6 Factorization via difference of squares
