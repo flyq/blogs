@@ -44,6 +44,10 @@
       - [3.4.2 Primality proofs versus probabilistic tests](#342-primality-proofs-versus-probabilistic-tests)
     - [3.5 Pollard’s p − 1 factorization algorithm](#35-pollards-p-%e2%88%92-1-factorization-algorithm)
     - [3.6 Factorization via difference of squares](#36-factorization-via-difference-of-squares)
+    - [3.7 Smooth numbers, sieves, and building relations for factorization](#37-smooth-numbers-sieves-and-building-relations-for-factorization)
+      - [3.7.3 The number field sieve](#373-the-number-field-sieve)
+    - [3.8 The index calculus method for computing discrete logarithms in F<sub>p</sub>](#38-the-index-calculus-method-for-computing-discrete-logarithms-in-fsubpsub)
+  - [Combinatorics, Probability, and Information Theory](#combinatorics-probability-and-information-theory)
 
 
 ## 数学基础：
@@ -567,3 +571,21 @@ carmichael 数的存在，表示：
 
 
 ### 3.6 Factorization via difference of squares
+
+![factor_sqr](./images/factor_sqr.PNG)
+
+
+### 3.7 Smooth numbers, sieves, and building relations for factorization
+
+![B-smooth](./images/B-smooth.PNG)
+
+![canfield](./images/canfield.PNG)
+
+![amount](./images/amount.PNG)
+
+#### 3.7.3 The number field sieve
+
+### 3.8 The index calculus method for computing discrete logarithms in F<sub>p</sub>
+
+
+## Combinatorics, Probability, and Information Theory
