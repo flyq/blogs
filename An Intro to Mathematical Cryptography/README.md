@@ -47,7 +47,8 @@
     - [3.7 Smooth numbers, sieves, and building relations for factorization](#37-smooth-numbers-sieves-and-building-relations-for-factorization)
       - [3.7.3 The number field sieve](#373-the-number-field-sieve)
     - [3.8 The index calculus method for computing discrete logarithms in F<sub>p</sub>](#38-the-index-calculus-method-for-computing-discrete-logarithms-in-fsubpsub)
-  - [Combinatorics, Probability, and Information Theory](#combinatorics-probability-and-information-theory)
+  - [4. Combinatorics, Probability, and Information Theory](#4-combinatorics-probability-and-information-theory)
+    - [4.5 Pollard's p method](#45-pollards-p-method)
 
 
 ## 数学基础：
@@ -588,4 +589,8 @@ carmichael 数的存在，表示：
 ### 3.8 The index calculus method for computing discrete logarithms in F<sub>p</sub>
 
 
-## Combinatorics, Probability, and Information Theory
+## 4. Combinatorics, Probability, and Information Theory
+
+### 4.5 Pollard's p method
+
+![Pollard-p](./images/Pollard-p.PNG)
