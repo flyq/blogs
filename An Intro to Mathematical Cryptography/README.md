@@ -49,6 +49,7 @@
     - [3.8 The index calculus method for computing discrete logarithms in F<sub>p</sub>](#38-the-index-calculus-method-for-computing-discrete-logarithms-in-fsubpsub)
   - [4. Combinatorics, Probability, and Information Theory](#4-combinatorics-probability-and-information-theory)
     - [4.5 Pollard's p method](#45-pollards-p-method)
+  - [5. Elliptic Curves and Cryptography](#5-elliptic-curves-and-cryptography)
 
 
 ## 数学基础：
@@ -594,3 +595,4 @@ carmichael 数的存在，表示：
 ### 4.5 Pollard's p method
 
 ![Pollard-p](./images/Pollard-p.PNG)
+
