@@ -597,3 +597,11 @@ carmichael 数的存在，表示：
 ![Pollard-p](./images/Pollard-p.PNG)
 
 ## 5. Elliptic Curves and Cryptography
+
+Hasse 定理给出有限域里面最多有多少点
+
+![Hasse](./images/Hasse.PNG)
+
+ECDLP
+
+![ECDLP](./images/ECDLP.PNG)
