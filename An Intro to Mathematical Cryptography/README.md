@@ -59,7 +59,10 @@
 * 概率论 probability
 * 信息论 information theory
 * 线性代数 linear algebra
-* 统计学 statistics   
+* 统计学 statistics
+* 复杂性理论 Computational complexity theory
+
+![complexity](images/npcomplete.jpg)
 
 高阶
 * 椭圆曲线对 elliptic curve pairing
