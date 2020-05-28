@@ -40,7 +40,9 @@
 |profound|深刻，深奥|
 |vague|模糊|
 |precise|精确|
+
 `The central idea behind abstract algebra is to define a larger class of objects (sets with extra structure), of which Z and Q are definitive members.` 把运算规则也看成一种结构？(with extra structure)
+
 ```
 (Z,+) −→ Groups
 (Z,+,×) −→ Rings
@@ -95,7 +97,7 @@ element 属于 set
 |differentiable|可微的|
 |integrable|可积的|
 |domain|定义域|
-|codomain|共域，值域，可能出来的值的范围|
+|codomain|共域，陪域，值域，可能出来的值的范围|
 |range|值域，范围，实际出来的值的范围|
 
 ![domain-range-codomain](./images/domain-range-codomain.svg)
@@ -105,5 +107,20 @@ element 属于 set
 | English | 翻译 |
 | :---: | :---: |
 |identity map| 恒等变换，恒等映射|
-|injective | 内射（函数） |
-|surjective| 
+|injective | 单射、内射（函数） |
+|surjective|满射|
+|bijective|双射|
+
+单射函数，嵌射函数：injection，injective function， one-to-one function。陪域里面的y，存在最多一个定义域里面的x使得f(x) = y
+
+满射函数： surjection，onto，他的值域f(x)和陪域Y相等。
+
+![function](./images/function.PNG)
+
+
+| English | 翻译 |
+| :---: | :---: |
+|Equivalence|恒等关系|
+|formalized|形式化|
+
+
