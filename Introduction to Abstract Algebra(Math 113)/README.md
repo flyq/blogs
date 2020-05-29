@@ -123,4 +123,5 @@ element 属于 set
 |Equivalence|恒等关系|
 |formalized|形式化|
 
+![equi](./images/equivalence.PNG)
 

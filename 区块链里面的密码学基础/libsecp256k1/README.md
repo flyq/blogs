@@ -25,6 +25,10 @@ Pure Rust implementation of the secp256k1 curve and fast ECDSA signatures.
   - [1.14 hex-literal](#114-hex-literal)
   - [1.15 libsecp256k1-gen-ecmult](#115-libsecp256k1-gen-ecmult)
   - [1.16 libsecp256k1-gen-genmult](#116-libsecp256k1-gen-genmult)
+- [2 features](#2-features)
+  - [2.1 std](#21-std)
+  - [2.2 hmac](#22-hmac)
+  - [2.3 static-context](#23-static-context)
 
 
 # 1. 依赖
@@ -156,3 +160,16 @@ gen/ecmult
 
 ## 1.16 libsecp256k1-gen-genmult
 gen/genmult
+
+# 2 features
+
+## 2.1 std
+std = ["libsecp256k1-core/std", "sha2/std", "rand/std", "serde/std", "base64/std"]
+
+## 2.2 hmac
+hmac = ["hmac-drbg", "sha2", "typenum"]
+
+## 2.3 static-context
+[]
+
+workspace 
