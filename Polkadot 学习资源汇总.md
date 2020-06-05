@@ -1,26 +1,27 @@
 # Polkadot 学习资源汇总
 这里将实时收集汇总 Polkadot 相关的学习资源，包括 Polkadot 本身以及 Substrate 框架。
 ## `Contents`
-- [Polkadot 学习资源汇总](#polkadot-%e5%ad%a6%e4%b9%a0%e8%b5%84%e6%ba%90%e6%b1%87%e6%80%bb)
-  - [Contents](#contents)
-  - [Substrate 是什么](#substrate-%e6%98%af%e4%bb%80%e4%b9%88)
-  - [官网](#%e5%ae%98%e7%bd%91)
-  - [导航类资源](#%e5%af%bc%e8%88%aa%e7%b1%bb%e8%b5%84%e6%ba%90)
+- [Polkadot 学习资源汇总](#polkadot-学习资源汇总)
+  - [`Contents`](#contents)
+  - [Substrate 是什么](#substrate-是什么)
+  - [官网](#官网)
+  - [导航类资源](#导航类资源)
     - [awesome-substrate](#awesome-substrate)
     - [substrate.dev](#substratedev)
-    - [PolkaWorld 波卡世界](#polkaworld-%e6%b3%a2%e5%8d%a1%e4%b8%96%e7%95%8c)
+    - [substrate.io](#substrateio)
+    - [PolkaWorld 波卡世界](#polkaworld-波卡世界)
     - [Boka.Network](#bokanetwork)
     - [Polka Project](#polka-project)
-  - [主页类资源](#%e4%b8%bb%e9%a1%b5%e7%b1%bb%e8%b5%84%e6%ba%90)
+  - [主页类资源](#主页类资源)
     - [Polkadot Wiki](#polkadot-wiki)
-      - [Polkadot 综合性资源](#polkadot-%e7%bb%bc%e5%90%88%e6%80%a7%e8%b5%84%e6%ba%90)
-      - [基于 Polkadot 开发](#%e5%9f%ba%e4%ba%8e-polkadot-%e5%bc%80%e5%8f%91)
-      - [Polkadot 全面介绍](#polkadot-%e5%85%a8%e9%9d%a2%e4%bb%8b%e7%bb%8d)
-      - [参与维护网络](#%e5%8f%82%e4%b8%8e%e7%bb%b4%e6%8a%a4%e7%bd%91%e7%bb%9c)
+      - [Polkadot 综合性资源](#polkadot-综合性资源)
+      - [基于 Polkadot 开发](#基于-polkadot-开发)
+      - [Polkadot 全面介绍](#polkadot-全面介绍)
+      - [参与维护网络](#参与维护网络)
     - [Web3 Foundation Research](#web3-foundation-research)
-      - [Polkadot 网络协议](#polkadot-%e7%bd%91%e7%bb%9c%e5%8d%8f%e8%ae%ae)
-      - [Web3 研究团队成员](#web3-%e7%a0%94%e7%a9%b6%e5%9b%a2%e9%98%9f%e6%88%90%e5%91%98)
-      - [Web3 基金会新闻](#web3-%e5%9f%ba%e9%87%91%e4%bc%9a%e6%96%b0%e9%97%bb)
+      - [Polkadot 网络协议](#polkadot-网络协议)
+      - [Web3 研究团队成员](#web3-研究团队成员)
+      - [Web3 基金会新闻](#web3-基金会新闻)
 
 
 ## Substrate 是什么
@@ -37,7 +38,7 @@
 * P2P网络层
 * 内置的基本加密工具
 * 支持轻客户端
-* [工具集](https://substrate.dev/rustdocs/v1.0/substrate_service/index.html?search=srml)，用来修改运行环境的逻辑，例如管理存储、账户、权益、资产、共识算法等等
+* [工具集](https://substrate.dev/rustdocs/v2.0.0-rc2/sc_service/index.html?search=pallet)，用来修改运行环境的逻辑，例如管理存储、账户、权益、资产、共识算法等等
 * UI 工具
 
 它有以下特点：
@@ -52,6 +53,7 @@
 [Polkadot 官网](https://polkadot.network/)  
 [Parity 官网](https://www.parity.io/)  
 [Web3 基金会官网](https://web3.foundation/)  
+[Substrate 官网](https://www.substrate.io/)
 
 [Parity 官方 GitHub 地址](https://github.com/paritytech/)  
 [Polkadot GitHub 地址](https://github.com/paritytech/polkadot)  
@@ -60,7 +62,8 @@
 [Web3 基金会 GitHub 地址](https://github.com/w3f)  
 [跨链工具 Cumulus](https://github.com/paritytech/cumulus)
 
-[Polkadot 官方白皮书地址](https://polkadot.network/PolkaDotPaper.pdf)
+[Polkadot 官方白皮书地址](https://polkadot.network/PolkaDotPaper.pdf)  
+[Overview of Polkadot and its Design Considerations](https://eprint.iacr.org/2020/641.pdf)（May 29, 2020）
 
 [Web3 基金会论坛](https://forum.web3.foundation/)  
 [官方维护的 Riot 群](#polkadot-%e7%bb%bc%e5%90%88%e6%80%a7%e8%b5%84%e6%ba%90)  
@@ -95,15 +98,23 @@ https://substrate.dev/
 
 这里是 Polkadot 团队官方维护的 Substrate 开发者中心，为了方便开发者学习、研究、使用 Substrate，Polkadot 团队精心地写了非常有用的文档：
 
-- [Substrate 文档](https://substrate.dev/rustdocs/)：官方 Substrate 文档。这个文档以 Rust 的标准库文档的形式给出，如果之前看过 [Rust 标准库文档](https://doc.rust-lang.org/std/index.html)的话，会很习惯这个形式。这里包含了 Substrate 框架里面所有涉及到的库。比如 Substrate 里面实现的[工具集](https://substrate.dev/rustdocs/v1.0/substrate_service/index.html?search=srml)，提供了很多非常好的功能。
-- [Substrate Wiki](https://substrate.dev/docs/)：指南、实例和深入解释。这里讲解了 Substrate 是什么，怎么安装，并且深入讲解了 Substrate 里面的一些细节：包括 Extrinsics，Transaction Lifecycle，Low-level Data Format，Off-Chain Workers，Session Keys，SS58 Address Format 以及 Runtime，还有一些工具：比如 The subkey Tool，ink! 智能合约工具。
+- [Substrate 文档](https://substrate.dev/rustdocs/)：官方 Substrate 文档。这个文档以 Rust 的标准库文档的形式给出，如果之前看过 [Rust 标准库文档](https://doc.rust-lang.org/std/index.html)的话，会很习惯这个形式。这里包含了 Substrate 框架里面所有涉及到的库。比如 Substrate 里面实现的[工具集](https://substrate.dev/rustdocs/v2.0.0-rc2/sc_service/index.html?search=pallet)，提供了很多非常好的功能。
+- [Substrate Wiki](https://substrate.dev/docs/)：指南、实例和深入解释。这里讲解了 Substrate 是什么，怎么安装，并且深入讲解了 Substrate 里面的一些细节：包括 Extrinsics，Transaction Lifecycle，Low-level Data Format，Smart Contract,Off-Chain Workers，Session Keys，SS58 Address Format 以及 Runtime，还有一些工具：比如 The subkey Tool，ink! 智能合约工具。
 - [Substrate recipes 最佳实践](https://substrate.dev/recipes/)：这里是一组简单的代码模式，这些代码模式演示了使用 Substrate 构建区块链时的最佳实践。通过它可以学习怎样写出更加安全的 Runtime module。
 - [Substrate 示例教程](https://substrate.dev/en/tutorials)：这里有难易不同的好几个示例教程，手把手地带你基于 Substrate 来开发某个场景下的区块链。当你对 Polkadot 等有一个大概的了解之后，非常推荐从这里开始 Substrate Coding 之旅。
+- [Substrate Seminar](https://substrate.dev/en/seminar): 这里是 Substrate 研讨会，可以通过 Zoom 开展电话学习，一般在每周二的 14:00 UTC（北京时间晚上10点）。
 - [交流方式](https://substrate.dev/en/community)：这里的 Riot Chat 是类似一个微信的存在，里面可以讨论关于 Substrate 的问题，甚至有时候能够得到 Gavin Wood 的回答！
-- [Get Started on Substrate](https://substrate.dev/en/who/runtime-developer)：从这里可以学会怎样从零开始使用 Substrate 构建一个区块链。
-- [Get Started on Polkadot-JS](https://substrate.dev/en/who/front-end-developer)：从这里可以学会怎样从零开始使用 Polkadot-JS 来让前端与 Substrate 链进行交互。
-- [Get Started on ink!](https://substrate.dev/en/who/contract-developer)：从这里可以学会怎样从零开始使用 ink! 来构建运行在 Substrate 链上面的智能合约。
-- [基于 Substrate 构建的区块链项目](https://substrate.dev/en/users.html)：从这里可以看到目前已经有了四五十个项目使用 Substrate 构建他们的区块链。
+
+### substrate.io
+
+https://www.substrate.io/
+
+`标签`：`官方` `开发者中心`
+
+这里是 Substrate 官网，展示了 Substrate 特性以及一些有用的链接。
+- [Substrate playground](https://playground.substrate.dev/): Start hacking your substrate runtime in a web based VSCode like IDE.
+
+
 
 ### PolkaWorld 波卡世界
 https://www.polkaworld.org/explore
@@ -117,7 +128,18 @@ http://blog.boka.network/links/
 
 `标签`：`导航` `中文`
 
-功能和波卡世界类似。
+中文社区。
+
+- Kusama
+  - [Kusama 官网](https://kusama.network/)
+  - [Kusama Twitter](https://twitter.com/kusamanetwork)
+  - [Kusama 使用手册/详细资料](https://wiki.polkadot.network/docs/en/kusama-index)
+  - [Kusama 论坛](https://forum.kusama.network/)
+  - [领取 Kusama](https://claim.kusama.network/)
+- 区块链浏览器
+  - [telemetry](https://telemetry.polkadot.io/)
+  - [polkascan](https://polkascan.io/)
+  - [Polka.io](https://polka.io/)
 
 
 ### Polka Project
