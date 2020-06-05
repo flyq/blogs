@@ -175,7 +175,7 @@ https://wiki.polkadot.network/docs/en/
     - [Polkadot Reddit](https://www.reddit.com/r/dot/)：Polkadot 官方 Reddit 账号。
     - [Polkadot Youtube 频道](https://www.youtube.com/channel/UCB7PbjuZLEba_znc7mEGNgw)：来自创始人和 Polkadot 的视频内容，讲述了网络和愿景。
   - Polkadot 生态项目
-    - [有那些项目在 Polkadot 生态上](https://forum.web3.foundation/t/teams-building-on-polkadot/67)
+    - [有哪些项目在 Polkadot 生态上](https://forum.web3.foundation/t/teams-building-on-polkadot)
 - [怎样参与贡献](https://wiki.polkadot.network/docs/zh-CN/contributing)
 - [术语表](https://wiki.polkadot.network/docs/zh-CN/glossary)
 - [新闻](https://wiki.polkadot.network/docs/zh-CN/news)
