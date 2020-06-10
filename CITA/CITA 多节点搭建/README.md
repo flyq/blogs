@@ -558,6 +558,21 @@ $ ./bin/cita setup test-chain/1
 $ ./bin/cita start test-chain/1
 ```
 
+cita-monitor 重启动
+
+进入cita-monitor/
+
+1. 进入 agent
+```shell
+docker-compose up -d
+```
+2. 进入 server
+```shell
+export VERSION=`cat ../VERSION`
+docker-compose build
+docker-compose up -d
+```
+
 之后就可以在浏览器看到正常出块了。
 
 如果直接运行 `./bin/cita start test-chain/1` 则会报错（报错 log 在）cita/test-chain/1/logs/cita-chain.log :
