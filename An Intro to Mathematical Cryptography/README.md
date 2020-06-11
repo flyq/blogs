@@ -2,13 +2,13 @@
 ## Contents
 - [An Introduction to Mathematical Cryptography](#an-introduction-to-mathematical-cryptography)
   - [Contents](#contents)
-  - [数学基础：](#%e6%95%b0%e5%ad%a6%e5%9f%ba%e7%a1%80)
-    - [总体](#%e6%80%bb%e4%bd%93)
-    - [细节](#%e7%bb%86%e8%8a%82)
+  - [数学基础：](#数学基础)
+    - [总体](#总体)
+    - [细节](#细节)
   - [Chapter 1 An Introduction to Cryptography](#chapter-1-an-introduction-to-cryptography)
-    - [1.1 Simple substitution ciphers 简单替换密码](#11-simple-substitution-ciphers-%e7%ae%80%e5%8d%95%e6%9b%bf%e6%8d%a2%e5%af%86%e7%a0%81)
-    - [1.2 Divisibility and greatest common divisors 整除与最大公约数](#12-divisibility-and-greatest-common-divisors-%e6%95%b4%e9%99%a4%e4%b8%8e%e6%9c%80%e5%a4%a7%e5%85%ac%e7%ba%a6%e6%95%b0)
-    - [1.3 Modular arithmetic 模运算](#13-modular-arithmetic-%e6%a8%a1%e8%bf%90%e7%ae%97)
+    - [1.1 Simple substitution ciphers 简单替换密码](#11-simple-substitution-ciphers-简单替换密码)
+    - [1.2 Divisibility and greatest common divisors 整除与最大公约数](#12-divisibility-and-greatest-common-divisors-整除与最大公约数)
+    - [1.3 Modular arithmetic 模运算](#13-modular-arithmetic-模运算)
     - [1.4 Prime number, unique factorization, and finite fields](#14-prime-number-unique-factorization-and-finite-fields)
     - [1.5 Powers and primitive roots in finite fields](#15-powers-and-primitive-roots-in-finite-fields)
     - [1.6 Cryptography before the computer age](#16-cryptography-before-the-computer-age)
@@ -42,7 +42,7 @@
     - [3.4 Primality testing](#34-primality-testing)
       - [3.4.1 The distribution of the set of primes](#341-the-distribution-of-the-set-of-primes)
       - [3.4.2 Primality proofs versus probabilistic tests](#342-primality-proofs-versus-probabilistic-tests)
-    - [3.5 Pollard’s p − 1 factorization algorithm](#35-pollards-p-%e2%88%92-1-factorization-algorithm)
+    - [3.5 Pollard’s p − 1 factorization algorithm](#35-pollards-p--1-factorization-algorithm)
     - [3.6 Factorization via difference of squares](#36-factorization-via-difference-of-squares)
     - [3.7 Smooth numbers, sieves, and building relations for factorization](#37-smooth-numbers-sieves-and-building-relations-for-factorization)
       - [3.7.3 The number field sieve](#373-the-number-field-sieve)
@@ -62,7 +62,7 @@
 * 统计学 statistics
 * 复杂性理论 Computational complexity theory
 
-![complexity](images/npcomplete.jpg)
+![complexity](./images/npcomplete.jpg)
 
 高阶
 * 椭圆曲线对 elliptic curve pairing
