@@ -63,6 +63,11 @@ In linear algebra the analogous idea is
 |crucial|关键，临界|
 |cardinality|基数|
 |disjoint|集合不相交|
+|compliment| 补集|
+|intersection|交集|
+|union|并集|
+|the (cartesian) product of S and T| S和T的笛卡尔积 `{(a,b)|a属于S,b属于T}`|
+|the empty set|空集|
 
 集合的基数或大小用 |S|
 
@@ -72,7 +77,15 @@ P => Q
 存在 => there exists
 存在! => there exists unique
 element 属于 set
+
+if S 含于 T then T \ S := {x 属于 T| x 不属于 S}。 T\S 叫做 S 在 T 中的补集。compliment
 ```
+
+The union of two disjoint sets is
+often written as:
+
+![disjoin_union](./images/disjoin_union.PNG)
+
 
 `curly bracket` 大括号
 
