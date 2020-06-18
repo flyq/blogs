@@ -1,5 +1,17 @@
 # Introduction to Abstract Algebra(Math 113)
 
+## Contents
+- [Introduction to Abstract Algebra(Math 113)](#introduction-to-abstract-algebramath-113)
+  - [Contents](#contents)
+  - [1. Introduction](#1-introduction)
+    - [1.1 What is Algebra?](#11-what-is-algebra)
+    - [1.2 Sets and Functions](#12-sets-and-functions)
+    - [1.3 Equivalence Relations](#13-equivalence-relations)
+
+
+## 1. Introduction
+### 1.1 What is Algebra?
+
 `Algebra is the abstract encapsulation of our intuition for composition` 
 
 | English | 翻译 |
@@ -44,9 +56,9 @@
 `The central idea behind abstract algebra is to define a larger class of objects (sets with extra structure), of which Z and Q are definitive members.` 把运算规则也看成一种结构？(with extra structure)
 
 ```
-(Z,+) −→ Groups
-(Z,+,×) −→ Rings
-(Q,+,×) −→ Fields
+(Z,+) → Groups
+(Z,+,×) → Rings
+(Q,+,×) → Fields
 ```
 In linear algebra the analogous idea is
 
@@ -54,7 +66,7 @@ In linear algebra the analogous idea is
 
 `The amazing thing is that these vague ideas mean something very precise and have far far more depth than one could ever imagine.`
 
-## set
+### 1.2 Sets and Functions
 `A set is any collection of objects`
 | English | 翻译 |
 | :---: | :---: |
@@ -130,11 +142,17 @@ often written as:
 
 ![function](./images/function.PNG)
 
+### 1.3 Equivalence Relations
 
 | English | 翻译 |
 | :---: | :---: |
-|Equivalence|恒等关系|
+|Equivalence|等价关系|
 |formalized|形式化|
+|symmetric property|对称属性|
 
 ![equi](./images/equivalence.PNG)
 
+
+1. 对称属性 symmetric property
+2. 自反属性，反射属性 reflexive property
+3. 传递属性 transitive property
