@@ -7,6 +7,8 @@
     - [1.1 What is Algebra?](#11-what-is-algebra)
     - [1.2 Sets and Functions](#12-sets-and-functions)
     - [1.3 Equivalence Relations](#13-equivalence-relations)
+  - [2. The Structure of + and x on Z](#2-the-structure-of--and-x-on-z)
+    - [2.1 Basic Observations](#21-basic-observations)
 
 
 ## 1. Introduction
@@ -156,3 +158,12 @@ often written as:
 1. 对称属性 symmetric property
 2. 自反属性，反射属性 reflexive property
 3. 传递属性 transitive property
+
+## 2. The Structure of + and x on Z
+
+### 2.1 Basic Observations
+
+1. Associativity 结合律
+2. Existence of additive identity 存在加法单位元
+3. Existence of additive inverses 存在加法逆元
+4. Commutativity 交换律
