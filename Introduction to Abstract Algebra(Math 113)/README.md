@@ -167,3 +167,8 @@ often written as:
 2. Existence of additive identity 存在加法单位元
 3. Existence of additive inverses 存在加法逆元
 4. Commutativity 交换律
+
+
+Cancellation Law 消去律：
+
+For a,b,c ∈ Z, ca = cb and c ∕= 0 ⇒ a = b.
