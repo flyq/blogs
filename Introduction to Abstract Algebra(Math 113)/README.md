@@ -55,7 +55,7 @@
 |vague|模糊|
 |precise|精确|
 
-`The central idea behind abstract algebra is to define a larger class of objects (sets with extra structure), of which Z and Q are definitive members.` 把运算规则也看成一种结构？(with extra structure)
+`The central idea behind abstract algebra is to define a larger class of objects (sets with extra structure), of which Z and Q are definitive members.` (with extra structure)
 
 ```
 (Z,+) → Groups
