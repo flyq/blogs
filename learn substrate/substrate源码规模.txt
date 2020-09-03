@@ -12,3 +12,7 @@ flyq@ubuntu:~/workspaces/paritytech$ find ink/ -name "*.rs"   | xargs cat |wc -l
 16707
 flyq@ubuntu:~/workspaces/paritytech$ find substrate-master/ -name "*.rs"   | xargs cat |wc -l
 203048
+
+2020-09-03
+flyq@ubuntu:~/workspaces/paritytech$ find substrate/ -name "*.rs" | xargs cat | wc -l
+302961
