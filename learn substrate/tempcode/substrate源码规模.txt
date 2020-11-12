@@ -16,3 +16,9 @@ flyq@ubuntu:~/workspaces/paritytech$ find substrate-master/ -name "*.rs"   | xar
 2020-09-03
 flyq@ubuntu:~/workspaces/paritytech$ find substrate/ -name "*.rs" | xargs cat | wc -l
 302961
+
+2020-11-11
+flyq@ubuntu:~/workspaces/paritytech$ find substrate/ -name "*.rs" | xargs cat | wc -l
+323206
+
+find ./ -name "*.rs" | xargs cat | wc -l
