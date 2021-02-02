@@ -699,3 +699,101 @@ make down
 ```sh
 make up
 ```
+
+### 八、磁盘占用导致停机
+
+![](images/desk_full1.png)
+可以看出，即使把所有的数据盘放到了/data/数据盘下面， docker container 运行时也会占用系统盘的空间，并且还非常大，可能是docker自带的log等等。
+
+首先停掉一两个container，不然命令都无法执行，这里先 docker stop cita_run相关的容器，然后删除掉这个容器。
+
+接着参考 https://help.aliyun.com/document_detail/113316.html, 扩容分区
+
+查看磁盘挂载情况：
+```sh
+fdisk -lu
+```
+
+查看目前文件系统的情况：
+```sh
+df -Th
+```
+
+因为我们系统是type 是Linux，所以是 MBR 格式，只需以下步骤：
+```sh
+$ apt install cloud-guest-utils
+
+$ growpart  /dev/vda 1
+mkdir: cannot create directory ‘/tmp/growpart.11011’: No space left on device
+FAILED: failed to make temp dir
+```
+报错，因为没有磁盘了，那先把rebirth缓存停掉。
+
+再运行：
+```sh
+growpart  /dev/vda 1
+CHANGED: partition=1 start=2048 old: size=209713119 end=209715167 new: size=419428319,end=419430367
+```
+将磁盘分区扩展到最大
+
+
+然后将文件系统扩展到最大：
+```sh
+resize2fs /dev/vda1
+
+resize2fs 1.44.1 (24-Mar-2018)
+Filesystem at /dev/vda1 is mounted on /; on-line resizing required
+old_desc_blocks = 7, new_desc_blocks = 13
+The filesystem on /dev/vda1 is now 52428539 (4k) blocks long.
+```
+
+顺手清理一下数据盘
+```sh
+/data/cita/tools/re-birth/log# ls
+production.log  sidekiq.log
+
+du -sh *
+37G     production.log
+762M    sidekiq.log
+
+```
+删掉这两个log，然后启动rebirth服务：
+```sh
+root@snzhub-node0:/data/cita/tools/re-birth# make up
+docker-compose up -d
+Creating network "rebirth_default" with the default driver
+Creating rebirth_redis_1 ... 
+Creating rebirth_db_1 ... 
+Creating rebirth_redis_1
+Creating rebirth_db_1 ... done
+Creating rebirth_sync_1 ... 
+Creating rebirth_app_1 ... 
+Creating rebirth_sidekiq_1 ... 
+Creating rebirth_app_1
+Creating rebirth_sync_1
+Creating rebirth_app_1 ... done
+Creating rebirth_web_1 ... 
+Creating rebirth_sync_1 ... done
+```
+
+启动节点服务：
+```sh
+root@snzhub-node0:/data/cita# ./bin/cita setup taidi-chain/1
+Start docker container cita_runa747dee753fb1c85ddaa2f829e954164 ...
+493d6b413de139742398f4b1024fa1135022d353002898954195ca27fd875756
+
+root@snzhub-node0:/data/cita# ./bin/cita start taidi-chain/1
+
+```
+可以看出，即使节点停止出块（但是没有停掉），但是发送上去的交易还是保持在内存交易池，一旦启动交易就上链了。
+![](./images/tx.PNG)
+
+
+然后文件描述符过多：
+![](./images/file_toomany.PNG)
+
+```sh
+$ ulimit -n
+65535
+```
+
