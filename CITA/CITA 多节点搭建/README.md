@@ -797,3 +797,7 @@ $ ulimit -n
 65535
 ```
 
+8、挂载数据盘到 /data
+注意，需要改为 /data
+
+https://www.jianshu.com/p/fa587bbfbb60
