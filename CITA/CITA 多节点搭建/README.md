@@ -801,3 +801,38 @@ $ ulimit -n
 注意，需要改为 /data
 
 https://www.jianshu.com/p/fa587bbfbb60
+
+
+九、挂载数据盘到 /data
+注意，需要改为 /data
+
+https://www.jianshu.com/p/fa587bbfbb60
+
+echo '/dev/vdb1  /data ext3    defaults    0  0' >> /etc/fstab
+
+```
+mkdir /data
+sudo mkfs.ext4 /dev/vdb
+sudo mount -t ext4 /dev/vdb /data
+
+sudo vi /etc/fstab
+ 最后一行添加：/dev/vdb /data ext4  defaults 1 1
+
+scp -r bin root@/data/
+
+
+$ ./bin/cita append --chain_name taidi-chain --node ":4000"
+./bin/cita append --chain_name taidi-chain --node ":4000"
+
+
+
+cp -r `ls | grep -v node_modules | xargs` ../../get-answer
+
+scp -r ./* root@:/data/cita/taidi-chain/
+
+
+
+cita-cli scm NodeManager listNode --url http://
+
+node 2: 
+
