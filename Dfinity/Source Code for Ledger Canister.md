@@ -28,6 +28,7 @@
   - [canister 参数相关](#canister-参数相关)
     - [LedgerCanisterInitPayload](#ledgercanisterinitpayload)
     - [SendArgs](#sendargs)
+    - [TransactionNotification](#transactionnotification)
     - [NotifyCanisterArgs](#notifycanisterargs)
     - [AccountBalanceArgs](#accountbalanceargs)
     - [TotalSupplyArgs](#totalsupplyargs)
@@ -38,8 +39,19 @@
     - [IterBlocksRes](#iterblocksres)
     - [BlockArg & BlockRes](#blockarg--blockres)
     - [CyclesResponse](#cyclesresponse)
+  - [Ledger 部署时的初始化](#ledger-部署时的初始化)
+    - [initial_values](#initial_values)
+    - [minting_account](#minting_account)
+    - [timestamp](#timestamp)
+    - [transaction_window](#transaction_window)
+    - [archive_options](#archive_options)
 
 # Struct
+
+
+![](./images/Block.png)
+![](./images/LEDGER.png)
+
 ## 工具类型
 
 ### HashOf
@@ -422,6 +434,19 @@ pub struct LedgerCanisterInitPayload {
 }
 ```
 
+```rs
+impl LedgerCanisterInitPayload {
+    pub fn new(
+        minting_account: AccountIdentifier,
+        initial_values: HashMap<AccountIdentifier, ICPTs>,
+        archive_options: Option<ArchiveOptions>,
+        max_message_size_bytes: Option<usize>,
+        transaction_window: Option<Duration>,
+        send_whitelist: HashSet<CanisterId>,
+    ) -> Self {}
+}
+```
+
 ### SendArgs
 ```rs
 /// Argument taken by the send endpoint
@@ -436,16 +461,18 @@ pub struct SendArgs {
 }
 ```
 
+### TransactionNotification
 ```rs
-impl LedgerCanisterInitPayload {
-    pub fn new(
-        minting_account: AccountIdentifier,
-        initial_values: HashMap<AccountIdentifier, ICPTs>,
-        archive_options: Option<ArchiveOptions>,
-        max_message_size_bytes: Option<usize>,
-        transaction_window: Option<Duration>,
-        send_whitelist: HashSet<CanisterId>,
-    ) -> Self {}
+/// Struct sent by the ledger canister when it notifies a recipient of a payment
+#[derive(Serialize, Deserialize, CandidType, Clone, Hash, Debug, PartialEq, Eq)]
+pub struct TransactionNotification {
+    pub from: PrincipalId,
+    pub from_subaccount: Option<Subaccount>,
+    pub to: CanisterId,
+    pub to_subaccount: Option<Subaccount>,
+    pub block_height: BlockHeight,
+    pub amount: ICPTs,
+    pub memo: Memo,
 }
 ```
 
@@ -550,5 +577,93 @@ pub enum CyclesResponse {
 }
 ```
 
-![](./images/Block.png)
-![](./images/LEDGER.png)
+## Ledger 部署时的初始化
+
+### initial_values
+一个 hashmap，保证部署 canister 后，某个 account 有某个数量的 token。
+
+### minting_account
+可以看出，初始参数的 minting_account 是一个特殊的账号，类似 admin，后续所有它发出来交易，就是 Mint，所有发送给它的交易，就是 Burn。
+
+根据：
+```rs
+    LEDGER.write().unwrap().from_init(
+        initial_values,
+        minting_account,
+        dfn_core::api::now().into(),
+        transaction_window,
+        send_whitelist,
+    );
+```
+以及：
+```rs
+    pub fn from_init(
+        &mut self,
+        initial_values: HashMap<AccountIdentifier, ICPTs>,
+        minting_account: AccountIdentifier,
+        timestamp: TimeStamp,
+        transaction_window: Option<Duration>,
+        send_whitelist: HashSet<CanisterId>,
+    ) {
+        self.balances.icpt_pool = ICPTs::MAX;
+        self.minting_account_id = Some(minting_account);
+        if let Some(t) = transaction_window {
+            self.transaction_window = t;
+        }
+
+        for (to, amount) in initial_values.into_iter() {
+            self.add_payment_with_timestamp(
+                Memo::default(),
+                Transfer::Mint { to, amount },
+                None,
+                timestamp,
+            )
+            .expect(&format!("Creating account {:?} failed", to)[..]);
+        }
+
+        self.send_whitelist = send_whitelist;
+    }
+```
+以及：
+```rs
+    let from = AccountIdentifier::new(caller_principal_id, from_subaccount);
+    let minting_acc = LEDGER
+        .read()
+        .unwrap()
+        .minting_account_id
+        .expect("Minting canister id not initialized");
+
+    let transfer = if from == minting_acc {
+        assert_eq!(fee, ICPTs::ZERO, "Fee for minting should be zero");
+        assert_ne!(
+            to, minting_acc,
+            "It is illegal to mint to a minting_account"
+        );
+        Transfer::Mint { to, amount }
+    } else if to == minting_acc {
+        assert_eq!(fee, ICPTs::ZERO, "Fee for burning should be zero");
+        if amount < MIN_BURN_AMOUNT {
+            panic!("Burns lower than {} are not allowed", MIN_BURN_AMOUNT);
+        }
+        Transfer::Burn { from, amount }
+    } else {
+        if fee != TRANSACTION_FEE {
+            panic!("Transaction fee should be {}", TRANSACTION_FEE);
+        }
+        Transfer::Send {
+            from,
+            to,
+            amount,
+            fee,
+        }
+    };
+```
+
+### timestamp
+Unix 时间戳。nano second
+
+### transaction_window
+设定后续时间的交易窗口，主网只有 5 min，发送上来的交易会检测交易产生时间到当前时间是否超过来 5 min
+
+### archive_options
+用于设置交易历史记录存档，主要是有哪些 canister 存了 archive，节点存储的区块范围，最大消息长度，区块数量，分割门限等。
