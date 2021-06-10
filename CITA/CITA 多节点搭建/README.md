@@ -712,7 +712,18 @@ make up
 查看磁盘挂载情况：
 ```sh
 fdisk -lu
+
+Disk /dev/vda: 150 GiB, 161061273600 bytes, 314572800 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xc04c8785
+
+Device     Boot Start      End  Sectors Size Id Type
+/dev/vda1  *     2048 83886046 83883999  40G 83 Linux
 ```
+ 可以看出 /dev/vda 挂载了 150 G
 
 查看目前文件系统的情况：
 ```sh
