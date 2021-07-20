@@ -19,6 +19,7 @@
 1. 当 [Identity](http://identity.ic0.app/) 组件无法使用时，因为 NNS app 依赖于 Identity 组件的认证，因此 NNS app 也将无法使用。
    1. 比如对应种子轮用户，他们被锁定的神经元被 2017 年生成的助记词控制，并且无法将控制权转移给 Identity 里面的账号。此时，他们要想操作神经元（比如投票，解锁等），则无法使用 NNS app。
    2. 用户管理的金额非常大，希望使用基于私钥文件的离线两步验证，这时就不能使用 NNS app 了。
+   3. WebAuth 还是一个比较新的标准，浏览器支持并不完善。并且仍有很多终端设备（手机，电脑等）不支持安全芯片。
 2. 当需要批量操作神经元时，比如需要操作 100 个神经元去投票，如果基于 NNS app，则需要点击几百次，并且等等投票结果等等，比较麻烦
 
 # How
@@ -28,6 +29,10 @@
 现在假设 dfx 已经配置好一个账号，icp，里面有足量的 icp（至少 1.1 个 ICP，其中 1 个 ICP 用于质押在神经元里面，0.1 个 ICP 用于手续费）。
 
 ## 创建神经元
+
+tools:
+[subaccount](https://github.com/flyq/blogs/blob/master/Dfinity/subaccount/src/main.rs)
+
 ```sh
 # 获取该账号在主网上的余额
 dfx ledger --network=https://ic0.app balance
@@ -454,7 +459,20 @@ dfx canister --network=https://ic0.app --no-wallet call rrkah-fqaaa-aaaaa-aaaaq-
 
 **设置完溶解延迟再投票**
 ```sh
-dfx canister --network=https://ic0.app --no-wallet call rrkah-fqaaa-aaaaa-aaaaq-cai get_proposal_info "(11078:nat64)"
-
 dfx canister --network=https://ic0.app --no-wallet call rrkah-fqaaa-aaaaa-aaaaq-cai manage_neuron "(record {id=opt record{id=2_524_431_329_219_902_182:nat64};command=opt variant{RegisterVote=record {vote=1:int32;proposal=opt record{id=11078:nat64}}}})"
+(
+  record {
+    2_171_433_291 = opt variant {
+      106_380_200 = record {
+        1_389_388_560 = "Neuron not authorized to vote on proposal.";
+        3_790_638_545 = 3 : int32;
+      }
+    };
+  },
+)
+```
+结果还是失败。应该是创建神经元之后需要等一段时间才能投票：
+提了一个问题 https://forum.dfinity.org/t/how-long-does-it-take-to-start-voting-after-the-neuron-is-created/6011
 
+
+原链接：[source](https://github.com/flyq/blogs/blob/master/Dfinity/How%20to%20use%20dfx%20to%20interact%20with%20NNS%20canisters%20instead%20of%20nns%20app.md)
