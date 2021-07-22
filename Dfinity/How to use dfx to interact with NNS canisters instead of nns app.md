@@ -475,4 +475,30 @@ dfx canister --network=https://ic0.app --no-wallet call rrkah-fqaaa-aaaaa-aaaaq-
 提了一个问题 https://forum.dfinity.org/t/how-long-does-it-take-to-start-voting-after-the-neuron-is-created/6011
 
 
+过了几天后，提案 11078 的已经过了投票期了，没有执行成功。
+
+查看神经元：
+
+```sh
+dfx canister --network=https://ic0.app --no-wallet call rrkah-fqaaa-aaaaa-aaaaq-cai get_neuron_info "(2_524_431_329_219_902_182 : nat64)"
+(
+  variant {
+    17_724 = record {
+      303_619_573 = 18_144_000 : nat64;
+      349_671_467 = vec { record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_428 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_394 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_395 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_396 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_397 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_398 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_400 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_401 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_402 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_403 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_404 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_405 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_406 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_407 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_408 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_410 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_411 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_412 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_413 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_414 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_415 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_290 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_291 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_292 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_289 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_283 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_282 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_280 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_279 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_254 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_256 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_257 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_258 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_259 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_260 : nat64;};}; record { 1_314_114_794 = 1 : int32; 2_744_746_248 = opt record { 23_515 = 11_262 : nat64;};};};
+      1_392_680_831 = 1_626_759_699 : nat64;
+      2_215_343_633 = 1 : int32;
+      3_433_024_449 = 1_626_918_069 : nat64;
+      3_871_395_629 = 107_217_302 : nat64;
+      4_290_862_015 = 143_415 : nat64;
+    }
+  },
+)
+```
+发现还是多了很多投票记录的，应该是跟随 神经元28 投的票，即该神经元成功创建，能正常投票。
+
+现在没有 pending 神经元，后续再找一个 pending 神经元主动投票试试
+
+
+
 原链接：[source](https://github.com/flyq/blogs/blob/master/Dfinity/How%20to%20use%20dfx%20to%20interact%20with%20NNS%20canisters%20instead%20of%20nns%20app.md)
