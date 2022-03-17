@@ -4,6 +4,7 @@ bin-release/
 [Oo]bj/
 [Bb]in/
 **/target/
+.dfx
 
 # Other files and folders
 .settings/
