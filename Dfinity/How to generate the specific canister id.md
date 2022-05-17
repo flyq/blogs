@@ -13,7 +13,7 @@ pub const IDENTITY_CANISTER_INDEX_IN_NNS_SUBNET: u64 = 7;
 pub const NNS_UI_CANISTER_INDEX_IN_NNS_SUBNET: u64 = 8;
 ```
 As we can see here, The canister id is only related to a u64 type index. In fact, the canister id is obtained by u64 serialization to get 8 bytes plus two 1 (specified in the interface spec) to get a 10-bytes principal. So there is a one-to-one correspondence between canister id and u64.
-The range of canister id for different subnets is divided by the premise, such as [0, 2^20) range is in the NNS system subnet, [2^20, 2^21) is another subnet, let the canister in the subnet according to In the order of creation, the corresponding index is obtained in turn. For example, registry is 0, governance is 1, and ledger is 3. The first canister in the second subnet is 2^20.
+The range of canister id for different subnets is divided by the premise, such as [0, 2^20) range is for the NNS system subnet, [2^20, 2^21) is for next subnet, and canisters in a subnet according to the order of creation, For example, registry is 0, governance is 1, and ledger is 2 and the first canister in the second subnet is 2^20.
 
 ## in local env
 ```sh
